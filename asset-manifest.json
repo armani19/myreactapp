@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/myreactapp/static/css/main.c3fd332f.css",
+    "main.css": "/myreactapp/static/css/main.0b0f856e.css",
     "main.js": "/myreactapp/static/js/main.d685e8ee.js",
     "static/js/453.abd8887f.chunk.js": "/myreactapp/static/js/453.abd8887f.chunk.js",
     "static/media/water-texture.jpg": "/myreactapp/static/media/water-texture.f6a66915c2d6c4db4100.jpg",
@@ -8,12 +8,12 @@
     "static/media/fish-group.png": "/myreactapp/static/media/fish-group.fed4a8e023dbbbf3a0d2.png",
     "static/media/blue-pattern.jpg": "/myreactapp/static/media/blue-pattern.90ce6eb5ebc2d3ab00fd.jpg",
     "index.html": "/myreactapp/index.html",
-    "main.c3fd332f.css.map": "/myreactapp/static/css/main.c3fd332f.css.map",
+    "main.0b0f856e.css.map": "/myreactapp/static/css/main.0b0f856e.css.map",
     "main.d685e8ee.js.map": "/myreactapp/static/js/main.d685e8ee.js.map",
     "453.abd8887f.chunk.js.map": "/myreactapp/static/js/453.abd8887f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c3fd332f.css",
+    "static/css/main.0b0f856e.css",
     "static/js/main.d685e8ee.js"
   ]
 }
