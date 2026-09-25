@@ -1,23 +1,62 @@
-import logo from './logo.svg';
 import './App.css';
+
+const navItems = [
+  ['About', '#about'],
+  ['Projects', '#projects'],
+  ['Experience', '#experience'],
+  ['Skills', '#skills'],
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="site-shell">
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="Back to top">A.M.</a>
+        <nav aria-label="Primary navigation">
+          {navItems.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
+        </nav>
       </header>
+
+      <main id="top">
+        <section className="hero" aria-labelledby="hero-title">
+          <img className="fish-group" src="/assets/fish-group.png" alt="A school of fish" />
+          <div className="hero-content">
+            <p className="eyebrow">HELLO, I'M</p>
+            <h1 id="hero-title">ARMANI MAGNIFICO</h1>
+            <p className="hero-description">System Design &amp; Software Engineering | Frontend Developer |<br />Quality Assurance Specialist | 4th year IT Student</p>
+            <div className="hero-stats" aria-label="Specialties">
+              <div><strong>3</strong><span>Projects</span></div>
+              <div><strong>UI/UX</strong><span>Primary</span></div>
+              <div><strong>Full Stack</strong><span>Exploring</span></div>
+            </div>
+            <div className="hero-actions">
+              <a className="button button-yellow" href="#projects">Projects</a>
+              <a className="button button-white" href="mailto:armani@example.com">Let's Connect!</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="intro" id="about" aria-label="About Armani">
+          <div className="copy-block about-copy">
+            <h2>About Me</h2>
+            <p>I'm a fourth-year Information Technology student at FEU Institute of Technology specializing in Web and Mobile Application Development. I enjoy turning ideas and real-world problems into digital solutions that are intuitive, functional, and meaningful to the people who use them.</p>
+          </div>
+          <div className="copy-block interests-copy">
+            <h2>What Interests Me</h2>
+            <p>I'm particularly interested in system design, software engineering, frontend development, and quality assurance. I value understanding how a system works as a whole. From identifying user needs and designing workflows to development, testing, and continuous improvement.</p>
+          </div>
+          <div className="copy-block beyond-copy" id="experience">
+            <h2>Beyond Programming</h2>
+            <p>Outside of programming, my experience in student leadership and project coordination has taught me the importance of accountability, collaboration, and being willing to take initiative when needed. I approach every project as an opportunity to learn, improve my craft, and become a more well-rounded IT professional.</p>
+          </div>
+        </section>
+
+        <section className="ocean" id="projects" aria-label="Portfolio projects">
+          <img className="reef" src="/assets/reef.png" alt="Underwater reef" />
+          <div className="water-texture" />
+        </section>
+        <section className="empty-lower" id="skills" aria-label="Skills" />
+      </main>
     </div>
   );
 }
