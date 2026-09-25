@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import './App.css';
 import fishGroup from './assets/fish-group.png';
 import reefImage from './assets/reef.png';
@@ -10,9 +11,33 @@ const navItems = [
 ];
 
 function App() {
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return undefined;
+
+    const updateHeaderHeight = () => {
+      document.documentElement.style.setProperty(
+        '--header-height',
+        `${header.getBoundingClientRect().height}px`,
+      );
+    };
+
+    updateHeaderHeight();
+    const observer = new ResizeObserver(updateHeaderHeight);
+    observer.observe(header);
+    window.addEventListener('resize', updateHeaderHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateHeaderHeight);
+    };
+  }, []);
+
   return (
     <div className="site-shell">
-      <header className="site-header">
+      <header ref={headerRef} className="site-header">
         <a className="brand" href="#top" aria-label="Back to top">A.M.</a>
         <nav aria-label="Primary navigation">
           {navItems.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
