@@ -1,4 +1,6 @@
 import './App.css';
+import fishGroup from './assets/fish-group.png';
+import reefImage from './assets/reef.png';
 
 const navItems = [
   ['About', '#about'],
@@ -19,7 +21,7 @@ function App() {
 
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
-          <img className="fish-group" src="/assets/fish-group.png" alt="A school of fish" />
+          <img className="fish-group" src={fishGroup} alt="A school of fish" />
           <div className="hero-content">
             <p className="eyebrow">HELLO, I'M</p>
             <h1 id="hero-title">ARMANI MAGNIFICO</h1>
@@ -52,7 +54,7 @@ function App() {
         </section>
 
         <section className="ocean" id="projects" aria-label="Portfolio projects">
-          <img className="reef" src="/assets/reef.png" alt="Underwater reef" />
+          <img className="reef" src={reefImage} alt="Underwater reef" />
           <div className="water-texture" />
         </section>
         <section className="empty-lower" id="skills" aria-label="Skills" />
