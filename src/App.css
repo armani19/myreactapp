@@ -5,7 +5,7 @@
 html { scroll-behavior: smooth; }
 body { background: #fff; color: var(--ink); }
 .site-shell { min-width: 320px; }
-.site-header { height: 76px; padding: 0 clamp(28px, 6vw, 92px); display: flex; align-items: center; justify-content: space-between; background: #f7f8f9; border-bottom: 1px solid rgba(255,255,255,.55); box-shadow: 0 5px 24px rgba(7,28,57,.14); position: sticky; top: 0; z-index: 5; transition: background-color .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.site-header { height: 76px; padding: 0 clamp(28px, 6vw, 92px); display: flex; align-items: center; justify-content: space-between; background: #f7f8f9; border-bottom: 1px solid rgba(255,255,255,.55); box-shadow: 0 5px 24px rgba(7,28,57,.14); position: fixed; inset: 0 0 auto; z-index: 5; transition: background-color .25s ease, box-shadow .25s ease, border-color .25s ease; }
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .site-header { background: rgba(247,248,249,.72); -webkit-backdrop-filter: blur(18px) saturate(150%); backdrop-filter: blur(18px) saturate(150%); border-bottom-color: rgba(255,255,255,.7); }
 }
@@ -13,6 +13,7 @@ body { background: #fff; color: var(--ink); }
 .site-header nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: clamp(34px, 5vw, 83px); margin: 0; }
 .site-header nav a { color: #182332; font-size: 18px; font-weight: 700; text-decoration: none; transition: color .2s ease; }
 .site-header nav a:hover { color: #2d67ad; }
+main { padding-top: var(--header-height, 76px); }
 #about, #projects, #experience, #skills { scroll-margin-top: calc(var(--header-height, 76px) + 16px); }
 .hero { min-height: 890px; position: relative; display: flex; justify-content: center; align-items: center; background: var(--navy) url('./assets/blue-pattern.jpg') center / cover; border-bottom: 4px solid #101010; color: #fff; }
 .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.2); pointer-events: none; }
@@ -42,6 +43,7 @@ body { background: #fff; color: var(--ink); }
 .water-texture { position: absolute; inset: 250px 0 0; background: url('./assets/water-texture.jpg') center / cover; }
 .empty-lower { height: 2700px; background: #fff; }
 @media (max-width:800px) {
+  :root { --header-height: 56px; }
   .site-header { height: 56px; padding: 0 22px; } .brand { font-size: 22px; } .site-header nav { gap: 18px; } .site-header nav a { font-size: 11px; }
   .hero { min-height: 575px; } .fish-group { width: 95vw; top: 1%; left: -5%; } .hero-content { width: 88%; transform: translateY(10px); }
   .eyebrow { margin-bottom: 3px; font-size: 13px; } .hero h1 { font-size: clamp(29px,8.5vw,48px); letter-spacing: -1.5px; } .hero-description { margin: 15px 0 14px; font-size: 11px; }
