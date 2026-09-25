@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import './App.css';
 import fishGroup from './assets/fish-group.png';
-import reefImage from './assets/reef.png';
 
 const navItems = [
   ['About', '#about'],
@@ -79,7 +78,6 @@ function App() {
         </section>
 
         <section className="ocean" id="projects" aria-label="Portfolio projects">
-          <img className="reef" src={reefImage} alt="Underwater reef" />
           <div className="water-texture" />
         </section>
         <section className="empty-lower" id="skills" aria-label="Skills" />
