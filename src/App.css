@@ -4,7 +4,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { background: #fff; color: var(--ink); }
-.site-shell { min-width: 320px; overflow: hidden; }
+.site-shell { min-width: 320px; overflow-x: hidden; }
 .site-header { height: 76px; padding: 0 clamp(28px, 6vw, 92px); display: flex; align-items: center; justify-content: space-between; background: #f7f8f9; border-bottom: 1px solid rgba(255,255,255,.55); box-shadow: 0 5px 24px rgba(7,28,57,.14); position: sticky; top: 0; z-index: 5; transition: background-color .25s ease, box-shadow .25s ease, border-color .25s ease; }
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .site-header { background: rgba(247,248,249,.72); -webkit-backdrop-filter: blur(18px) saturate(150%); backdrop-filter: blur(18px) saturate(150%); border-bottom-color: rgba(255,255,255,.7); }
