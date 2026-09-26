@@ -45,7 +45,7 @@ body { background: #fff; color: var(--ink); }
 main { padding-top: 0; }
 #about, #projects, #experience, #skills { scroll-margin-top: var(--header-height, 76px); }
 .hero-stage { --hero-slide-progress: 0; position: relative; height: max(890px, 100svh); }
-.hero { height: max(890px, 100svh); min-height: 0; position: fixed; inset: 0 0 auto; z-index: 1; display: flex; justify-content: center; align-items: center; background: var(--navy) url('./assets/blue-pattern.jpg') center / cover; border-bottom: 4px solid #101010; color: #fff; transform: translate3d(0, calc(var(--hero-slide-progress) * -100%), 0); transition: transform .6s cubic-bezier(.76,0,.24,1); will-change: transform; }
+.hero { height: max(890px, 100svh); min-height: 0; position: sticky; top: 0; z-index: 1; display: flex; justify-content: center; align-items: center; background: var(--navy) url('./assets/blue-pattern.jpg') center / cover; border-bottom: 4px solid #101010; color: #fff; transform: translate3d(0, calc(var(--hero-slide-progress) * -100%), 0); transition: transform .6s cubic-bezier(.76,0,.24,1); will-change: transform; }
 .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.2); pointer-events: none; }
 .fish-group { position: absolute; width: min(680px, 58vw); left: 4%; top: 2%; opacity: .9; z-index: 1; }
 .hero-content { width: min(1020px, 90%); position: relative; z-index: 2; transform: translateY(11px); text-align: center; }
