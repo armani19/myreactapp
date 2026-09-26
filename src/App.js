@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import fishGroup from './assets/fish-group.png';
 
@@ -9,9 +9,16 @@ const navItems = [
   ['Skills', '#skills'],
 ];
 
-function IntroAnimation() {
+function IntroAnimation({ onComplete }) {
   return (
-    <div className="intro-animation" aria-label="Introducing Armani Magnifico" role="status">
+    <div
+      className="intro-animation"
+      aria-label="Introducing Armani Magnifico"
+      role="status"
+      onAnimationEnd={(event) => {
+        if (event.animationName === 'intro-fade-out') onComplete();
+      }}
+    >
       <div className="intro-wipe" />
       <div className="intro-card intro-card-primary">
         <div className="intro-card-content">
@@ -31,6 +38,7 @@ function IntroAnimation() {
 function App() {
   const headerRef = useRef(null);
   const heroStageRef = useRef(null);
+  const [introComplete, setIntroComplete] = useState(false);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -59,14 +67,6 @@ function App() {
     if (!heroStage) return undefined;
     let scrollSnapTimeout;
     let isSnapping = false;
-
-    const updateHeroProgress = () => {
-      const progress = Math.min(
-        Math.max(window.scrollY / heroStage.offsetHeight, 0),
-        1,
-      );
-      heroStage.style.setProperty('--hero-slide-progress', progress.toString());
-    };
 
     const snapLandingPage = (event) => {
       const landingHeight = heroStage.offsetHeight;
@@ -102,14 +102,9 @@ function App() {
       }, 750);
     };
 
-    updateHeroProgress();
-    window.addEventListener('scroll', updateHeroProgress, { passive: true });
-    window.addEventListener('resize', updateHeroProgress);
     window.addEventListener('wheel', snapLandingPage, { passive: false });
 
     return () => {
-      window.removeEventListener('scroll', updateHeroProgress);
-      window.removeEventListener('resize', updateHeroProgress);
       window.removeEventListener('wheel', snapLandingPage);
       window.clearTimeout(scrollSnapTimeout);
     };
@@ -117,8 +112,8 @@ function App() {
 
   return (
     <div className="site-shell">
-      <IntroAnimation />
-      <header ref={headerRef} className="site-header">
+      <IntroAnimation onComplete={() => setIntroComplete(true)} />
+      <header ref={headerRef} className={`site-header${introComplete ? ' site-header-visible' : ''}`}>
         <a className="brand" href="#top" aria-label="Back to top">A.M.</a>
         <nav aria-label="Primary navigation">
           {navItems.map(([label, href]) => <a key={label} href={href}>{label}</a>)}

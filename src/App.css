@@ -29,7 +29,8 @@ body { background: #fff; color: var(--ink); }
   .hero { transition: none; }
 }
 
-.site-header { height: 76px; padding: 0 clamp(28px, 6vw, 92px); display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.2); box-shadow: 0 8px 30px rgba(7,28,57,.08); position: fixed; inset: 0 0 auto; z-index: 50; transition: background-color .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.site-header { height: 76px; padding: 0 clamp(28px, 6vw, 92px); display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.2); box-shadow: 0 8px 30px rgba(7,28,57,.08); position: fixed; inset: 0 0 auto; z-index: 50; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s ease, visibility 0s linear .35s, background-color .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.site-header-visible { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity .35s ease, visibility 0s linear 0s, background-color .25s ease, box-shadow .25s ease, border-color .25s ease; }
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .site-header { background: rgba(255,255,255,.1); -webkit-backdrop-filter: blur(18px) saturate(145%); backdrop-filter: blur(18px) saturate(145%); border-bottom-color: rgba(255,255,255,.2); }
 }
@@ -44,8 +45,8 @@ body { background: #fff; color: var(--ink); }
 .site-header nav a:hover { color: #2d67ad; }
 main { padding-top: 0; }
 #about, #projects, #experience, #skills { scroll-margin-top: var(--header-height, 76px); }
-.hero-stage { --hero-slide-progress: 0; position: relative; height: max(890px, 100svh); }
-.hero { height: max(890px, 100svh); min-height: 0; position: sticky; top: 0; z-index: 1; display: flex; justify-content: center; align-items: center; background: var(--navy) url('./assets/blue-pattern.jpg') center / cover; border-bottom: 4px solid #101010; color: #fff; transform: translate3d(0, calc(var(--hero-slide-progress) * -100%), 0); transition: transform .6s cubic-bezier(.76,0,.24,1); will-change: transform; }
+.hero-stage { position: relative; height: max(890px, 100svh); }
+.hero { height: max(890px, 100svh); min-height: 0; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; background: var(--navy) url('./assets/blue-pattern.jpg') center / cover; border-bottom: 4px solid #101010; color: #fff; }
 .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.2); pointer-events: none; }
 .fish-group { position: absolute; width: min(680px, 58vw); left: 4%; top: 2%; opacity: .9; z-index: 1; }
 .hero-content { width: min(1020px, 90%); position: relative; z-index: 2; transform: translateY(11px); text-align: center; }
@@ -61,13 +62,13 @@ main { padding-top: 0; }
 .button:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.2); }
 .button-yellow { color: #0b4b8d; background: #facc16; font-family: 'Sora', Arial, sans-serif; font-weight: 800; }
 .button-white { color: #173c69; background: #fff; }
-.intro { position: relative; z-index: 2; min-height: 795px; padding: 100px clamp(36px,6.6vw,95px) 0; }
-.copy-block { max-width: 1280px; margin-left: auto; margin-right: auto; text-align: center; }
+.intro { position: relative; z-index: 2; min-height: 795px; padding: 77px clamp(36px,6.6vw,95px) 0; }
+.copy-block { max-width: 1310px; margin-left: 0; margin-right: 0; text-align: left; }
 .copy-block h2 { margin: 0 0 6px; color: var(--blue); font-size: clamp(42px,5vw,80px); line-height: 1; letter-spacing: -2.5px; font-weight: 800; }
 .copy-block p { margin: 0; color: var(--ink); font-size: clamp(16px,1.55vw,23px); line-height: 1.17; font-weight: 500; }
 .about-copy { max-width: 1255px; }
-.interests-copy { max-width: 1250px; margin-top: 90px; }
-.beyond-copy { max-width: 1280px; margin-top: 90px; }
+.interests-copy { max-width: 1250px; margin: 66px 0 0 auto; text-align: right; }
+.beyond-copy { max-width: 1280px; margin-top: 68px; }
 .ocean { height: 920px; position: relative; overflow: hidden; }
 .reef { position: absolute; z-index: 2; bottom: calc(100% - 269px); left: 0; width: 100%; height: 270px; object-fit: cover; object-position: center bottom; }
 .water-texture { position: absolute; inset: 0; background: url('./assets/water-texture.jpg') center / cover; }
@@ -75,11 +76,12 @@ main { padding-top: 0; }
 @media (max-width:800px) {
   :root { --header-height: 56px; }
   .site-header { height: 56px; padding: 0 22px; } .brand { font-size: 22px; } .site-header nav { gap: 18px; } .site-header nav a { font-size: 11px; }
+  .site-header { opacity: 0; } .site-header-visible { opacity: 1; }
   .hero-stage { height: max(575px, 100svh); } .hero { height: max(575px, 100svh); } .fish-group { width: 95vw; top: 1%; left: -5%; } .hero-content { width: 88%; transform: translateY(10px); }
   .eyebrow { margin-bottom: 3px; font-size: 13px; } .hero h1 { font-size: clamp(29px,8.5vw,48px); letter-spacing: -1.5px; } .hero-description { margin: 15px 0 14px; font-size: 11px; }
   .hero-stats { gap: 30px; margin: 0 0 26px; } .hero-stats div { min-width: 62px; } .hero-stats strong, .hero-stats span { font-size: 13px; }
   .hero-actions { gap: 13px; } .button { min-width: 91px; height: 39px; padding: 0 13px; font-size: 12px; }
-  .intro { min-height: 430px; padding: 54px 24px 0; } .copy-block h2 { font-size: 30px; letter-spacing: -.8px; } .copy-block p { font-size: 10px; line-height: 1.15; }
-  .interests-copy { margin-top: 48px; } .beyond-copy { margin-top: 48px; } .ocean { height: 495px; } .reef { height: 100px; bottom: calc(100% - 100px); } .water-texture { inset: 0; } .empty-lower { height: 1200px; }
+  .intro { min-height: 430px; padding: 31px 24px 0; } .copy-block h2 { font-size: 30px; letter-spacing: -.8px; } .copy-block p { font-size: 10px; line-height: 1.15; }
+  .interests-copy { margin-top: 34px; } .beyond-copy { margin-top: 34px; } .ocean { height: 495px; } .reef { height: 100px; bottom: calc(100% - 100px); } .water-texture { inset: 0; } .empty-lower { height: 1200px; }
 }
 @media (max-width:450px) { .site-header nav { gap: 11px; } .site-header nav a { font-size: 8px; } .hero-content { width: 92%; } .hero-stats { gap: 17px; } }
