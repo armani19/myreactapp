@@ -70,15 +70,22 @@ function App() {
 
     const snapLandingPage = (event) => {
       const landingHeight = heroStage.offsetHeight;
+      const aboutSection = document.getElementById('about');
+      const headerHeight = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--header-height'),
+      ) || 76;
+      const aboutTarget = aboutSection
+        ? Math.max(0, aboutSection.offsetTop - headerHeight)
+        : landingHeight;
       const currentScroll = window.scrollY;
-      const isWithinLanding = currentScroll >= 0 && currentScroll <= landingHeight;
+      const isWithinLanding = currentScroll >= 0 && currentScroll <= aboutTarget;
       const scrollingDown = event.deltaY > 0;
       const scrollingUp = event.deltaY < 0;
 
       if (!isWithinLanding || isSnapping || (!scrollingDown && !scrollingUp)) return;
-      if (scrollingDown && currentScroll < landingHeight - 2) {
+      if (scrollingDown && currentScroll < aboutTarget - 2) {
         event.preventDefault();
-      } else if (scrollingUp && currentScroll <= landingHeight + 2 && currentScroll > 0) {
+      } else if (scrollingUp && currentScroll <= aboutTarget + 2 && currentScroll > 0) {
         event.preventDefault();
       } else {
         return;
@@ -86,7 +93,7 @@ function App() {
 
       isSnapping = true;
       window.scrollTo({
-        top: scrollingDown ? landingHeight : 0,
+        top: scrollingDown ? aboutTarget : 0,
         behavior: 'smooth',
       });
       window.clearTimeout(scrollSnapTimeout);
