@@ -60,7 +60,7 @@ function App() {
 
     const updateHeroProgress = () => {
       const progress = Math.min(
-        Math.max(-heroStage.getBoundingClientRect().top / window.innerHeight, 0),
+        Math.max(window.scrollY / heroStage.offsetHeight, 0),
         1,
       );
       heroStage.style.setProperty('--hero-slide-progress', progress.toString());
