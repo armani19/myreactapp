@@ -30,6 +30,7 @@ function IntroAnimation() {
 
 function App() {
   const headerRef = useRef(null);
+  const heroStageRef = useRef(null);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -53,6 +54,28 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const heroStage = heroStageRef.current;
+    if (!heroStage) return undefined;
+
+    const updateHeroProgress = () => {
+      const progress = Math.min(
+        Math.max(-heroStage.getBoundingClientRect().top / window.innerHeight, 0),
+        1,
+      );
+      heroStage.style.setProperty('--hero-slide-progress', progress.toString());
+    };
+
+    updateHeroProgress();
+    window.addEventListener('scroll', updateHeroProgress, { passive: true });
+    window.addEventListener('resize', updateHeroProgress);
+
+    return () => {
+      window.removeEventListener('scroll', updateHeroProgress);
+      window.removeEventListener('resize', updateHeroProgress);
+    };
+  }, []);
+
   return (
     <div className="site-shell">
       <IntroAnimation />
@@ -64,7 +87,7 @@ function App() {
       </header>
 
       <main id="top">
-        <div className="hero-stage">
+        <div ref={heroStageRef} className="hero-stage">
           <section className="hero" aria-labelledby="hero-title">
             <img className="fish-group" src={fishGroup} alt="A school of fish" />
             <div className="hero-content">
