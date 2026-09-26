@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/myreactapp/static/css/main.e3183ffe.css",
+    "main.css": "/myreactapp/static/css/main.4ab8263d.css",
     "main.js": "/myreactapp/static/js/main.15b071e1.js",
     "static/js/453.abd8887f.chunk.js": "/myreactapp/static/js/453.abd8887f.chunk.js",
     "static/media/water-texture.jpg": "/myreactapp/static/media/water-texture.f6a66915c2d6c4db4100.jpg",
     "static/media/fish-group.png": "/myreactapp/static/media/fish-group.fed4a8e023dbbbf3a0d2.png",
     "static/media/blue-pattern.jpg": "/myreactapp/static/media/blue-pattern.90ce6eb5ebc2d3ab00fd.jpg",
     "index.html": "/myreactapp/index.html",
-    "main.e3183ffe.css.map": "/myreactapp/static/css/main.e3183ffe.css.map",
+    "main.4ab8263d.css.map": "/myreactapp/static/css/main.4ab8263d.css.map",
     "main.15b071e1.js.map": "/myreactapp/static/js/main.15b071e1.js.map",
     "453.abd8887f.chunk.js.map": "/myreactapp/static/js/453.abd8887f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3183ffe.css",
+    "static/css/main.4ab8263d.css",
     "static/js/main.15b071e1.js"
   ]
 }
