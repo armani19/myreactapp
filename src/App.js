@@ -57,6 +57,8 @@ function App() {
   useEffect(() => {
     const heroStage = heroStageRef.current;
     if (!heroStage) return undefined;
+    let scrollSnapTimeout;
+    let isSnapping = false;
 
     const updateHeroProgress = () => {
       const progress = Math.min(
@@ -66,13 +68,43 @@ function App() {
       heroStage.style.setProperty('--hero-slide-progress', progress.toString());
     };
 
+    const snapLandingPage = (event) => {
+      const landingHeight = heroStage.offsetHeight;
+      const currentScroll = window.scrollY;
+      const isWithinLanding = currentScroll >= 0 && currentScroll <= landingHeight;
+      const scrollingDown = event.deltaY > 0;
+      const scrollingUp = event.deltaY < 0;
+
+      if (!isWithinLanding || isSnapping || (!scrollingDown && !scrollingUp)) return;
+      if (scrollingDown && currentScroll < landingHeight - 2) {
+        event.preventDefault();
+      } else if (scrollingUp && currentScroll <= landingHeight + 2 && currentScroll > 0) {
+        event.preventDefault();
+      } else {
+        return;
+      }
+
+      isSnapping = true;
+      window.scrollTo({
+        top: scrollingDown ? landingHeight : 0,
+        behavior: 'smooth',
+      });
+      window.clearTimeout(scrollSnapTimeout);
+      scrollSnapTimeout = window.setTimeout(() => {
+        isSnapping = false;
+      }, 750);
+    };
+
     updateHeroProgress();
     window.addEventListener('scroll', updateHeroProgress, { passive: true });
     window.addEventListener('resize', updateHeroProgress);
+    window.addEventListener('wheel', snapLandingPage, { passive: false });
 
     return () => {
       window.removeEventListener('scroll', updateHeroProgress);
       window.removeEventListener('resize', updateHeroProgress);
+      window.removeEventListener('wheel', snapLandingPage);
+      window.clearTimeout(scrollSnapTimeout);
     };
   }, []);
 
