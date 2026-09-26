@@ -9,6 +9,25 @@ const navItems = [
   ['Skills', '#skills'],
 ];
 
+function IntroAnimation() {
+  return (
+    <div className="intro-animation" aria-label="Introducing Armani Magnifico" role="status">
+      <div className="intro-wipe" />
+      <div className="intro-card intro-card-primary">
+        <div className="intro-card-content">
+          <p className="intro-name">ARMANI MAGNIFICO</p>
+          <p className="intro-role">UX / UX Designer<br />Web Designer</p>
+        </div>
+      </div>
+      <div className="intro-card intro-card-mark">
+        <div className="intro-card-content">
+          <p className="intro-mark">A.M.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const headerRef = useRef(null);
 
@@ -36,6 +55,7 @@ function App() {
 
   return (
     <div className="site-shell">
+      <IntroAnimation />
       <header ref={headerRef} className="site-header">
         <a className="brand" href="#top" aria-label="Back to top">A.M.</a>
         <nav aria-label="Primary navigation">
