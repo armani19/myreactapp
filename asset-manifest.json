@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/myreactapp/static/css/main.03e19f5f.css",
-    "main.js": "/myreactapp/static/js/main.fb7356be.js",
+    "main.css": "/myreactapp/static/css/main.3c6e2635.css",
+    "main.js": "/myreactapp/static/js/main.e31090f3.js",
     "static/js/453.abd8887f.chunk.js": "/myreactapp/static/js/453.abd8887f.chunk.js",
     "static/media/water-texture.jpg": "/myreactapp/static/media/water-texture.f6a66915c2d6c4db4100.jpg",
     "static/media/fish-group.png": "/myreactapp/static/media/fish-group.fed4a8e023dbbbf3a0d2.png",
     "static/media/blue-pattern.jpg": "/myreactapp/static/media/blue-pattern.90ce6eb5ebc2d3ab00fd.jpg",
     "index.html": "/myreactapp/index.html",
-    "main.03e19f5f.css.map": "/myreactapp/static/css/main.03e19f5f.css.map",
-    "main.fb7356be.js.map": "/myreactapp/static/js/main.fb7356be.js.map",
+    "main.3c6e2635.css.map": "/myreactapp/static/css/main.3c6e2635.css.map",
+    "main.e31090f3.js.map": "/myreactapp/static/js/main.e31090f3.js.map",
     "453.abd8887f.chunk.js.map": "/myreactapp/static/js/453.abd8887f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.03e19f5f.css",
-    "static/js/main.fb7356be.js"
+    "static/css/main.3c6e2635.css",
+    "static/js/main.e31090f3.js"
   ]
 }
