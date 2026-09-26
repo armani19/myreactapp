@@ -6,29 +6,26 @@ html { scroll-behavior: smooth; }
 body { background: #fff; color: var(--ink); }
 .site-shell { min-width: 320px; }
 
-/* Full-screen intro: the layered timing creates a smooth Canva-style line wipe. */
-.intro-animation { position: fixed; inset: 0; z-index: 20; overflow: hidden; display: grid; place-items: center; background: #7c7c7c; pointer-events: none; animation: intro-fade-out .72s cubic-bezier(.76,0,.24,1) 2.86s forwards; }
-.intro-card { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; background: #5b7fbe; clip-path: inset(0); }
-.intro-card::after { content: ''; position: absolute; inset: 0; background: #7c7c7c; transform: translateY(-101%); }
+/* Full-screen intro: soft-focus title reveal inspired by the supplied reference. */
+.intro-animation { position: fixed; inset: 0; z-index: 20; overflow: hidden; display: grid; place-items: center; background: #081b35; pointer-events: none; animation: intro-fade-out .65s cubic-bezier(.76,0,.24,1) 3.05s forwards; }
+.intro-animation::before { content: ''; position: absolute; inset: -8%; background: linear-gradient(115deg, rgba(5,18,39,.82), rgba(61,102,159,.62)), url('./assets/blue-pattern.jpg') center / cover; filter: blur(18px); transform: scale(1.08); animation: intro-background 3.55s cubic-bezier(.22,.61,.36,1) forwards; }
+.intro-card { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; background: transparent; }
 .intro-card-content { position: relative; z-index: 1; text-align: center; }
 .intro-name { margin: 0; font-size: clamp(25px, 3vw, 43px); line-height: 1; font-weight: 800; letter-spacing: -.04em; }
 .intro-role { margin: 8px 0 0; font-size: clamp(10px, 1vw, 14px); line-height: 1.2; font-weight: 600; }
 .intro-mark { margin: 0; font-size: clamp(37px, 4.6vw, 66px); line-height: 1; font-weight: 800; letter-spacing: -.05em; }
-.intro-card-primary { animation: intro-card-primary 1.62s cubic-bezier(.77,0,.18,1) forwards; }
-.intro-card-primary::after { animation: intro-card-cover 1.62s cubic-bezier(.77,0,.18,1) forwards; }
-.intro-card-mark { transform: translateY(101%); animation: intro-card-mark 1.38s cubic-bezier(.77,0,.18,1) 1.38s forwards; }
-.intro-card-mark::after { transform: translateY(101%); animation: intro-card-cover-mark 1.38s cubic-bezier(.77,0,.18,1) 1.38s forwards; }
-.intro-wipe { position: absolute; z-index: 4; width: 145%; height: 13px; background: #fff; transform: translateX(-110%) rotate(-7deg); transform-origin: center; opacity: .92; animation: intro-line-wipe 1.05s cubic-bezier(.77,0,.18,1) 1.58s forwards; }
-@keyframes intro-card-primary { 0%, 18% { transform: translateY(-101%); opacity: 0; } 46% { transform: translateY(0); opacity: 1; } 78% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-101%); opacity: 0; } }
-@keyframes intro-card-cover { 0%, 45% { transform: translateY(-101%); } 68%, 100% { transform: translateY(101%); } }
-@keyframes intro-card-mark { 0%, 16% { transform: translateY(101%); opacity: 0; } 48% { transform: translateY(0); opacity: 1; } 78% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-101%); opacity: 0; } }
-@keyframes intro-card-cover-mark { 0%, 45% { transform: translateY(101%); } 70%, 100% { transform: translateY(-101%); } }
-@keyframes intro-line-wipe { 0% { transform: translateX(-110%) rotate(-7deg); opacity: 0; } 18% { opacity: .92; } 72%, 100% { transform: translateX(110%) rotate(-7deg); opacity: 0; } }
+.intro-card-primary { animation: intro-card-primary 1.52s cubic-bezier(.22,.61,.36,1) forwards; }
+.intro-card-mark { opacity: 0; animation: intro-card-mark 1.62s cubic-bezier(.22,.61,.36,1) 1.08s forwards; }
+.intro-wipe { position: absolute; z-index: 4; left: 0; top: 50%; width: 100%; height: 2px; background: rgba(255,255,255,.85); box-shadow: 0 0 24px rgba(255,255,255,.7); transform: scaleX(0); transform-origin: left center; animation: intro-line-wipe 1.05s cubic-bezier(.77,0,.18,1) 1.38s forwards; }
+@keyframes intro-background { 0%, 55% { filter: blur(18px); transform: scale(1.08); } 100% { filter: blur(7px); transform: scale(1); } }
+@keyframes intro-card-primary { 0% { opacity: 0; filter: blur(16px); transform: scale(1.08); } 22% { opacity: .78; filter: blur(4px); transform: scale(1.02); } 48%, 67% { opacity: 1; filter: blur(0); transform: scale(1); } 100% { opacity: 0; filter: blur(13px); transform: scale(.96); } }
+@keyframes intro-card-mark { 0% { opacity: 0; filter: blur(14px); transform: scale(1.12); } 35%, 65% { opacity: 1; filter: blur(0); transform: scale(1); } 100% { opacity: 0; filter: blur(11px); transform: scale(1.04); } }
+@keyframes intro-line-wipe { 0% { opacity: 0; transform: scaleX(0); } 15% { opacity: 1; } 75%, 100% { opacity: 0; transform: scaleX(1); } }
 @keyframes intro-fade-out { to { opacity: 0; visibility: hidden; } }
 
 @media (prefers-reduced-motion: reduce) {
   .intro-animation { animation-duration: .01ms; animation-delay: 0s; }
-  .intro-card, .intro-card::after, .intro-wipe { animation-duration: .01ms; animation-delay: 0s; }
+  .intro-card, .intro-wipe { animation-duration: .01ms; animation-delay: 0s; }
 }
 
 .site-header { height: 76px; padding: 0 clamp(28px, 6vw, 92px); display: flex; align-items: center; justify-content: space-between; background: rgba(247,248,249,.85); border-bottom: 1px solid rgba(255,255,255,.55); box-shadow: 0 5px 24px rgba(7,28,57,.14); position: fixed; inset: 0 0 auto; z-index: 5; transition: background-color .25s ease, box-shadow .25s ease, border-color .25s ease; }
