@@ -7,7 +7,7 @@ body { background: #fff; color: var(--ink); }
 .site-shell { min-width: 320px; }
 
 /* Full-screen intro: soft-focus title reveal inspired by the supplied reference. */
-.intro-animation { position: fixed; inset: 0; z-index: 20; overflow: hidden; display: grid; place-items: center; background: #081b35; pointer-events: none; animation: intro-fade-out .65s cubic-bezier(.76,0,.24,1) 3.05s forwards; }
+.intro-animation { position: fixed; inset: 0; z-index: 100; overflow: hidden; display: grid; place-items: center; background: #081b35; pointer-events: none; animation: intro-fade-out .65s cubic-bezier(.76,0,.24,1) 3.05s forwards; }
 .intro-animation::before { content: ''; position: absolute; inset: -8%; background: linear-gradient(115deg, rgba(5,18,39,.82), rgba(61,102,159,.62)), url('./assets/blue-pattern.jpg') center / cover; filter: blur(18px); transform: scale(1.08); animation: intro-background 3.55s cubic-bezier(.22,.61,.36,1) forwards; }
 .intro-card { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; background: transparent; }
 .intro-card-content { position: relative; z-index: 1; text-align: center; }
