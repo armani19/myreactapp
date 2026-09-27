@@ -39,6 +39,7 @@ function App() {
   const headerRef = useRef(null);
   const heroStageRef = useRef(null);
   const [introComplete, setIntroComplete] = useState(false);
+  const [headerOnDark, setHeaderOnDark] = useState(true);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -110,10 +111,39 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const darkSections = new Set(['hero', 'ocean']);
+
+    const updateHeaderTheme = () => {
+      const header = headerRef.current;
+      if (!header) return;
+
+      const headerCenter = header.getBoundingClientRect().height / 2;
+      const sectionUnderHeader = [...document.querySelectorAll('main section')].find((section) => {
+        const bounds = section.getBoundingClientRect();
+        return bounds.top <= headerCenter && bounds.bottom > headerCenter;
+      });
+
+      setHeaderOnDark(sectionUnderHeader ? darkSections.has(sectionUnderHeader.className) : false);
+    };
+
+    updateHeaderTheme();
+    window.addEventListener('scroll', updateHeaderTheme, { passive: true });
+    window.addEventListener('resize', updateHeaderTheme);
+
+    return () => {
+      window.removeEventListener('scroll', updateHeaderTheme);
+      window.removeEventListener('resize', updateHeaderTheme);
+    };
+  }, []);
+
   return (
     <div className="site-shell">
       <IntroAnimation onComplete={() => setIntroComplete(true)} />
-      <header ref={headerRef} className={`site-header${introComplete ? ' site-header-visible' : ''}`}>
+      <header
+        ref={headerRef}
+        className={`site-header${introComplete ? ' site-header-visible' : ''}${headerOnDark ? ' site-header-dark' : ''}`}
+      >
         <a className="brand" href="#top" aria-label="Back to top">A.M.</a>
         <nav aria-label="Primary navigation">
           {navItems.map(([label, href]) => <a key={label} href={href}>{label}</a>)}

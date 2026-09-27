@@ -39,10 +39,12 @@ body { background: #fff; color: var(--ink); }
   .site-header { background: #123b6d; }
   .brand, .site-header nav a { color: #fff; }
 }
-.brand { color: var(--ink); font-size: 35px; line-height: 1; font-weight: 800; letter-spacing: -2px; text-decoration: none; }
+.brand { color: var(--blue); font-size: 35px; line-height: 1; font-weight: 800; letter-spacing: -2px; text-decoration: none; transition: color .2s ease; }
 .site-header nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: clamp(34px, 5vw, 83px); margin: 0; }
-.site-header nav a { color: #182332; font-size: 18px; font-weight: 700; text-decoration: none; transition: color .2s ease; }
+.site-header nav a { color: var(--blue); font-size: 18px; font-weight: 700; text-decoration: none; transition: color .2s ease; }
+.site-header-dark .brand, .site-header-dark nav a { color: #fff; }
 .site-header nav a:hover { color: #2d67ad; }
+.site-header-dark nav a:hover { color: rgba(255,255,255,.78); }
 main { padding-top: 0; }
 #about, #projects, #experience, #skills { scroll-margin-top: var(--header-height, 76px); }
 .hero-stage { position: relative; height: max(890px, 100svh); }
