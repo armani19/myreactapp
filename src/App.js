@@ -19,7 +19,6 @@ function IntroAnimation({ onComplete }) {
         if (event.animationName === 'intro-fade-out') onComplete();
       }}
     >
-      <div className="intro-wipe" />
       <div className="intro-card intro-card-primary">
         <div className="intro-card-content">
           <p className="intro-name">ARMANI MAGNIFICO</p>

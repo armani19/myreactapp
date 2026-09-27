@@ -16,16 +16,14 @@ body { background: #fff; color: var(--ink); }
 .intro-mark { margin: 0; font-size: clamp(37px, 4.6vw, 66px); line-height: 1; font-weight: 800; letter-spacing: -.05em; }
 .intro-card-primary { animation: intro-card-primary 1.52s cubic-bezier(.22,.61,.36,1) forwards; }
 .intro-card-mark { opacity: 0; animation: intro-card-mark 1.62s cubic-bezier(.22,.61,.36,1) 1.08s forwards; }
-.intro-wipe { position: absolute; z-index: 4; left: 0; top: 50%; width: 100%; height: 2px; background: rgba(255,255,255,.85); box-shadow: 0 0 24px rgba(255,255,255,.7); transform: scaleX(0); transform-origin: left center; animation: intro-line-wipe 1.05s cubic-bezier(.77,0,.18,1) 1.38s forwards; }
 @keyframes intro-background { 0%, 55% { filter: blur(18px); transform: scale(1.08); } 100% { filter: blur(7px); transform: scale(1); } }
 @keyframes intro-card-primary { 0% { opacity: 0; filter: blur(16px); transform: scale(1.08); } 22% { opacity: .78; filter: blur(4px); transform: scale(1.02); } 48%, 67% { opacity: 1; filter: blur(0); transform: scale(1); } 100% { opacity: 0; filter: blur(13px); transform: scale(.96); } }
 @keyframes intro-card-mark { 0% { opacity: 0; filter: blur(14px); transform: scale(1.12); } 35%, 65% { opacity: 1; filter: blur(0); transform: scale(1); } 100% { opacity: 0; filter: blur(11px); transform: scale(1.04); } }
-@keyframes intro-line-wipe { 0% { opacity: 0; transform: scaleX(0); } 15% { opacity: 1; } 75%, 100% { opacity: 0; transform: scaleX(1); } }
 @keyframes intro-fade-out { to { opacity: 0; visibility: hidden; } }
 
 @media (prefers-reduced-motion: reduce) {
   .intro-animation { animation-duration: .01ms; animation-delay: 0s; }
-  .intro-card, .intro-wipe { animation-duration: .01ms; animation-delay: 0s; }
+  .intro-card { animation-duration: .01ms; animation-delay: 0s; }
   .hero { transition: none; }
 }
 
