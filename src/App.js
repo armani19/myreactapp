@@ -210,7 +210,13 @@ function App() {
               </div>
               <div className="hero-actions">
                 <a className="button button-yellow" href="#projects">Projects</a>
-                <div className={`connect-menu${connectOpen ? ' connect-menu-open' : ''}`} ref={connectMenuRef}>
+                <div
+                  className={`connect-menu${connectOpen ? ' connect-menu-open' : ''}`}
+                  ref={connectMenuRef}
+                  onMouseEnter={() => setConnectOpen(true)}
+                  onMouseLeave={() => setConnectOpen(false)}
+                  onFocus={() => setConnectOpen(true)}
+                >
                   <button
                     className="button button-white connect-trigger"
                     type="button"
@@ -218,8 +224,7 @@ function App() {
                     aria-controls="connect-options"
                     onClick={() => setConnectOpen((isOpen) => !isOpen)}
                   >
-                    Connect with Me
-                    <span className="connect-chevron" aria-hidden="true">⌄</span>
+                    Let's Connect!
                   </button>
                   <div className="connect-popout" id="connect-options" aria-hidden={!connectOpen}>
                     <p className="connect-label">Find me online</p>
