@@ -62,6 +62,18 @@ main { padding-top: 0; }
 .button:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.2); }
 .button-yellow { color: #0b4b8d; background: #facc16; font-family: 'Sora', Arial, sans-serif; font-weight: 800; }
 .button-white { color: #173c69; background: #fff; }
+.connect-menu { position: relative; }
+.connect-trigger { border: 0; cursor: pointer; font-family: inherit; gap: 12px; }
+.connect-chevron { display: inline-block; margin-top: -5px; font-size: 25px; line-height: 1; transition: transform .25s ease; }
+.connect-menu-open .connect-chevron { transform: rotate(180deg); }
+.connect-popout { position: absolute; right: 0; bottom: calc(100% + 18px); width: min(320px, 82vw); padding: 20px; color: #fff; background: linear-gradient(135deg, rgba(105, 32, 178, .68), rgba(11, 96, 180, .52) 52%, rgba(241, 90, 130, .58)); border: 1px solid rgba(255,255,255,.48); border-radius: 24px; box-shadow: 0 20px 45px rgba(1, 11, 38, .35), inset 0 1px 0 rgba(255,255,255,.32); -webkit-backdrop-filter: blur(22px) saturate(150%); backdrop-filter: blur(22px) saturate(150%); opacity: 0; visibility: hidden; transform: translateY(12px) scale(.96); transform-origin: bottom right; pointer-events: none; transition: opacity .25s ease, visibility 0s linear .25s, transform .25s ease; }
+.connect-popout::after { content: ''; position: absolute; right: 44px; bottom: -8px; width: 15px; height: 15px; background: rgba(76, 76, 173, .68); border-right: 1px solid rgba(255,255,255,.38); border-bottom: 1px solid rgba(255,255,255,.38); transform: rotate(45deg); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.connect-menu-open .connect-popout { opacity: 1; visibility: visible; transform: translateY(0) scale(1); pointer-events: auto; transition: opacity .25s ease, visibility 0s linear 0s, transform .25s ease; }
+.connect-label { position: relative; z-index: 1; margin: 0 0 14px; color: rgba(255,255,255,.82); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-align: left; text-transform: uppercase; }
+.connect-links { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.connect-links a { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 6px 10px; color: #fff; border: 1px solid rgba(255,255,255,.18); border-radius: 16px; background: rgba(255,255,255,.12); font-size: 12px; font-weight: 700; text-decoration: none; transition: transform .2s ease, background-color .2s ease, border-color .2s ease; }
+.connect-links a:hover, .connect-links a:focus-visible { color: #fff; background: rgba(255,255,255,.25); border-color: rgba(255,255,255,.62); outline: none; transform: translateY(-3px); }
+.connect-links svg { width: 30px; height: 30px; }
 .intro { position: relative; z-index: 2; min-height: 795px; padding: 77px clamp(36px,6.6vw,95px) 0; }
 .copy-block { max-width: 1310px; margin-left: 0; margin-right: 0; text-align: left; }
 .copy-block h2 { margin: 0 0 6px; color: var(--blue); font-size: clamp(42px,5vw,80px); line-height: 1; letter-spacing: -2.5px; font-weight: 800; }
@@ -80,7 +92,7 @@ main { padding-top: 0; }
   .hero-stage { height: max(575px, 100svh); } .hero { height: max(575px, 100svh); } .fish-group { width: 95vw; top: 1%; left: -5%; } .hero-content { width: 88%; transform: translateY(10px); }
   .eyebrow { margin-bottom: 3px; font-size: 13px; } .hero h1 { font-size: clamp(29px,8.5vw,48px); letter-spacing: -1.5px; } .hero-description { margin: 15px 0 14px; font-size: 11px; }
   .hero-stats { gap: 30px; margin: 0 0 26px; } .hero-stats div { min-width: 62px; } .hero-stats strong, .hero-stats span { font-size: 13px; }
-  .hero-actions { gap: 13px; } .button { min-width: 91px; height: 39px; padding: 0 13px; font-size: 12px; }
+  .hero-actions { gap: 13px; } .button { min-width: 91px; height: 39px; padding: 0 13px; font-size: 12px; } .connect-trigger { gap: 5px; } .connect-chevron { font-size: 16px; } .connect-popout { right: -8px; bottom: calc(100% + 12px); padding: 14px; border-radius: 18px; } .connect-label { margin-bottom: 10px; font-size: 10px; } .connect-links { gap: 6px; } .connect-links a { gap: 5px; padding: 8px 4px; font-size: 9px; } .connect-links svg { width: 24px; height: 24px; }
   .intro { min-height: 430px; padding: 31px 24px 0; } .copy-block h2 { font-size: 30px; letter-spacing: -.8px; } .copy-block p { font-size: 10px; line-height: 1.15; }
   .interests-copy { margin-top: 34px; } .beyond-copy { margin-top: 34px; } .ocean { height: 495px; } .reef { height: 100px; bottom: calc(100% - 100px); } .water-texture { inset: 0; } .empty-lower { height: 1200px; }
 }
