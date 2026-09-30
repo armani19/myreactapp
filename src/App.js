@@ -68,6 +68,12 @@ function App() {
   const [connectOpen, setConnectOpen] = useState(false);
   const connectMenuRef = useRef(null);
 
+  const openConnectMenu = () => {
+    setConnectOpen(true);
+  };
+
+  const closeConnectMenu = () => setConnectOpen(false);
+
   useEffect(() => {
     const header = headerRef.current;
     if (!header) return undefined;
@@ -213,16 +219,19 @@ function App() {
                 <div
                   className={`connect-menu${connectOpen ? ' connect-menu-open' : ''}`}
                   ref={connectMenuRef}
-                  onMouseEnter={() => setConnectOpen(true)}
-                  onMouseLeave={() => setConnectOpen(false)}
-                  onFocus={() => setConnectOpen(true)}
+                  onMouseEnter={openConnectMenu}
+                  onMouseLeave={closeConnectMenu}
+                  onFocus={openConnectMenu}
                 >
                   <button
                     className="button button-white connect-trigger"
                     type="button"
                     aria-expanded={connectOpen}
                     aria-controls="connect-options"
-                    onClick={() => setConnectOpen((isOpen) => !isOpen)}
+                    onClick={() => {
+                      if (connectOpen) closeConnectMenu();
+                      else openConnectMenu();
+                    }}
                   >
                     Let's Connect!
                   </button>
