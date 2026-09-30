@@ -68,10 +68,6 @@ function App() {
   const [connectOpen, setConnectOpen] = useState(false);
   const connectMenuRef = useRef(null);
 
-  const openConnectMenu = () => {
-    setConnectOpen(true);
-  };
-
   const closeConnectMenu = () => setConnectOpen(false);
 
   useEffect(() => {
@@ -219,9 +215,6 @@ function App() {
                 <div
                   className={`connect-menu${connectOpen ? ' connect-menu-open' : ''}`}
                   ref={connectMenuRef}
-                  onMouseEnter={openConnectMenu}
-                  onMouseLeave={closeConnectMenu}
-                  onFocus={openConnectMenu}
                 >
                   <button
                     className="button button-white connect-trigger"
@@ -230,7 +223,7 @@ function App() {
                     aria-controls="connect-options"
                     onClick={() => {
                       if (connectOpen) closeConnectMenu();
-                      else openConnectMenu();
+                      else setConnectOpen(true);
                     }}
                   >
                     Let's Connect!
