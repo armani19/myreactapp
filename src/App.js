@@ -184,6 +184,26 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const revealItems = document.querySelectorAll('[data-about-reveal]');
+    if (!('IntersectionObserver' in window)) {
+      revealItems.forEach((item) => item.classList.add('about-revealed'));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('about-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+
+    revealItems.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="site-shell">
       <IntroAnimation onComplete={() => setIntroComplete(true)} />
@@ -251,18 +271,36 @@ function App() {
           </section>
         </div>
 
-        <section className="intro" id="about" aria-label="About Armani">
-          <div className="copy-block about-copy">
-            <h2>About Me</h2>
-            <p>I'm a fourth-year Information Technology student at FEU Institute of Technology specializing in Web and Mobile Application Development. I enjoy turning ideas and real-world problems into digital solutions that are intuitive, functional, and meaningful to the people who use them.</p>
+        <section className="intro about-section" id="about" aria-label="About Armani">
+          <div className="about-heading" data-about-reveal>
+            <p className="about-kicker">ABOUT — 01</p>
+            <h2>About <span>Me</span></h2>
           </div>
-          <div className="copy-block interests-copy">
-            <h2>What Interests Me</h2>
-            <p>I'm particularly interested in system design, software engineering, frontend development, and quality assurance. I value understanding how a system works as a whole. From identifying user needs and designing workflows to development, testing, and continuous improvement.</p>
-          </div>
-          <div className="copy-block beyond-copy" id="experience">
-            <h2>Beyond Programming</h2>
-            <p>Outside of programming, my experience in student leadership and project coordination has taught me the importance of accountability, collaboration, and being willing to take initiative when needed. I approach every project as an opportunity to learn, improve my craft, and become a more well-rounded IT professional.</p>
+          <div className="about-rows">
+            <article className="about-row" data-about-reveal>
+              <span className="about-number">01</span>
+              <div className="about-row-main">
+                <h3>Where I’m coming from</h3>
+                <p>I’m a fourth-year Information Technology student at FEU Institute of Technology, specializing in Web and Mobile Application Development. I enjoy turning real-world problems into digital experiences that feel clear, useful, and intuitive.</p>
+                <div className="about-tags"><span>FEU Institute of Technology</span><span>Web &amp; Mobile</span><span>4th Year IT</span></div>
+              </div>
+            </article>
+            <article className="about-row" data-about-reveal>
+              <span className="about-number">02</span>
+              <div className="about-row-main">
+                <h3>How I like to build</h3>
+                <p>I’m drawn to system design, software engineering, frontend development, and quality assurance. I like seeing the whole picture: understanding people’s needs, shaping a workflow, building it, then testing and improving the details.</p>
+                <div className="about-tags"><span>System Design</span><span>Frontend</span><span>Software Engineering</span><span>Quality Assurance</span></div>
+              </div>
+            </article>
+            <article className="about-row" data-about-reveal id="experience">
+              <span className="about-number">03</span>
+              <div className="about-row-main">
+                <h3>Beyond the screen</h3>
+                <p>Student leadership and project coordination have taught me accountability, collaboration, and initiative. I treat every project as a chance to learn, strengthen my craft, and grow into a well-rounded IT professional.</p>
+                <div className="about-tags"><span>Collaboration</span><span>Project Coordination</span><span>Always Learning</span></div>
+              </div>
+            </article>
           </div>
         </section>
 
