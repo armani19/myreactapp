@@ -8,7 +8,7 @@ body { background: #fff; color: var(--ink); }
 
 /* Full-screen intro: soft-focus title reveal inspired by the supplied reference. */
 .intro-animation { position: fixed; inset: 0; z-index: 100; overflow: hidden; display: grid; place-items: center; background: #081b35; pointer-events: none; animation: intro-fade-out .65s cubic-bezier(.76,0,.24,1) 3.05s forwards; }
-.intro-animation::before { content: ''; position: absolute; inset: -8%; background: linear-gradient(115deg, rgba(5,18,39,.82), rgba(61,102,159,.62)), url('./assets/blue-pattern.jpg') center / cover; filter: blur(18px); transform: scale(1.08); animation: intro-background 3.55s cubic-bezier(.22,.61,.36,1) forwards; }
+.intro-animation::before { content: ''; position: absolute; inset: -8%; background: linear-gradient(115deg, rgba(5,18,39,.82), rgba(61,102,159,.62)), url('./assets/underwater-minimal.png') center / cover; filter: blur(18px); transform: scale(1.08); animation: intro-background 3.55s cubic-bezier(.22,.61,.36,1) forwards; }
 .intro-card { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; background: transparent; }
 .intro-card-content { position: relative; z-index: 1; text-align: center; }
 .intro-name { margin: 0; font-size: clamp(25px, 3vw, 43px); line-height: 1; font-weight: 800; letter-spacing: -.04em; }
@@ -46,20 +46,20 @@ body { background: #fff; color: var(--ink); }
 .site-header-dark nav a:hover { color: rgba(255,255,255,.78); }
 main { padding-top: 0; }
 #about, #projects, #experience, #skills { scroll-margin-top: var(--header-height, 76px); }
-.hero-stage { position: relative; height: max(890px, 100svh); }
-.hero { height: max(890px, 100svh); min-height: 0; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; background: var(--navy) url('./assets/blue-pattern.jpg') center / cover; border-bottom: 4px solid #101010; color: #fff; }
+.hero-stage { position: relative; height: clamp(680px, 82svh, 820px); }
+.hero { height: clamp(680px, 82svh, 820px); min-height: 0; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; background: var(--navy) url('./assets/underwater-minimal.png') center / cover; border-bottom: 0; color: #fff; }
 .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.2); pointer-events: none; }
-.fish-group { position: absolute; width: min(680px, 58vw); left: 4%; top: 2%; opacity: .9; z-index: 1; }
-.hero-content { width: min(1020px, 90%); position: relative; z-index: 2; transform: translateY(11px); text-align: center; }
-.eyebrow { margin: 0 0 7px; font-size: 25px; font-weight: 800; }
-.hero h1 { margin: 0; font-size: clamp(46px,5.4vw,79px); line-height: .98; letter-spacing: -3px; font-weight: 800; }
-.hero-description { margin: 28px 0 26px; font-size: 20px; line-height: 1.22; font-weight: 400; }
-.hero-stats { display: flex; justify-content: center; gap: clamp(70px,9vw,145px); margin: 0 0 52px; }
+.fish-group { display: none; position: absolute; width: min(680px, 58vw); left: 4%; top: 2%; opacity: .9; z-index: 1; }
+.hero-content { width: min(960px, 90%); position: relative; z-index: 2; transform: translateY(18px); text-align: center; }
+.eyebrow { margin: 0 0 7px; font-size: 20px; font-weight: 800; }
+.hero h1 { margin: 0; font-size: clamp(42px,4.9vw,68px); line-height: .98; letter-spacing: -3px; font-weight: 800; }
+.hero-description { margin: 22px 0 22px; font-size: 17px; line-height: 1.22; font-weight: 400; }
+.hero-stats { display: flex; justify-content: center; gap: clamp(55px,8vw,120px); margin: 0 0 32px; }
 .hero-stats div { display: flex; flex-direction: column; align-items: center; min-width: 115px; text-align: center; }
-.hero-stats strong { font-size: 27px; line-height: 1.25; font-weight: 800; }
-.hero-stats span { font-size: 25px; line-height: 1.25; font-weight: 600; }
-.hero-actions { display: flex; justify-content: center; gap: 36px; }
-.button { display: inline-flex; align-items: center; justify-content: center; min-width: 173px; height: 74px; padding: 0 27px; border-radius: 40px; font-size: 22px; font-weight: 800; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.hero-stats strong { font-size: 23px; line-height: 1.25; font-weight: 800; }
+.hero-stats span { font-size: 21px; line-height: 1.25; font-weight: 600; }
+.hero-actions { display: flex; justify-content: center; gap: 24px; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-width: 150px; height: 58px; padding: 0 24px; border-radius: 40px; font-size: 18px; font-weight: 800; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
 .button:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,.2); }
 .button-yellow { color: #0b4b8d; background: #facc16; font-family: 'Sora', Arial, sans-serif; font-weight: 800; }
 .button-white { color: #173c69; background: #fff; }
@@ -75,7 +75,7 @@ main { padding-top: 0; }
 .connect-links svg { width: 30px; height: 30px; }
 .intro { position: relative; z-index: 2; }
 .about-section { min-height: 100vh; padding: clamp(86px,10vw,145px) clamp(28px,7.2vw,112px) clamp(78px,9vw,130px); background: #f8f9fb; color: #142b4c; overflow: hidden; }
-.about-heading { margin: 0 0 clamp(42px,6vw,82px); }
+.about-heading { text-align: center; margin: 0 0 clamp(42px,6vw,82px); }
 .about-kicker { margin: 0 0 20px; color: #68788e; font-size: 11px; font-weight: 700; letter-spacing: .16em; }
 .about-heading h2 { margin: 0; color: #142b4c; font-size: clamp(76px,15vw,218px); line-height: .78; letter-spacing: -.095em; font-weight: 800; }
 .about-heading h2 span { color: #4779bd; }
@@ -87,7 +87,7 @@ main { padding-top: 0; }
 .about-row p { max-width: 900px; margin: 0; color: #596a7f; font-size: clamp(15px,1.3vw,18px); line-height: 1.65; font-weight: 400; }
 .about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
 .about-tags span { padding: 8px 12px; border: 1px solid rgba(20,43,76,.14); border-radius: 999px; color: #54657b; font-size: 10px; font-weight: 600; letter-spacing: .025em; }
-[data-about-reveal] { opacity: 0; transform: translateY(32px); filter: blur(4px); transition: opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1), filter .7s ease; }
+[data-about-reveal] { opacity: 0; transform: translateY(32px); filter: blur(0); transition: opacity .9s ease, transform 1.05s cubic-bezier(.22,1,.36,1); }
 [data-about-reveal].about-revealed { opacity: 1; transform: translateY(0); filter: blur(0); }
 .about-row:nth-child(2) { transition-delay: .08s; }
 .about-row:nth-child(3) { transition-delay: .14s; }
@@ -114,3 +114,124 @@ main { padding-top: 0; }
   .ocean { height: 495px; } .reef { height: 100px; bottom: calc(100% - 100px); } .water-texture { inset: 0; } .empty-lower { height: 1200px; }
 }
 @media (max-width:450px) { .site-header nav { gap: 11px; } .site-header nav a { font-size: 8px; } .hero-content { width: 92%; } .hero-stats { gap: 17px; } }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.about-section { min-height: auto; }
+.about-cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; max-width: 1440px; margin: 0 auto; }
+.about-card { display: flex; flex-direction: column; min-height: 355px; padding: clamp(25px,3vw,42px); background: #fff; border: 1px solid #d9e2ee; border-radius: 24px; box-shadow: 0 20px 50px #12365a0b; }
+.about-card-blue { background: #416fae; color: white; border-color: #416fae; }
+.about-card-index { font-size: 11px; font-weight: 700; letter-spacing: .13em; color: #68809c; }
+.about-card-blue .about-card-index { color: #d1e2fa; }
+.about-card h3 { max-width: 350px; margin: auto 0 18px; font-size: clamp(28px,3vw,44px); line-height: 1.08; letter-spacing: -.055em; }
+.about-card p { max-width: 360px; min-height: 76px; margin: 0 0 28px; color: #596a7f; font-size: 15px; line-height: 1.6; }
+.about-card-blue p { color: #e5f0ff; }
+.about-card-foot { display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid #d9e2ee; color: #4779bd; font-size: 10px; font-weight: 700; letter-spacing: .11em; }
+.about-card-blue .about-card-foot { border-color: #ffffff55; color: #fff; }
+.skills-section { padding: clamp(85px,9vw,135px) clamp(24px,7.2vw,112px); background: #f8f9fb; color: #142b4c; }
+.skills-inner { max-width: 1440px; margin: auto; }
+.skills-section h2 { margin: 0 0 clamp(50px,6vw,85px); text-align: center; font-size: clamp(65px,11.5vw,166px); line-height: .95; letter-spacing: -.085em; }
+.skills-section h2 span { color: #4779bd; }
+.skills-group { display: grid; grid-template-columns: minmax(220px,.65fr) 1.35fr; gap: 28px; align-items: start; padding: 28px 0; border-top: 1px solid #cbd7e5; }
+.skills-group:last-child { border-bottom: 1px solid #cbd7e5; }
+.skills-group-heading { display: flex; gap: 18px; align-items: baseline; }
+.skills-group-heading > span { color: #7390ad; font-size: 11px; font-weight: 700; }
+.skills-group h3 { margin: 0; font-size: clamp(19px,2vw,27px); line-height: 1.2; letter-spacing: -.04em; }
+.skills-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.skills-pills span { display: inline-flex; align-items: center; gap: 18px; padding: 12px 16px; border: 1px solid #9db7d2; border-radius: 999px; background: #fff; color: #173d69; font-size: 14px; font-weight: 600; transition: transform .25s,background .25s,border-color .25s; }
+.skills-pills span:hover { transform: translateY(-4px); background: #edf5ff; border-color: #4779bd; }
+.skills-pills b { color: #4779bd; font-size: 16px; }
+@media(max-width:900px) { .about-cards { grid-template-columns: 1fr; } .about-card { min-height: 250px; } .skills-group { grid-template-columns: 1fr; gap: 18px; } }
+@media(max-width:600px) { .about-card { min-height: 225px; } .about-card h3 { margin-top: 40px; } .skills-section h2 { font-size: clamp(59px,16vw,95px); } .skills-pills span { font-size: 12px; padding: 10px 13px; gap: 9px; } }
+@media(prefers-reduced-motion:reduce) { .skills-pills span { transition: none; } .skills-pills span:hover { transform: none; } }
+
+.skills-pills img { width: 24px; height: 24px; object-fit: contain; flex: none; }
+
+/* Keep the three About cards balanced as their headings wrap. */
+.about-card { min-height: 390px; padding: clamp(28px,3vw,42px); }
+.about-card-index { line-height: 1.4; }
+.about-card h3 { max-width: none; margin: 38px 0 20px; font-size: clamp(26px,2.35vw,36px); line-height: 1.16; letter-spacing: -.045em; text-wrap: balance; }
+.about-card p { max-width: none; min-height: 0; margin: 0 0 28px; font-size: 14px; line-height: 1.65; }
+.about-card-foot { margin-top: auto; min-height: 42px; align-items: flex-end; line-height: 1.4; letter-spacing: .055em; }
+@media(max-width:900px) { .about-card { min-height: 275px; } .about-card h3 { margin-top: 34px; } }
+@media(max-width:600px) { .about-card { min-height: 260px; } .about-card h3 { font-size: clamp(26px,7vw,34px); margin-top: 28px; } }
+
+/* Fluid layout: zoom reduces the CSS viewport, so these rules respond like narrow windows. */
+html, body, #root { max-width: 100%; }
+.site-shell { min-width: 0; overflow-x: clip; }
+.site-header { gap: 24px; }
+.site-header nav { max-width: calc(100% - 190px); justify-content: center; }
+.hero-stage, .hero { height: auto; min-height: clamp(620px, 82svh, 820px); }
+.hero { padding: calc(var(--header-height) + 38px) 24px 80px; }
+.hero-content { width: min(100%, 960px); transform: none; }
+.hero h1 { font-size: clamp(38px, 5vw, 68px); text-wrap: balance; overflow-wrap: anywhere; }
+.hero-description { max-width: 850px; margin-inline: auto; }
+.about-heading h2, .skills-section h2 { overflow-wrap: anywhere; }
+.about-cards { grid-template-columns: repeat(3,minmax(0,1fr)); }
+@media (max-width: 1100px) {
+  .site-header nav { gap: clamp(16px,3vw,35px); }
+  .site-header nav a { font-size: clamp(12px,1.55vw,17px); }
+  .about-cards { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .featured-project { grid-template-columns: 1fr; }
+  .project-gallery { border-left: 0; border-top: 1px solid #ffffff26; }
+}
+@media (max-width: 800px) {
+  .site-header { padding-inline: 16px; gap: 12px; }
+  .site-header nav { position: static; transform: none; max-width: none; margin-left: auto; gap: clamp(8px,2.2vw,18px); }
+  .site-header nav a { font-size: clamp(10px,1.8vw,13px); }
+  .hero-stage, .hero { height: auto; min-height: min(690px, 100svh); }
+  .hero { padding: calc(var(--header-height) + 42px) 20px 70px; }
+  .hero-content { width: 100%; transform: none; }
+  .hero h1 { font-size: clamp(34px,7vw,55px); }
+  .hero-description { font-size: clamp(12px,1.8vw,16px); line-height: 1.5; }
+  .hero-stats { gap: clamp(15px,5vw,45px); }
+  .hero-stats strong, .hero-stats span { font-size: clamp(13px,2vw,18px); }
+  .button { min-height: 44px; height: auto; padding-block: 10px; font-size: 13px; }
+  .about-heading h2 { font-size: clamp(59px,13vw,112px); }
+  .skills-section h2 { font-size: clamp(59px,13vw,112px); }
+}
+@media (max-width: 640px) {
+  .about-cards { grid-template-columns: 1fr; }
+  .about-card { min-height: 250px; }
+  .hero-description br { display: none; }
+  .hero-stats div { min-width: 0; }
+}
+@media (max-width: 440px) {
+  .site-header nav { gap: 8px; }
+  .site-header nav a { font-size: 10px; }
+  .brand { font-size: 20px; }
+  .hero { min-height: 610px; }
+  .hero h1 { font-size: clamp(31px,8vw,38px); letter-spacing: -.045em; }
+  .hero-actions { gap: 9px; }
+  .hero-actions .button { min-width: 0; font-size: 12px; padding-inline: 14px; }
+}
+@media (max-height: 650px) and (min-width: 801px) {
+  .hero { min-height: 560px; padding-block: calc(var(--header-height) + 20px) 48px; }
+}
+
+
+/* Keep About content visible even when a browser delays intersection events. */
+.about-section [data-about-reveal] { opacity: 1; transform: none; }
+
+/* Keep the hero wrapper the exact height of its artwork at every viewport height. */
+.hero-stage { height: auto; min-height: 0; }
+
+/* Continue the ocean palette into About Me without a separate fade band. */
+.about-section { background: linear-gradient(180deg, #071b3d 0%, rgba(11,42,78,.93) 24%, rgba(31,82,132,.87) 100%), url('./assets/underwater-minimal.png') center / cover; color: #fff; }
+.about-heading h2 { color: #fff; }
+.about-heading h2 span { color: #9fc5f4; }
+.about-card { box-shadow: 0 22px 60px #03152d40; }
+.about-card-blue { background: #3f72ad; border-color: #8fb9ea55; }
+
+/* Dissolve the seabed illustration into About's matching navy. */
+.hero { isolation: isolate; }
+.hero::after { z-index: 0; }
+.hero::before { content: ''; position: absolute; z-index: 1; inset: auto 0 0; height: clamp(70px, 10vw, 125px); background: linear-gradient(to bottom, rgba(7,27,61,0), #071b3d 92%); pointer-events: none; }
+
+/* Center the hero content in the visible area below the fixed header. */
+.hero-content { transform: translateY(clamp(28px, 5svh, 62px)); }
+@media (max-width: 800px) { .hero-content { transform: translateY(16px); } }
+@media (max-height: 650px) and (min-width: 801px) { .hero-content { transform: translateY(10px); } }
+
+.about-card h3 { color: #142b4c; }
+.about-card-blue h3 { color: #fff; }

@@ -1,6 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
-import fishGroup from './assets/fish-group.png';
+import Projects from './Projects';
+
+const skillLogos = {
+  JavaScript: 'javascript', PHP: 'php', Python: 'python',
+  'C++': 'cplusplus', Kotlin: 'kotlin', HTML5: 'html5',
+  CSS3: 'css3', React: 'react', 'CodeIgniter 4': 'codeigniter',
+  Git: 'git', GitHub: 'github', 'Visual Studio Code': 'vscode',
+  Vite: 'vite', Figma: 'figma', 'Microsoft Power Apps': 'powerapps',
+  Canva: 'canva',
+};
+
+const skillLogoUrl = (skill) => {
+  const slug = skillLogos[skill];
+  return `${process.env.PUBLIC_URL}/skill-icons/${slug}.svg`;
+};
 
 const navItems = [
   ['About', '#about'],
@@ -62,7 +76,6 @@ function SocialIcon({ type }) {
 
 function App() {
   const headerRef = useRef(null);
-  const heroStageRef = useRef(null);
   const [introComplete, setIntroComplete] = useState(false);
   const [headerOnDark, setHeaderOnDark] = useState(true);
   const [connectOpen, setConnectOpen] = useState(false);
@@ -111,55 +124,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const heroStage = heroStageRef.current;
-    if (!heroStage) return undefined;
-    let scrollSnapTimeout;
-    let isSnapping = false;
-
-    const snapLandingPage = (event) => {
-      const landingHeight = heroStage.offsetHeight;
-      const aboutSection = document.getElementById('about');
-      const headerHeight = parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue('--header-height'),
-      ) || 76;
-      const aboutTarget = aboutSection
-        ? Math.max(0, aboutSection.offsetTop - headerHeight)
-        : landingHeight;
-      const currentScroll = window.scrollY;
-      const isWithinLanding = currentScroll >= 0 && currentScroll <= aboutTarget;
-      const scrollingDown = event.deltaY > 0;
-      const scrollingUp = event.deltaY < 0;
-
-      if (!isWithinLanding || isSnapping || (!scrollingDown && !scrollingUp)) return;
-      if (scrollingDown && currentScroll < aboutTarget - 2) {
-        event.preventDefault();
-      } else if (scrollingUp && currentScroll <= aboutTarget + 2 && currentScroll > 0) {
-        event.preventDefault();
-      } else {
-        return;
-      }
-
-      isSnapping = true;
-      window.scrollTo({
-        top: scrollingDown ? aboutTarget : 0,
-        behavior: 'smooth',
-      });
-      window.clearTimeout(scrollSnapTimeout);
-      scrollSnapTimeout = window.setTimeout(() => {
-        isSnapping = false;
-      }, 750);
-    };
-
-    window.addEventListener('wheel', snapLandingPage, { passive: false });
-
-    return () => {
-      window.removeEventListener('wheel', snapLandingPage);
-      window.clearTimeout(scrollSnapTimeout);
-    };
-  }, []);
-
-  useEffect(() => {
-    const darkSections = new Set(['hero', 'ocean']);
+    const darkSections = ['hero', 'ocean', 'projects-section', 'about-section'];
 
     const updateHeaderTheme = () => {
       const header = headerRef.current;
@@ -171,7 +136,7 @@ function App() {
         return bounds.top <= headerCenter && bounds.bottom > headerCenter;
       });
 
-      setHeaderOnDark(sectionUnderHeader ? darkSections.has(sectionUnderHeader.className) : false);
+      setHeaderOnDark(sectionUnderHeader ? darkSections.some((name) => sectionUnderHeader.classList.contains(name)) : false);
     };
 
     updateHeaderTheme();
@@ -218,9 +183,8 @@ function App() {
       </header>
 
       <main id="top">
-        <div ref={heroStageRef} className="hero-stage">
+        <div className="hero-stage">
           <section className="hero" aria-labelledby="hero-title">
-            <img className="fish-group" src={fishGroup} alt="A school of fish" />
             <div className="hero-content">
               <p className="eyebrow">HELLO, I'M</p>
               <h1 id="hero-title">ARMANI MAGNIFICO</h1>
@@ -273,41 +237,47 @@ function App() {
 
         <section className="intro about-section" id="about" aria-label="About Armani">
           <div className="about-heading" data-about-reveal>
-            <p className="about-kicker">ABOUT — 01</p>
             <h2>About <span>Me</span></h2>
           </div>
-          <div className="about-rows">
-            <article className="about-row" data-about-reveal>
-              <span className="about-number">01</span>
-              <div className="about-row-main">
-                <h3>Where I’m coming from</h3>
-                <p>I’m a fourth-year Information Technology student at FEU Institute of Technology, specializing in Web and Mobile Application Development. I enjoy turning real-world problems into digital experiences that feel clear, useful, and intuitive.</p>
-                <div className="about-tags"><span>FEU Institute of Technology</span><span>Web &amp; Mobile</span><span>4th Year IT</span></div>
-              </div>
+          <div className="about-cards">
+            <article className="about-card" data-about-reveal>
+              <span className="about-card-index">A learner first and foremost.</span>
+              <h3>A determined student open for opportunities.</h3>
+              <p>Fourth-year IT student at FEU Institute of Technology, focused on web and mobile experiences.</p>
+              <div className="about-card-foot">FEU Tech - Web and Mobile Application</div>
             </article>
-            <article className="about-row" data-about-reveal>
-              <span className="about-number">02</span>
-              <div className="about-row-main">
-                <h3>How I like to build</h3>
-                <p>I’m drawn to system design, software engineering, frontend development, and quality assurance. I like seeing the whole picture: understanding people’s needs, shaping a workflow, building it, then testing and improving the details.</p>
-                <div className="about-tags"><span>System Design</span><span>Frontend</span><span>Software Engineering</span><span>Quality Assurance</span></div>
-              </div>
+            <article className="about-card about-card-blue" data-about-reveal>
+              <span className="about-card-index">APPROACH</span>
+              <h3>An idea to a working project.</h3>
+              <p>I map the system, shape the experience, build the frontend, then test the details.</p>
+              <div className="about-card-foot">Front End - Exploring Full Stack Development</div>
             </article>
-            <article className="about-row" data-about-reveal id="experience">
-              <span className="about-number">03</span>
-              <div className="about-row-main">
-                <h3>Beyond the screen</h3>
-                <p>Student leadership and project coordination have taught me accountability, collaboration, and initiative. I treat every project as a chance to learn, strengthen my craft, and grow into a well-rounded IT professional.</p>
-                <div className="about-tags"><span>Collaboration</span><span>Project Coordination</span><span>Always Learning</span></div>
-              </div>
+            <article className="about-card" data-about-reveal id="experience">
+              <span className="about-card-index">BEYOND CODE</span>
+              <h3>Collaboration on and off the projects.</h3>
+              <p>Student leadership and project coordination keep collaboration at the heart of my work.</p>
+              <div className="about-card-foot">Student Leader</div>
             </article>
           </div>
         </section>
 
-        <section className="ocean" id="projects" aria-label="Portfolio projects">
-          <div className="water-texture" />
+        <Projects />
+        <section className="skills-section" id="skills" aria-labelledby="skills-title">
+          <div className="skills-inner">
+            <h2 id="skills-title">My <span>Skills</span></h2>
+            <div className="skills-groups">
+              {[
+                ['Programming languages', 'JavaScript', 'PHP', 'Python', 'C++', 'Kotlin'],
+                ['Frontend development', 'HTML5', 'CSS3', 'React', 'CodeIgniter 4'],
+                ['Development & collaboration', 'Git', 'GitHub', 'Visual Studio Code', 'Vite'],
+                ['Design & prototyping', 'Figma', 'Microsoft Power Apps', 'Canva'],
+              ].map(([category, ...skills], index) => <div className="skills-group" key={category}>
+                <div className="skills-group-heading"><span>0{index + 1}</span><h3>{category}</h3></div>
+                <div className="skills-pills">{skills.map(skill => <span key={skill}>{skill}<img src={skillLogoUrl(skill)} alt="" aria-hidden="true" loading="lazy" /></span>)}</div>
+              </div>)}
+            </div>
+          </div>
         </section>
-        <section className="empty-lower" id="skills" aria-label="Skills" />
       </main>
     </div>
   );

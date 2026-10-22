@@ -1,0 +1,12 @@
+Created using the built-in imagegen tool.
+
+BACKGROUND
+Create a wide 16:9 minimalist cartoon underwater background for a web designer portfolio. Deep navy blue to soft marine blue gradient ocean, elegant softly curved layered silhouettes along bottom corners suggesting distant reef and sea plants, just a few tiny simple fish silhouettes near the outer edges, very faint broad sunbeams descending from top left. Flat clean illustration with restrained soft shading, sophisticated friendly cartoon ocean vibe. Center 70 percent must be quiet dark blue negative space for large white text. No text, no letters, no logos, no border, no grain, no fabric texture, no photorealism. Use navy #082a52, marine #174e7a, subtle muted teal #287c8e. Calm, minimal and inviting.
+
+PHONE CUTOUTS
+Background-extraction from the supplied phone screenshots. Remove only the white background outside the black phone silhouette. Preserve the entire phone and interface inside it, including the white screen and all text. Tight crop around the complete phone with a tiny transparent margin. Real transparent alpha outside the phone including rounded corners.
+
+INCIDENT REPORT
+Crop tightly to the single complete black phone in incident-report-original.png and remove the surrounding white paper, caption and paragraph. Set only pixels outside the phone silhouette to transparent alpha. Preserve the original interface, heading Log Security Incident and fields Reporter Name, Email Address, Affiliation/Program, Category, Severity Level, Date, Location, Description and Photo Evidence (Optional), with Cancel and Log Incident buttons.
+
+Project assets: src/assets/underwater-minimal.png and public/assets/projects/*-cutout.png. Original attachments retained in this directory.
