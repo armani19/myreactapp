@@ -150,7 +150,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const revealItems = document.querySelectorAll('[data-about-reveal]');
+    const revealItems = document.querySelectorAll('[data-about-reveal], [data-leadership-reveal]');
     if (!('IntersectionObserver' in window)) {
       revealItems.forEach((item) => item.classList.add('about-revealed'));
       return undefined;
@@ -159,7 +159,7 @@ function App() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('about-revealed');
+          entry.target.classList.add(entry.target.hasAttribute('data-leadership-reveal') ? 'leadership-revealed' : 'about-revealed');
           observer.unobserve(entry.target);
         }
       });
@@ -252,7 +252,7 @@ function App() {
               <p>I map the system, shape the experience, build the frontend, then test the details.</p>
               <div className="about-card-foot">Front End - Exploring Full Stack Development</div>
             </article>
-            <article className="about-card" data-about-reveal id="experience">
+            <article className="about-card" data-about-reveal>
               <span className="about-card-index">BEYOND CODE</span>
               <h3>Collaboration on and off the projects.</h3>
               <p>Student leadership and project coordination keep collaboration at the heart of my work.</p>
@@ -262,6 +262,32 @@ function App() {
         </section>
 
         <Projects />
+        <section className="leadership-section" id="experience" aria-labelledby="leadership-title">
+          <div className="leadership-inner">
+            <h2 id="leadership-title" data-leadership-reveal>Leadership <span>Experience</span></h2>
+            <div className="leadership-layout">
+              <div className="leadership-role" data-leadership-reveal>
+                <span className="leadership-period">August 2024 — July 2025</span>
+                <h3>Director for Sports <span>— Information Technology</span></h3>
+                <p>Alliance of Information Technology Students (AITS) · FEU Institute of Technology</p>
+                <div className="leadership-role-mark" aria-hidden="true">AITS<span>↗</span></div>
+              </div>
+              <div className="leadership-highlights">
+                {[
+                  ['Representation', 'Represented the Information Technology student body in planning meetings, proposal reviews, debriefings, and university sports events throughout the 2024–2025 academic year.'],
+                  ['Intramurals', 'Assisted 75+ BSIT teams across three Intramurals seasons by managing registration, eligibility verification, and participation requirements.'],
+                  ['Collaboration', 'Collaborated with the Student Coordinating Council, FEU Tech organizations, and university offices to deliver Sports Clinics, Intramurals, and the Inter-Campus Tamaraw Games across four FEU campuses.'],
+                  ['Operations', 'Maintained team records and event documentation to streamline participant tracking, verification, and event operations.'],
+                ].map(([title, description], index) => (
+                  <article className="leadership-highlight" data-leadership-reveal key={title} style={{ '--reveal-delay': `${index * 90}ms` }}>
+                    <span className="leadership-highlight-dot" aria-hidden="true" />
+                    <div><h4>{title}</h4><p>{description}</p></div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="skills-section" id="skills" aria-labelledby="skills-title">
           <div className="skills-inner">
             <h2 id="skills-title">My <span>Skills</span></h2>
