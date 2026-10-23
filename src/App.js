@@ -286,6 +286,17 @@ function App() {
                 ))}
               </div>
             </div>
+            <article className="leadership-secondary" data-leadership-reveal aria-labelledby="ticap-title">
+              <div className="leadership-secondary-heading">
+                <span className="leadership-secondary-period">August 2024 — July 2025</span>
+                <h3 id="ticap-title">Secretariat <span>Technology Innovation in Capstone Project (TICaP)</span></h3>
+              </div>
+              <ul>
+                <li>Prepared and organized official documents for office use.</li>
+                <li>Monitored project submissions and tracked each group’s submission status.</li>
+                <li>Recorded meeting discussions, decisions, and action items in meeting records.</li>
+              </ul>
+            </article>
           </div>
         </section>
         <section className="skills-section" id="skills" aria-labelledby="skills-title">
@@ -297,8 +308,8 @@ function App() {
                 ['Frontend development', 'HTML5', 'CSS3', 'React', 'CodeIgniter 4'],
                 ['Development & collaboration', 'Git', 'GitHub', 'Visual Studio Code', 'Vite'],
                 ['Design & prototyping', 'Figma', 'Microsoft Power Apps', 'Canva'],
-              ].map(([category, ...skills], index) => <div className="skills-group" key={category}>
-                <div className="skills-group-heading"><span>0{index + 1}</span><h3>{category}</h3></div>
+              ].map(([category, ...skills]) => <div className="skills-group" key={category}>
+                <div className="skills-group-heading"><h3>{category}</h3></div>
                 <div className="skills-pills">{skills.map(skill => <span key={skill}>{skill}<img src={skillLogoUrl(skill)} alt="" aria-hidden="true" loading="lazy" /></span>)}</div>
               </div>)}
             </div>
