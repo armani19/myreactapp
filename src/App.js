@@ -124,7 +124,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const darkSections = ['hero', 'ocean', 'projects-section', 'about-section'];
+    const darkSections = ['hero', 'ocean', 'projects-section', 'about-section', 'skills-section'];
 
     const updateHeaderTheme = () => {
       const header = headerRef.current;
@@ -265,27 +265,19 @@ function App() {
         <section className="leadership-section" id="experience" aria-labelledby="leadership-title">
           <div className="leadership-inner">
             <h2 id="leadership-title" data-leadership-reveal>Leadership <span>Experience</span></h2>
-            <div className="leadership-layout">
-              <div className="leadership-role" data-leadership-reveal>
-                <span className="leadership-period">August 2024 — July 2025</span>
-                <h3>Director for Sports <span>— Information Technology</span></h3>
+            <article className="leadership-secondary" data-leadership-reveal aria-labelledby="sports-title">
+              <div className="leadership-secondary-heading">
+                <span className="leadership-secondary-period">August 2024 — July 2025</span>
+                <h3 id="sports-title">Director for Sports <span>Information Technology</span></h3>
                 <p>Alliance of Information Technology Students (AITS) · FEU Institute of Technology</p>
-                <div className="leadership-role-mark" aria-hidden="true">AITS<span>↗</span></div>
               </div>
-              <div className="leadership-highlights">
-                {[
-                  ['Representation', 'Represented the Information Technology student body in planning meetings, proposal reviews, debriefings, and university sports events throughout the 2024–2025 academic year.'],
-                  ['Intramurals', 'Assisted 75+ BSIT teams across three Intramurals seasons by managing registration, eligibility verification, and participation requirements.'],
-                  ['Collaboration', 'Collaborated with the Student Coordinating Council, FEU Tech organizations, and university offices to deliver Sports Clinics, Intramurals, and the Inter-Campus Tamaraw Games across four FEU campuses.'],
-                  ['Operations', 'Maintained team records and event documentation to streamline participant tracking, verification, and event operations.'],
-                ].map(([title, description], index) => (
-                  <article className="leadership-highlight" data-leadership-reveal key={title} style={{ '--reveal-delay': `${index * 90}ms` }}>
-                    <span className="leadership-highlight-dot" aria-hidden="true" />
-                    <div><h4>{title}</h4><p>{description}</p></div>
-                  </article>
-                ))}
-              </div>
-            </div>
+              <ul>
+                <li>Represented the Information Technology student body in planning meetings, proposal reviews, debriefings, and university sports events throughout the 2024–2025 academic year.</li>
+                <li>Assisted 75+ BSIT teams across three Intramurals seasons by managing registration, eligibility verification, and participation requirements.</li>
+                <li>Collaborated with the Student Coordinating Council, FEU Tech organizations, and university offices to deliver Sports Clinics, Intramurals, and the Inter-Campus Tamaraw Games across four FEU campuses.</li>
+                <li>Maintained team records and event documentation to streamline participant tracking, verification, and event operations.</li>
+              </ul>
+            </article>
             <article className="leadership-secondary" data-leadership-reveal aria-labelledby="ticap-title">
               <div className="leadership-secondary-heading">
                 <span className="leadership-secondary-period">August 2024 — July 2025</span>
