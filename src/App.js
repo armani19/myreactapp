@@ -280,7 +280,7 @@ function App() {
             </article>
             <article className="leadership-secondary" data-leadership-reveal aria-labelledby="ticap-title">
               <div className="leadership-secondary-heading">
-                <span className="leadership-secondary-period">August 2024 — July 2025</span>
+                <span className="leadership-secondary-period">August 2026 — Present</span>
                 <h3 id="ticap-title">Secretariat <span>Technology Innovation in Capstone Project (TICaP)</span></h3>
               </div>
               <ul>
