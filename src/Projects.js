@@ -67,7 +67,7 @@ export default function Projects() {
         <div className="projects-heading project-reveal"><h2 id="projects-title">My <span>Projects</span><span className="projects-period">.</span></h2></div>
         <article className="featured-project project-reveal">
           <div className="project-story">
-            <div className="project-meta"><span>01 / FEATURED PROJECT</span><span className="project-type">WEB & MOBILE</span></div>
+            <div className="project-meta"><span className="project-type">MOBILE</span></div>
             <h3>FEU Centralized<br />Operations Platform</h3>
             <p className="project-subtitle">Student discipline. Guidance referrals.<br />AI-assisted asset resolution.</p>
             <div className="project-tools"><span>Figma</span><span>Microsoft Power Apps</span><span>UI/UX</span><span>Quality Assurance</span></div>

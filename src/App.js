@@ -190,7 +190,6 @@ function App() {
               <h1 id="hero-title">ARMANI MAGNIFICO</h1>
               <p className="hero-description">System Design &amp; Software Engineering | Frontend Developer |<br />Quality Assurance Specialist | 4th year IT Student</p>
               <div className="hero-stats" aria-label="Specialties">
-                <div><strong>3</strong><span>Projects</span></div>
                 <div><strong>UI/UX</strong><span>Primary</span></div>
                 <div><strong>Full Stack</strong><span>Exploring</span></div>
               </div>
