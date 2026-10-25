@@ -254,3 +254,25 @@ html, body, #root { max-width: 100%; }
 @keyframes leadership-arrive { from { opacity: 0; translate: 0 24px; } to { opacity: 1; translate: 0 0; } }
 @media (max-width: 950px) { .leadership-secondary { grid-template-columns: 1fr; } .leadership-secondary-period { margin-bottom: 22px; } }
 @media (prefers-reduced-motion: reduce) { .leadership-revealed { animation: none; } }
+
+.site-footer { padding: 22px clamp(18px,3vw,46px) 28px; background: #07182f; color: #fff; }
+.footer-inner { max-width: 1600px; margin: auto; }
+.footer-feature { position: relative; overflow: hidden; min-height: clamp(340px,30vw,440px); display: flex; flex-direction: column; padding: clamp(28px,4vw,58px); border: 1px solid #9bbbe548; border-radius: 30px; background: linear-gradient(125deg,#366aa6 0%,#153d72 62%,#0b2a53 100%); }
+.footer-feature::after { content: ''; position: absolute; width: min(56vw,650px); aspect-ratio: 1; right: -20%; top: -94%; border: 1px solid #ffffff30; border-radius: 50%; box-shadow: 0 0 0 55px #ffffff07,0 0 0 110px #ffffff05; pointer-events: none; }
+.footer-feature-top { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 20px; color: #c4ddfa; font-size: clamp(10px,.9vw,13px); font-weight: 700; letter-spacing: .12em; }
+.footer-profile { position: relative; z-index: 1; flex: 1; min-height: clamp(260px,25vw,360px); margin: 10px auto -42px; width: min(100%,1250px); }
+.footer-portrait { position: absolute; z-index: 0; left: 7%; bottom: -28px; width: min(52%,620px); height: calc(100% + 150px); }
+.footer-portrait::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg,transparent 28%,#20518b12 48%,#4c82bd38 67%,#1c4b842e 82%,transparent 100%); background-size: 180% 100%; mix-blend-mode: screen; pointer-events: none; animation: footer-photo-wash 18s ease-in-out infinite alternate; }
+.footer-profile img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: bottom center; filter: drop-shadow(0 20px 24px #06172c66); mask-image: linear-gradient(to bottom,#000 0%,#000 82%,transparent 100%); }
+.footer-profile h2 { position: absolute; z-index: 1; left: 30%; top: 56%; width: min(70%,850px); margin: 0; transform: translateY(-50%); font-size: clamp(48px,7.5vw,104px); line-height: .96; letter-spacing: -.075em; text-wrap: balance; text-shadow: 0 4px 24px #0b2a5360; }
+.footer-profile h2 span { color: #b6d5fb; }
+.footer-columns { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(20px,3vw,56px); padding: clamp(42px,5vw,70px) clamp(15px,2.5vw,40px); }
+.footer-column h3 { margin: 0 0 13px; color: #90aac8; font-size: 12px; font-weight: 600; }
+.footer-column a,.footer-column p { display: block; margin: 0 0 8px; color: #f3f7fd; font-size: clamp(12px,1vw,15px); line-height: 1.6; text-decoration: none; overflow-wrap: anywhere; }
+.footer-column a:hover,.footer-column a:focus-visible { color: #f5d652; text-decoration: underline; text-underline-offset: 4px; }
+.footer-column svg { width: 17px; height: 17px; margin-right: 5px; vertical-align: -3px; }
+.footer-legal { padding: 0 clamp(15px,2.5vw,40px) 6px; color: #92a9c4; font-size: 11px; }
+@media (max-width: 900px) { .footer-columns { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@keyframes footer-photo-wash { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@media (max-width: 600px) { .footer-feature { min-height: 350px; border-radius: 22px; padding: 24px; } .footer-profile { min-height: 250px; margin: 4px auto -18px; } .footer-portrait { left: -1%; bottom: -16px; width: 65%; height: calc(100% + 70px); } .footer-profile h2 { left: 29%; top: 51%; width: 71%; font-size: clamp(34px,9vw,58px); } .footer-columns { gap: 32px 18px; padding-inline: 8px; } }
+@media (prefers-reduced-motion: reduce) { .footer-portrait::after { animation: none; } }

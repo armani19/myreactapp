@@ -124,14 +124,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const darkSections = ['hero', 'ocean', 'projects-section', 'about-section', 'skills-section'];
+    const darkSections = ['hero', 'ocean', 'projects-section', 'about-section', 'skills-section', 'site-footer'];
 
     const updateHeaderTheme = () => {
       const header = headerRef.current;
       if (!header) return;
 
       const headerCenter = header.getBoundingClientRect().height / 2;
-      const sectionUnderHeader = [...document.querySelectorAll('main section')].find((section) => {
+      const sectionUnderHeader = [...document.querySelectorAll('main section, footer')].find((section) => {
         const bounds = section.getBoundingClientRect();
         return bounds.top <= headerCenter && bounds.bottom > headerCenter;
       });
@@ -308,6 +308,24 @@ function App() {
           </div>
         </section>
       </main>
+      <footer className="site-footer" id="contact" aria-label="Contact and site navigation">
+        <div className="footer-inner">
+          <div className="footer-feature">
+            <div className="footer-feature-top"><span>ARMANI MAGNIFICO</span><span>PORTFOLIO / {new Date().getFullYear()}</span></div>
+            <div className="footer-profile">
+              <div className="footer-portrait"><img src={`${process.env.PUBLIC_URL}/assets/portrait-cutout.png`} alt="Armani Magnifico" /></div>
+              <h2>Open for <span>internships.</span></h2>
+            </div>
+          </div>
+          <div className="footer-columns">
+            <div className="footer-column"><h3>Get in touch</h3><a href="https://mail.google.com/mail/?view=cm&fs=1&to=armanimagnifico4195@gmail.com" target="_blank" rel="noreferrer">armanimagnifico4195@gmail.com</a></div>
+              <div className="footer-column"><h3>Connect</h3><a href="https://www.linkedin.com/in/armanimagnifico" target="_blank" rel="noreferrer"><SocialIcon type="linkedin" /> LinkedIn</a><a href="https://github.com/armani19" target="_blank" rel="noreferrer"><SocialIcon type="github" /> GitHub</a></div>
+              <div className="footer-column"><h3>What I do</h3><p>System Design<br />Frontend Development<br />Quality Assurance<br />Project Management</p></div>
+              <div className="footer-column"><h3>Exploring</h3><p>Backend Development<br />Full Stack Development</p></div>
+          </div>
+            <div className="footer-legal">© {new Date().getFullYear()} Armani Magnifico</div>
+        </div>
+      </footer>
     </div>
   );
 }
