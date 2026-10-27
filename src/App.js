@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Projects from './Projects';
+import AboutDetails from './AboutDetails';
 
 const skillLogos = {
   JavaScript: 'javascript', PHP: 'php', Python: 'python',
@@ -36,7 +37,7 @@ function IntroAnimation({ onComplete }) {
       <div className="intro-card intro-card-primary">
         <div className="intro-card-content">
           <p className="intro-name">ARMANI MAGNIFICO</p>
-          <p className="intro-role">UX / UX Designer<br />Web Designer</p>
+          <p className="intro-role">Frontend Developer<br />Quality Assurance</p>
         </div>
       </div>
       <div className="intro-card intro-card-mark">
@@ -150,27 +151,41 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const revealItems = document.querySelectorAll('[data-about-reveal], [data-leadership-reveal]');
-    if (!('IntersectionObserver' in window)) {
-      revealItems.forEach((item) => item.classList.add('about-revealed'));
-      return undefined;
-    }
+    if (!introComplete) return undefined;
+    const revealItems = document.querySelectorAll('.hero-content > *, [data-about-reveal], .about-detail-card, [data-leadership-reveal], .skills-inner > h2, .skills-group, .footer-feature, .footer-column, .footer-legal');
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!('IntersectionObserver' in window) || motionPreference.matches) return undefined;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add(entry.target.hasAttribute('data-leadership-reveal') ? 'leadership-revealed' : 'about-revealed');
+          entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.16, rootMargin: '0px 0px -6% 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
 
-    revealItems.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
-  }, []);
+    revealItems.forEach((item, index) => {
+      item.classList.add('scroll-reveal');
+      item.style.setProperty('--reveal-delay', `${(index % 3) * 85}ms`);
+      observer.observe(item);
+    });
+    const showAll = () => {
+      if (motionPreference.matches) {
+        revealItems.forEach(item => item.classList.add('is-visible'));
+        observer.disconnect();
+      }
+    };
+    motionPreference.addEventListener('change', showAll);
+    return () => {
+      observer.disconnect();
+      motionPreference.removeEventListener('change', showAll);
+      revealItems.forEach(item => item.classList.remove('scroll-reveal', 'is-visible'));
+    };
+  }, [introComplete]);
 
   return (
-    <div className="site-shell">
+    <div className={`site-shell${introComplete ? ' intro-complete' : ''}`}>
       <IntroAnimation onComplete={() => setIntroComplete(true)} />
       <header
         ref={headerRef}
@@ -258,6 +273,7 @@ function App() {
               <div className="about-card-foot">Student Leader</div>
             </article>
           </div>
+          <AboutDetails />
         </section>
 
         <Projects />
