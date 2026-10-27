@@ -188,9 +188,10 @@ function App() {
             <div className="hero-content">
               <p className="eyebrow">HELLO, I'M</p>
               <h1 id="hero-title">ARMANI MAGNIFICO</h1>
-              <p className="hero-description">Frontend Developer | Project Management | Quality Assurance | System Design | 4th year IT - WMA Student</p>
+              <p className="hero-description">Frontend Developer | Project Management | Quality Assurance | System Design<span className="hero-student">4th year IT - WMA Student</span></p>
               <div className="hero-stats" aria-label="Specialties">
-                <div><strong>Frontend</strong><span>Primary</span></div>
+                <div><strong>Frontend Developer</strong><span>Primary</span></div>
+                <div><strong>Quality Assurance</strong><span>Primary</span></div>
                 <div><strong>Full Stack</strong><span>Exploring</span></div>
               </div>
               <div className="hero-actions">
@@ -212,7 +213,6 @@ function App() {
                     Contact Me
                   </button>
                   <div className="connect-popout" id="connect-options" aria-hidden={!connectOpen}>
-                    <p className="connect-label">Find me online</p>
                     <div className="connect-links">
                       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=armanimagnifico4195@gmail.com" target="_blank" rel="noreferrer" aria-label="Email Armani through Gmail">
                         <SocialIcon type="gmail" />
