@@ -4,11 +4,12 @@ import Projects from './Projects';
 import { Education, Organization, Certifications } from './AboutDetails';
 import OceanBackground from './OceanBackground';
 import SectionNavigation from './SectionNavigation';
+import Internships from './Internships';
 import './PortfolioLayout.css';
 
 const skillLogos = {
   JavaScript: 'javascript', PHP: 'php', Python: 'python',
-  'C++': 'cplusplus', Kotlin: 'kotlin', HTML5: 'html5',
+  'C++': 'cplusplus', 'Tailwind CSS': 'tailwindcss', HTML5: 'html5',
   CSS3: 'css3', React: 'react', 'CodeIgniter 4': 'codeigniter',
   Git: 'git', GitHub: 'github', 'Visual Studio Code': 'vscode',
   Vite: 'vite', Figma: 'figma', 'Microsoft Power Apps': 'powerapps',
@@ -222,11 +223,10 @@ function App() {
             <h2>About <span>Me</span></h2>
           </div>
           <article className="about-story" data-about-reveal>
-            <div className="about-story-aside"><span className="story-orbit" aria-hidden="true">AM<span>↗</span></span><p>Curious mind.<br /><strong>Always building.</strong></p><span className="story-note">FEU TECH / WMA</span></div>
+            <div className="about-portrait"><img src={`${process.env.PUBLIC_URL}/assets/armani-portrait.jpg`} alt="Armani Magnifico" width="2214" height="2952" loading="lazy" /></div>
             <div className="about-story-copy">
               <p>I am a <strong>fourth-year Information Technology student</strong> at FEU Institute of Technology, specializing in <em>Web and Mobile Application Development</em>, with a strong interest in software engineering, frontend development, and quality assurance.</p>
               <p>Through academic projects, client collaboration, and student leadership, I have gained practical experience in <strong>system design, UI/UX development, software testing, and project coordination</strong> while continuously striving to grow as an IT professional.</p>
-              <div className="story-interests" aria-label="Areas of interest"><span>Design</span><span>Develop</span><span>Test</span><span>Grow ↗</span></div>
             </div>
           </article>
         </section>
@@ -266,8 +266,8 @@ function App() {
             <h2 id="skills-title">Tech <span>Stack</span></h2>
             <div className="skills-groups">
               {[
-                ['Programming languages', 'JavaScript', 'PHP', 'Python', 'C++', 'Kotlin'],
-                ['Frontend development', 'HTML5', 'CSS3', 'React', 'CodeIgniter 4'],
+                ['Frontend development', 'HTML5', 'CSS3', 'JavaScript', 'React', 'Tailwind CSS'],
+                ['Backend development', 'JavaScript', 'PHP', 'Python', 'CodeIgniter 4', 'C++'],
                 ['Development & collaboration', 'Git', 'GitHub', 'Visual Studio Code', 'Vite'],
                 ['Design & prototyping', 'Figma', 'Microsoft Power Apps', 'Canva'],
               ].map(([category, ...skills]) => <div className="skills-group" key={category}>
@@ -280,16 +280,10 @@ function App() {
         <Education />
         <Certifications />
         <Organization />
+        <Internships />
       </main>
       <footer className="site-footer" id="contact" aria-label="Contact and site navigation">
         <div className="footer-inner">
-          <div className="footer-feature">
-            <div className="footer-feature-top"><span>ARMANI MAGNIFICO</span><span>PORTFOLIO / {new Date().getFullYear()}</span></div>
-            <div className="footer-profile">
-              <div className="footer-portrait"><img src={`${process.env.PUBLIC_URL}/assets/portrait-cutout.png`} alt="Armani Magnifico" /></div>
-              <h2>Open for <span>internships.</span></h2>
-            </div>
-          </div>
           <div className="footer-columns">
             <div className="footer-column"><h3>Get in touch</h3><a href="https://mail.google.com/mail/?view=cm&fs=1&to=armanimagnifico4195@gmail.com" target="_blank" rel="noreferrer">armanimagnifico4195@gmail.com</a></div>
               <div className="footer-column"><h3>Connect</h3><a href="https://www.linkedin.com/in/armanimagnifico" target="_blank" rel="noreferrer"><SocialIcon type="linkedin" /> LinkedIn</a><a href="https://github.com/armani19" target="_blank" rel="noreferrer"><SocialIcon type="github" /> GitHub</a></div>

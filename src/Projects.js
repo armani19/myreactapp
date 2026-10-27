@@ -63,7 +63,7 @@ export default function Projects() {
   return (
     <section className="projects-section" id="projects" ref={sectionRef} aria-labelledby="projects-title">
       <div className="projects-inner">
-        <div className="projects-heading project-reveal"><h2 id="projects-title">My <span>Projects</span><span className="projects-period">.</span></h2></div>
+        <div className="projects-heading project-reveal"><h2 id="projects-title">Projects<span className="projects-period">.</span></h2></div>
         <article className="featured-project project-reveal">
           <div className="project-story">
             <div className="project-meta"><span className="project-type">MOBILE</span></div>
@@ -110,6 +110,10 @@ export default function Projects() {
 
           </div>
         </article>
+        <figure className="project-team project-reveal">
+          <img src={`${process.env.PUBLIC_URL}/assets/projects/feu-cdgrs-team.jpg`} alt="Armani Magnifico with the FEU CDGRS project team" width="2048" height="1557" loading="lazy" />
+          <figcaption>FEU CDGRS · Project team</figcaption>
+        </figure>
       </div>
       <dialog ref={dialogRef} className="project-lightbox" style={{ '--screen-direction': direction }} aria-labelledby="lightbox-title" onCancel={() => setExpanded(false)} onClick={event => { if (event.target === event.currentTarget) setExpanded(false); }} onKeyDown={event => { if (event.key === 'ArrowRight') { event.preventDefault(); moveScreen(1); } if (event.key === 'ArrowLeft') { event.preventDefault(); moveScreen(-1); } }}>
         <div className="lightbox-top"><h3 id="lightbox-title">{screen.title}</h3><button type="button" onClick={() => setExpanded(false)} aria-label="Close design viewer" autoFocus>✕</button></div>
