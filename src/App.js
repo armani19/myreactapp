@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Projects from './Projects';
+import Engagements from './Engagements';
 import { Education, Organization, Certifications } from './AboutDetails';
 import OceanBackground from './OceanBackground';
 import SectionNavigation from './SectionNavigation';
@@ -235,6 +236,7 @@ function App() {
         </section>
 
         <Projects />
+        <Engagements />
         <section className="leadership-section" id="experience" aria-labelledby="leadership-title">
           <div className="leadership-inner">
             <h2 id="leadership-title" data-leadership-reveal>Leadership <span>Experience</span></h2>

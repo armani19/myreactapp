@@ -4,7 +4,7 @@ export default function Internships() {
       <div className="profile-inner">
         <h2 className="profile-section-title" id="internships-title" data-scroll-reveal>Open for <span>Internships</span></h2>
         <article className="internship-card" data-scroll-reveal>
-          <div className="internship-card-heading"><h3>Ready to contribute. Eager to learn.</h3><span className="internship-status"><span aria-hidden="true" />Seeking Opportunities</span></div>
+          <div className="internship-card-heading"><span className="internship-status"><span aria-hidden="true" />Seeking Opportunities</span></div>
           <p className="internship-intro">Fourth-year BSIT student specializing in Web and Mobile Application Development at FEU Institute of Technology, seeking opportunities to contribute to real-world IT projects and gain professional industry experience.</p>
           <dl className="internship-facts">
             <div><dt>Internship Period</dt><dd>Dec 2026 – Jul 2027</dd></div>
