@@ -187,8 +187,8 @@ section[id], footer[id] { scroll-margin-top: calc(var(--header-height) + 22px); 
 
 .engagements-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
 .engagement-card { min-width: 0; overflow: hidden; border: 1px solid #abd2ff44; border-radius: 22px; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
-.engagement-photo { height: 280px; padding: 14px 14px 0; background: #061b3626; }
-.engagement-photo img { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
+.engagement-photo { display: flex; align-items: center; justify-content: center; height: 280px; padding: 14px 14px 0; background: #061b3626; }
+.engagement-photo img { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 16px; }
 .engagement-copy { padding: 24px; }
 .engagement-copy time { color: #acd0fb; font-size: 11px; }
 .engagement-copy h3 { margin: 12px 0 10px; color: #fff; font-size: 21px; line-height: 1.3; letter-spacing: -.035em; }
@@ -200,6 +200,14 @@ section[id], footer[id] { scroll-margin-top: calc(var(--header-height) + 22px); 
 @media (max-width: 500px) { .engagement-card { display: block; } .engagement-photo { height: 300px; } }
 @media (prefers-reduced-motion: reduce) { .engagement-card:hover { transform: none; } }
 @media (max-width: 380px) {
-  .site-header .section-navigation a { min-width: 20px; padding-inline: 4px; }
+  .site-header .section-navigation a { min-width: 18px; padding-inline: 3px; }
   .section-navigation a[aria-current=location] .nav-label, .section-navigation a:focus-visible .nav-label { max-width: 64px; text-overflow: ellipsis; }
 }
+
+.posters-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.poster-photo { height: 380px; text-decoration: none; }
+.poster-link { display: inline-block; margin-top: 18px; color: #b4d8ff; font-size: 12px; text-decoration: none; }
+.poster-link:hover { color: #fff; text-decoration: underline; }
+.poster-photo:focus-visible, .poster-link:focus-visible { outline: 2px solid #a8cdfb; outline-offset: -4px; border-radius: 16px; }
+@media (max-width: 900px) { .posters-grid { grid-template-columns: 1fr; } }
+@media (max-width: 500px) { .poster-photo { height: 360px; } }
