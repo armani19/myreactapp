@@ -188,9 +188,9 @@ function App() {
             <div className="hero-content">
               <p className="eyebrow">HELLO, I'M</p>
               <h1 id="hero-title">ARMANI MAGNIFICO</h1>
-              <p className="hero-description">System Design &amp; Software Engineering | Frontend Developer |<br />Quality Assurance Specialist | 4th year IT Student</p>
+              <p className="hero-description">Frontend Developer | Project Management | Quality Assurance | System Design | 4th year IT - WMA Student</p>
               <div className="hero-stats" aria-label="Specialties">
-                <div><strong>UI/UX</strong><span>Primary</span></div>
+                <div><strong>Frontend</strong><span>Primary</span></div>
                 <div><strong>Full Stack</strong><span>Exploring</span></div>
               </div>
               <div className="hero-actions">
@@ -209,7 +209,7 @@ function App() {
                       else setConnectOpen(true);
                     }}
                   >
-                    Let's Connect!
+                    Contact Me
                   </button>
                   <div className="connect-popout" id="connect-options" aria-hidden={!connectOpen}>
                     <p className="connect-label">Find me online</p>
