@@ -47,7 +47,7 @@ body { background: #fff; color: var(--ink); }
 main { padding-top: 0; }
 #about, #projects, #experience, #skills { scroll-margin-top: var(--header-height, 76px); }
 .hero-stage { position: relative; height: clamp(680px, 82svh, 820px); }
-.hero { height: clamp(680px, 82svh, 820px); min-height: 0; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; background: var(--navy) url('./assets/underwater-minimal.png') center / cover; border-bottom: 0; color: #fff; }
+.hero { height: clamp(680px, 82svh, 820px); min-height: 0; position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; background: var(--navy); border-bottom: 0; color: #fff; }
 .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.2); pointer-events: none; }
 .fish-group { display: none; position: absolute; width: min(680px, 58vw); left: 4%; top: 2%; opacity: .9; z-index: 1; }
 .hero-content { width: min(960px, 90%); position: relative; z-index: 2; transform: translateY(18px); text-align: center; }
@@ -126,7 +126,7 @@ main { padding-top: 0; }
 .about-card-blue p { color: #e5f0ff; }
 .about-card-foot { display: flex; justify-content: space-between; padding-top: 16px; border-top: 1px solid #d9e2ee; color: #4779bd; font-size: 10px; font-weight: 700; letter-spacing: .11em; }
 .about-card-blue .about-card-foot { border-color: #ffffff55; color: #fff; }
-.skills-section { padding: clamp(85px,9vw,135px) clamp(24px,7.2vw,112px); background: linear-gradient(130deg,#09234ae8,#1e5489de),url('./assets/underwater-minimal.png') center / cover; color: #fff; }
+.skills-section { padding: clamp(85px,9vw,135px) clamp(24px,7.2vw,112px); background: #09234a; color: #fff; }
 .skills-inner { max-width: 1440px; margin: auto; }
 .skills-section h2 { margin: 0 0 clamp(50px,6vw,85px); text-align: center; font-size: clamp(65px,11.5vw,166px); line-height: .95; letter-spacing: -.085em; }
 .skills-section h2 span { color: #a8cdfb; }
@@ -211,7 +211,7 @@ html, body, #root { max-width: 100%; }
 .hero-stage { height: auto; min-height: 0; }
 
 /* Continue the ocean palette into About Me without a separate fade band. */
-.about-section { background: linear-gradient(180deg, #071b3d 0%, rgba(11,42,78,.93) 24%, rgba(31,82,132,.87) 100%), url('./assets/underwater-minimal.png') center / cover; color: #fff; }
+.about-section { background: #071b3d; color: #fff; }
 .about-heading h2 { color: #fff; }
 .about-heading h2 span { color: #9fc5f4; }
 .about-card { box-shadow: 0 22px 60px #03152d40; }

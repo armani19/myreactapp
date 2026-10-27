@@ -1,5 +1,5 @@
 .projects-section { position: relative; isolation: isolate; overflow: hidden; padding: clamp(80px,9vw,132px) clamp(24px,7.2vw,112px) clamp(64px,7vw,100px); background: #092c52; color: #fff; }
-.projects-water { position: absolute; z-index: -2; inset: 0; background: linear-gradient(135deg,rgba(5,28,55,.45),rgba(8,42,76,.6)),url('./assets/underwater-minimal.png') center / cover; }
+.projects-water { z-index: -2; }
 .projects-section::after { content: ''; position: absolute; z-index: -1; width: 900px; height: 900px; right: -450px; top: -450px; border: 1px solid #ffffff15; border-radius: 50%; box-shadow: 0 0 0 90px #ffffff03,0 0 0 180px #ffffff03; pointer-events: none; }
 .projects-inner { max-width: 1440px; margin: auto; }
 .projects-heading { margin-bottom: 64px; text-align: center; }

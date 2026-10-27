@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Projects from './Projects';
 import AboutDetails from './AboutDetails';
+import OceanBackground from './OceanBackground';
 
 const skillLogos = {
   JavaScript: 'javascript', PHP: 'php', Python: 'python',
@@ -200,6 +201,7 @@ function App() {
       <main id="top">
         <div className="hero-stage">
           <section className="hero" aria-labelledby="hero-title">
+            <OceanBackground />
             <div className="hero-content">
               <p className="eyebrow">HELLO, I'M</p>
               <h1 id="hero-title">ARMANI MAGNIFICO</h1>
@@ -250,6 +252,7 @@ function App() {
         </div>
 
         <section className="intro about-section" id="about" aria-label="About Armani">
+          <OceanBackground />
           <div className="about-heading" data-about-reveal>
             <h2>About <span>Me</span></h2>
           </div>
@@ -307,6 +310,7 @@ function App() {
           </div>
         </section>
         <section className="skills-section" id="skills" aria-labelledby="skills-title">
+          <OceanBackground />
           <div className="skills-inner">
             <h2 id="skills-title">Tech <span>Stack</span></h2>
             <div className="skills-groups">
