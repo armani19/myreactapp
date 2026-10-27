@@ -205,9 +205,12 @@ section[id], footer[id] { scroll-margin-top: calc(var(--header-height) + 22px); 
 }
 
 .posters-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-.poster-photo { height: 380px; text-decoration: none; }
-.poster-link { display: inline-block; margin-top: 18px; color: #b4d8ff; font-size: 12px; text-decoration: none; }
+.poster-photo { width: 100%; height: 380px; border: 0; cursor: zoom-in; text-decoration: none; }
+.poster-link { display: inline-block; margin-top: 18px; padding: 0; border: 0; background: none; color: #b4d8ff; font: inherit; font-size: 12px; cursor: pointer; text-decoration: none; }
 .poster-link:hover { color: #fff; text-decoration: underline; }
 .poster-photo:focus-visible, .poster-link:focus-visible { outline: 2px solid #a8cdfb; outline-offset: -4px; border-radius: 16px; }
 @media (max-width: 900px) { .posters-grid { grid-template-columns: 1fr; } }
 @media (max-width: 500px) { .poster-photo { height: 360px; } }
+.poster-lightbox { width: min(850px,95vw); }
+.poster-expanded-image { display: block; width: 100%; height: auto; max-height: calc(90svh - 100px); object-fit: contain; margin: 20px auto 0; animation: project-content-in .3s ease both; }
+@media (prefers-reduced-motion: reduce) { .poster-expanded-image { animation: none; } }
