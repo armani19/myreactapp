@@ -19,7 +19,7 @@ export default function CapstonePosters() {
   return (
     <section className="profile-section posters-section" id="posters" aria-labelledby="posters-title">
       <div className="profile-inner">
-        <h2 className="profile-section-title" id="posters-title" data-scroll-reveal>Capstone <span>Posters</span></h2>
+        <h2 className="profile-section-title" id="posters-title" data-scroll-reveal>Creative <span>Works</span></h2>
         <div className="engagements-grid posters-grid">
           {posters.map(poster => {
             const source = `${process.env.PUBLIC_URL}/assets/posters/${poster.file}`;

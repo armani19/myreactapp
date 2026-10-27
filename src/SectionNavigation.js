@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export const sections = [
   ['Home', 'home'], ['About', 'about'], ['Projects', 'projects'],
-  ['Events', 'events'], ['Posters', 'posters'],
+  ['Events', 'events'], ['Creative Works', 'posters'],
   ['Experience', 'experience'], ['Tech Stack', 'skills'],
   ['Education', 'education'], ['Certifications', 'certifications'], ['Organization', 'organization'], ['Internships', 'internships'], ['Contact', 'contact'],
 ];
