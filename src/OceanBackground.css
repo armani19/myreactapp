@@ -4,6 +4,8 @@
 .ocean-background::after { content: ''; position: absolute; inset: -8%; background: radial-gradient(ellipse at 22% 0%,#a5dfff24,transparent 52%), linear-gradient(114deg,transparent 22%,#b5e5ff0d 28%,transparent 36%,#b5e5ff09 45%,transparent 53%), radial-gradient(circle at 18% 35%,#d9f3ff55 0 1px,transparent 2px), radial-gradient(circle at 73% 61%,#d9f3ff44 0 1px,transparent 2px), radial-gradient(circle at 43% 76%,#d9f3ff33 0 1.5px,transparent 2.5px); opacity: .5; }
 .about-section, .skills-section { position: relative; isolation: isolate; }
 .about-section { --ocean-shade: linear-gradient(180deg,#071b3d 0%,rgba(11,42,78,.93) 24%,rgba(31,82,132,.87) 100%); }
+/* Fade the entire moving layer, including light, into the hero's navy edge. */
+.about-section > .ocean-background { -webkit-mask-image: linear-gradient(to bottom,transparent 0,#000 clamp(100px,12vw,180px)); mask-image: linear-gradient(to bottom,transparent 0,#000 clamp(100px,12vw,180px)); }
 .skills-section { --ocean-shade: linear-gradient(130deg,#09234ae8,#1e5489de); }
 .projects-water { --ocean-shade: linear-gradient(135deg,rgba(5,28,55,.45),rgba(8,42,76,.6)); }
 
