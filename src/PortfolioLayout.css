@@ -74,3 +74,66 @@ section[id], footer[id] { scroll-margin-top: calc(var(--header-height) + 22px); 
 }
 @media (max-width: 370px) { .site-header .brand { display: none; } .site-header nav.section-navigation { margin-inline: auto; } }
 @media (prefers-reduced-motion: reduce) { .profile-card:hover { transform: none; } .story-interests span:hover { transform: none; } }
+
+/* Compact desktop rhythm and a hero centered below the fixed navigation. */
+.hero { min-height: 100svh; height: auto; padding: calc(var(--header-height) + 32px) 24px 32px; }
+.hero-content { transform: none; }
+.about-section, .projects-section, .leadership-section, .skills-section, .profile-section { padding: clamp(56px,6vw,82px) clamp(22px,6vw,88px); }
+.about-story, .projects-inner, .leadership-inner, .skills-inner, .profile-inner { max-width: 1100px; margin-inline: auto; }
+.about-heading h2, .projects-heading h2, .leadership-inner h2, .skills-section h2, .profile-section-title { margin: 0; font-size: clamp(32px,4.3vw,58px); line-height: 1.12; letter-spacing: -.055em; text-align: center; }
+.about-heading, .projects-heading { margin-bottom: 32px; }
+.leadership-inner h2, .skills-section h2, .profile-section-title { margin-bottom: 32px; }
+.about-story { padding: clamp(26px,3vw,38px); gap: 36px; border-radius: 24px; }
+.about-story-copy p { font-size: clamp(15px,1.2vw,17px); line-height: 1.85; margin-bottom: 20px; }
+.about-story-aside p { font-size: 26px; }
+.story-orbit { width: 82px; height: 82px; font-size: 26px; }
+.profile-card { padding: clamp(22px,2.5vw,32px); border-radius: 22px; }
+.about-detail-body h4 { margin-bottom: 7px; font-size: clamp(16px,1.45vw,20px); line-height: 1.4; }
+.about-detail-body p { margin-top: 5px; font-size: 13px; line-height: 1.6; }
+.about-detail-badge { margin-top: 10px; padding: 6px 10px; font-size: 10px; }
+.education-list, .certification-list { margin: 0; padding: 0; list-style: none; }
+.education-list li, .certification-list li { display: grid; grid-template-columns: 76px minmax(0,1fr) auto; align-items: center; gap: 24px; }
+.education-list li + li, .certification-list li + li { margin-top: 22px; padding-top: 22px; border-top: 1px solid #dce7f3; }
+.credential-info { grid-column: 2; }
+.credential-date { grid-column: 3; color: #4779bd; font-size: 11px; font-weight: 500; white-space: nowrap; }
+.certification-badge, .school-logo { display: block; width: 76px; height: 76px; object-fit: contain; }
+.organization-logo { flex-shrink: 0; width: 100px; height: 100px; object-fit: contain; }
+.organization-profile { gap: 28px; }
+.leadership-secondary { gap: 30px; padding: clamp(24px,2.5vw,34px); border-radius: 22px; }
+.leadership-secondary h3 { font-size: clamp(23px,2vw,29px); }
+.leadership-secondary-heading p { font-size: 12px; }
+.leadership-secondary li { padding-block: 12px; font-size: 13px; line-height: 1.65; }
+.leadership-secondary li::before { top: 20px; }
+.leadership-secondary-period { margin-bottom: 20px; font-size: 10px; }
+.skills-group { padding-block: 22px; gap: 24px; }
+.skills-group h3 { font-size: 21px; }
+.skills-pills span { padding: 9px 13px; gap: 12px; font-size: 12px; }
+.skills-pills img { width: 22px; height: 22px; }
+.project-story { padding: 30px; }
+.project-story h3 { margin-top: 25px; font-size: clamp(26px,2.4vw,35px); }
+.project-subtitle { font-size: 14px; }
+.project-detail { min-height: 280px; }
+.project-detail p, .project-detail li { font-size: 14px; line-height: 1.8; }
+.project-detail h4 { font-size: 19px; }
+.project-tools { margin: 20px 0 24px; }
+.project-tools span { font-size: 10px; }
+.project-tabs button { font-size: 12px; }
+.project-footnote span { font-size: 11px; }
+.project-footnote strong { font-size: 34px; }
+.footer-feature { min-height: 290px; }
+.footer-profile h2 { font-size: clamp(38px,5vw,70px); }
+@media (max-width: 700px) {
+  .site-header .brand { display: none; }
+  .site-header nav.section-navigation { margin-inline: auto; }
+  .site-header .section-navigation a { min-width: 24px; padding-inline: 7px; }
+  .education-list li, .certification-list li { grid-template-columns: 56px minmax(0,1fr); gap: 8px 16px; }
+  .credential-date { grid-column: 2; grid-row: 2; }
+  .school-logo, .certification-badge { width: 56px; height: 62px; grid-row: 1 / span 2; }
+  .education-list li > div { grid-column: 2; }
+  .about-story { gap: 24px; }
+  .about-story-aside p { font-size: 23px; }
+  .project-story { padding: 26px 22px; }
+  .project-detail { min-height: 0; }
+  .organization-profile { flex-direction: row; align-items: center; gap: 18px; }
+  .organization-logo { width: 76px; height: 76px; }
+}

@@ -1,3 +1,5 @@
+const credentialAsset = name => `${process.env.PUBLIC_URL}/assets/credentials/${name}`;
+
 export function AboutDetailCard({ title, children }) {
   return (
     <article className="about-detail-card profile-card" tabIndex={0}>
@@ -13,9 +15,9 @@ export function Education() {
       <div className="profile-inner">
         <h2 className="profile-section-title" id="education-title" data-scroll-reveal>My <span>Education</span></h2>
         <AboutDetailCard>
-          <ul className="about-detail-list">
-            <li><span className="about-detail-date">2023 – Present</span><h4>Bachelor of Science in Information Technology</h4><p>Specializing in Web and Mobile Application Development</p><p className="about-detail-institution">FEU Institute of Technology</p></li>
-            <li><span className="about-detail-date">2021 – 2023</span><h4>Senior High School · STEM</h4><p>Science, Technology, Engineering, and Mathematics</p><p className="about-detail-institution">Saint Joseph School of Gagalangin</p><span className="about-detail-badge">Graduated with honors · General Average: 94.04</span></li>
+          <ul className="education-list">
+            <li><img className="school-logo" src={credentialAsset('feu-tech.png')} alt="FEU Institute of Technology logo" width="72" height="84" loading="lazy" /><div><h4>Bachelor of Science in Information Technology</h4><p>Specializing in Web and Mobile Application Development</p><p className="about-detail-institution">FEU Institute of Technology</p></div><span className="credential-date">2023 – Present</span></li>
+            <li><img className="school-logo" src={credentialAsset('saint-joseph-cutout.png')} alt="Saint Joseph School of Gagalangin logo" width="76" height="76" loading="lazy" /><div><h4>Senior High School · STEM</h4><p>Science, Technology, Engineering, and Mathematics</p><p className="about-detail-institution">Saint Joseph School of Gagalangin</p><span className="about-detail-badge">Graduated with honors · General Average: 94.04</span></div><span className="credential-date">2021 – 2023</span></li>
           </ul>
         </AboutDetailCard>
       </div>
@@ -30,7 +32,7 @@ export function Organization() {
         <h2 className="profile-section-title" id="organization-title" data-scroll-reveal>My <span>Organization</span></h2>
         <AboutDetailCard>
           <div className="organization-profile">
-            <div className="organization-monogram" aria-hidden="true">AITS<span>FEU TECH</span></div>
+            <img className="organization-logo" src={credentialAsset('aits-cutout.png')} alt="Alliance of Information Technology Students logo" width="100" height="100" loading="lazy" />
             <div><h4>Alliance of Information Technology Students</h4><p className="about-detail-institution">FEU Institute of Technology</p><p>Manila, National Capital Region, Philippines</p></div>
           </div>
         </AboutDetailCard>
@@ -39,17 +41,27 @@ export function Organization() {
   );
 }
 
-export default function AboutDetails() {
+export function Certifications() {
+  const certifications = [
+    { name: 'Devnet Associate', issuer: 'Cisco', date: 'March 18, 2026', badge: 'devnet-associate.png' },
+    { name: 'CCNA: Enterprise Networking, Security, and Automation', issuer: 'Cisco', date: 'December 15, 2025', badge: 'ccna-ensa.png' },
+    { name: 'PMI Project Management Ready', issuer: 'Project Management Institute', date: 'March 3, 2025', badge: 'pmi-ready.png' },
+    { name: 'Certificate of Officership', issuer: 'Alliance of Information Technology Students', date: 'February 15, 2025' },
+  ];
   return (
-    <div className="about-details" aria-label="Certifications">
-      <AboutDetailCard title="Certifications">
-        <ul className="about-detail-list">
-          <li><span className="about-detail-date">March 18, 2026</span><h4>Devnet Associate</h4><p>Cisco</p></li>
-          <li><span className="about-detail-date">December 15, 2025</span><h4>CCNA: Enterprise Networking, Security, and Automation</h4><p>Cisco</p></li>
-          <li><span className="about-detail-date">March 3, 2025</span><h4>PMI Project Management Ready</h4><p>Project Management Institute</p></li>
-          <li><span className="about-detail-date">February 15, 2025</span><h4>Certificate of Officership</h4><p>Alliance of Information Technology Students</p></li>
-        </ul>
-      </AboutDetailCard>
-    </div>
+    <section className="profile-section" id="certifications" aria-labelledby="certifications-title">
+      <div className="profile-inner">
+        <h2 className="profile-section-title" id="certifications-title" data-scroll-reveal>My <span>Certifications</span></h2>
+        <AboutDetailCard>
+          <ul className="certification-list">{certifications.map(certification => (
+            <li key={certification.name}>
+              {certification.badge && <img className="certification-badge" src={credentialAsset(certification.badge)} alt={`${certification.name} badge`} width="76" height="76" loading="lazy" />}
+              <div className="credential-info"><h4>{certification.name}</h4><p>{certification.issuer}</p></div>
+              <span className="credential-date">{certification.date}</span>
+            </li>
+          ))}</ul>
+        </AboutDetailCard>
+      </div>
+    </section>
   );
 }

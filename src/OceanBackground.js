@@ -21,5 +21,5 @@ export default function OceanBackground({ className = '' }) {
     };
   }, []);
 
-  return <div ref={layerRef} className={`ocean-background ${className}`} data-active={visible && pageVisible} aria-hidden="true" />;
+  return <div ref={layerRef} className={`ocean-background ${className}`} data-active={visible && pageVisible} aria-hidden="true"><div className="ocean-bubbles">{Array.from({ length: 7 }, (_, index) => <span key={index} style={{ '--bubble-index': index }} />)}</div></div>;
 }

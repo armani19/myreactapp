@@ -10,12 +10,19 @@
 .projects-water { --ocean-shade: linear-gradient(135deg,rgba(5,28,55,.45),rgba(8,42,76,.6)); }
 
 @media (prefers-reduced-motion: no-preference) {
-  .ocean-background::before { animation: ocean-idle-drift 28s ease-in-out infinite alternate; animation-play-state: paused; }
-  .ocean-background::after { animation: ocean-idle-light 19s ease-in-out infinite alternate; animation-play-state: paused; }
+  .ocean-background::before { animation: ocean-idle-drift 16s ease-in-out infinite alternate; animation-play-state: paused; }
+  .ocean-background::after { animation: ocean-idle-light 11s ease-in-out infinite alternate; animation-play-state: paused; }
   .ocean-background[data-active=true]::before, .ocean-background[data-active=true]::after { animation-play-state: running; }
   .about-section .ocean-background::before { animation-delay: -8s; }
   .projects-water::before { animation-delay: -15s; }
   .skills-section .ocean-background::before { animation-delay: -21s; }
 }
-@keyframes ocean-idle-drift { from { transform: translate(-.7%,.4%) scale(1.02); } to { transform: translate(.7%,-.4%) scale(1.055); } }
-@keyframes ocean-idle-light { from { transform: translate(-1%,1%) rotate(-1deg); opacity: .35; } to { transform: translate(1%,-1%) rotate(1deg); opacity: .75; } }
+@keyframes ocean-idle-drift { from { transform: translate(-1.2%,.7%) scale(1.03); } to { transform: translate(1.2%,-.7%) scale(1.075); } }
+@keyframes ocean-idle-light { from { transform: translate(-2%,2%) rotate(-2deg); opacity: .3; } to { transform: translate(2%,-2%) rotate(2deg); opacity: .85; } }
+.ocean-bubbles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.ocean-bubbles span { position: absolute; bottom: -24px; left: calc(9% + var(--bubble-index) * 13%); width: calc(5px + var(--bubble-index) * 1px); aspect-ratio: 1; border: 1px solid #b8e9ff77; border-radius: 50%; background: #b8e9ff0a; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .ocean-bubbles span { animation: ocean-bubble-rise calc(17s + var(--bubble-index) * 2s) linear infinite; animation-delay: calc(var(--bubble-index) * -4s); animation-play-state: paused; }
+  .ocean-background[data-active=true] .ocean-bubbles span { animation-play-state: running; }
+}
+@keyframes ocean-bubble-rise { 0% { transform: translate(0,0); opacity: 0; } 10%,80% { opacity: .35; } 50% { transform: translate(24px,-55svh); } 100% { transform: translate(-12px,-110svh); opacity: 0; } }

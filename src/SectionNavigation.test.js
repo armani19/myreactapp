@@ -20,6 +20,9 @@ test('dot navigation keeps accessible names and tracks the section reached by sc
   expect(screen.getByRole('link', { name: 'Home' })).not.toHaveAttribute('aria-current');
   position = 6000;
   fireEvent.scroll(window);
+  await waitFor(() => expect(screen.getByRole('link', { name: 'Certifications' })).toHaveAttribute('aria-current', 'location'));
+  position = 7000;
+  fireEvent.scroll(window);
   await waitFor(() => expect(screen.getByRole('link', { name: 'Organization' })).toHaveAttribute('aria-current', 'location'));
   view.unmount();
   targets.forEach(section => section.remove());

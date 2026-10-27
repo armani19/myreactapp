@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Projects from './Projects';
-import AboutDetails, { Education, Organization } from './AboutDetails';
+import { Education, Organization, Certifications } from './AboutDetails';
 import OceanBackground from './OceanBackground';
 import SectionNavigation from './SectionNavigation';
 import './PortfolioLayout.css';
@@ -229,7 +229,6 @@ function App() {
               <div className="story-interests" aria-label="Areas of interest"><span>Design</span><span>Develop</span><span>Test</span><span>Grow ↗</span></div>
             </div>
           </article>
-          <AboutDetails />
         </section>
 
         <Projects />
@@ -279,6 +278,7 @@ function App() {
           </div>
         </section>
         <Education />
+        <Certifications />
         <Organization />
       </main>
       <footer className="site-footer" id="contact" aria-label="Contact and site navigation">
