@@ -292,7 +292,7 @@ function App() {
         </section>
         <section className="skills-section" id="skills" aria-labelledby="skills-title">
           <div className="skills-inner">
-            <h2 id="skills-title">My <span>Skills</span></h2>
+            <h2 id="skills-title">Tech <span>Stack</span></h2>
             <div className="skills-groups">
               {[
                 ['Programming languages', 'JavaScript', 'PHP', 'Python', 'C++', 'Kotlin'],
