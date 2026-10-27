@@ -5,6 +5,7 @@ import { Education, Organization, Certifications } from './AboutDetails';
 import OceanBackground from './OceanBackground';
 import SectionNavigation from './SectionNavigation';
 import Internships from './Internships';
+import HeroName from './HeroName';
 import './PortfolioLayout.css';
 
 const skillLogos = {
@@ -171,7 +172,7 @@ function App() {
           <section className="hero" id="home" aria-labelledby="hero-title">
             <div className="hero-content">
               <p className="eyebrow">HELLO, I'M</p>
-              <h1 id="hero-title">ARMANI MAGNIFICO</h1>
+              <HeroName name="ARMANI MAGNIFICO" />
               <p className="hero-description">Frontend Developer | Project Management | Quality Assurance | System Design<span className="hero-student">4th year IT - WMA Student</span></p>
               <div className="hero-stats" aria-label="Specialties">
                 <div><strong>Frontend Developer</strong><span>Primary</span></div>
