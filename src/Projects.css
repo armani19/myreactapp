@@ -11,7 +11,7 @@
 .project-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; color: #b0c5df; font-size: 9px; letter-spacing: .1em; font-weight: 600; }
 .project-type { padding: 7px 10px; border-radius: 20px; border: 1px solid #ffffff26; }
 .project-story h3 { margin: 34px 0 18px; font-size: clamp(28px,3.15vw,46px); line-height: 1.12; letter-spacing: -.055em; }
-.project-subtitle { color: #b6cbe4; font-size: 14px; line-height: 1.7; }
+.project-subtitle { color: #b6cbe4; font-size: clamp(16px,1.3vw,19px); line-height: 1.7; }
 .project-tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 34px; }
 .project-tools span { padding: 8px 11px; color: #c6d8ed; background: #ffffff08; border: 1px solid #ffffff20; border-radius: 20px; font-size: 10px; }
 .project-tabs { display: flex; gap: 22px; border-bottom: 1px solid #ffffff26; }
@@ -20,8 +20,8 @@
 .project-tabs button::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: #facc16; transform: scaleX(0); transition: transform .25s ease; transform-origin: left; }
 .project-tabs button[aria-selected=true]::after { transform: scaleX(1); }
 .project-detail { min-height: 310px; padding-top: 26px; animation: project-content-in .45s ease both; }
-.project-detail h4 { margin: 0 0 12px; font-size: 17px; line-height: 1.5; letter-spacing: -.025em; }
-.project-detail p,.project-detail li { color: #bbcee4; font-size: 12px; line-height: 1.85; }
+.project-detail h4 { margin: 0 0 16px; font-size: clamp(21px,1.8vw,26px); line-height: 1.5; letter-spacing: -.025em; }
+.project-detail p,.project-detail li { color: #bbcee4; font-size: clamp(16px,1.2vw,18px); line-height: 1.8; }
 .project-detail p { margin: 0 0 18px; }
 .project-detail ul { padding: 0; margin: 0; list-style: none; }
 .project-detail li { position: relative; margin-bottom: 9px; padding-left: 17px; }
@@ -34,7 +34,10 @@
 .phone-stage { position: relative; flex: 1; display: grid; place-items: center; min-height: 490px; padding: 25px 0; }
 .phone-orbit { position: absolute; width: min(100%,370px); aspect-ratio: 1; border: 1px solid #b8d8ff25; border-radius: 50%; box-shadow: 0 0 0 30px #b8d8ff06,0 0 0 60px #b8d8ff04; }
 .phone-preview { position: relative; width: 228px; padding: 0; background: transparent; border: 0; border-radius: 36px; cursor: zoom-in; transform: rotate(-4deg); transition: transform .5s cubic-bezier(.2,.7,.2,1); filter: drop-shadow(14px 25px 18px #020e2350); }
-.phone-preview:hover,.phone-preview:focus-visible { transform: rotate(0) translateY(-6px); }
+.phone-preview:hover,.phone-preview:focus-visible { transform: rotate(0) translateY(-6px) scale(1.07); }
+.phone-float { animation: phone-idle-float 7s ease-in-out infinite; }
+.phone-preview:hover .phone-float, .phone-preview:focus-visible .phone-float { animation-play-state: paused; }
+@keyframes phone-idle-float { 0%,100% { transform: translate(0,0) rotate(-1deg); } 35% { transform: translate(5px,-10px) rotate(1.5deg); } 70% { transform: translate(-4px,-5px) rotate(-1.5deg); } }
 .phone-image-transition { animation: project-phone-in .55s cubic-bezier(.2,.7,.2,1) both; }
 .project-screenshot { display: block; width: 100%; max-height: 520px; object-fit: contain; border-radius: 28px; }
 .phone-expand { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%) translateY(8px); white-space: nowrap; padding: 10px 15px; background: #0a2a50; color: #fff; border: 1px solid #ffffff50; border-radius: 20px; font: 10px 'Sora',sans-serif; opacity: 0; transition: opacity .2s, transform .2s; }
@@ -85,6 +88,11 @@
 .project-screenshot.incident-cutout { aspect-ratio: 0.49; height: auto; object-fit: cover; }
 .gallery-thumbnails img.incident-cutout { object-fit: cover; }
 .lightbox-image:has(.incident-cutout) { width: min(300px, 33svh, 64vw); }
+
+.project-tabs button { font-size: 14px; }
+.project-tools span { font-size: 12px; }
+.project-footnote span { font-size: 12px; }
+@media (prefers-reduced-motion: reduce) { .phone-float { animation: none; } }
 
 @media (max-width: 1100px) {
   .project-detail { min-height: 0; }

@@ -10,7 +10,7 @@ const screens = [
 ];
 
 const details = [
-  { label: 'Overview', heading: 'Connected offices. Clearer student services.', text: 'A centralized operations platform for FEU student discipline and guidance referrals, with AI-assisted asset resolution. Designed to connect student-facing workflows with the offices that support them.', points: ['Student discipline & guidance referrals', 'Lost-and-found reporting & asset resolution', 'Mobile interfaces built around everyday tasks'] },
+  { label: 'Overview', text: 'A centralized operations platform for FEU student discipline and guidance referrals, with AI-assisted asset resolution. Designed to connect student-facing workflows with the offices that support them.', points: ['Student discipline & guidance referrals', 'Lost-and-found reporting & asset resolution', 'Mobile interfaces built around everyday tasks'] },
   { label: 'My role', heading: 'From first wireframe to a working experience.', text: 'As Frontend Developer, UI/UX Designer, and Quality Assurance contributor, I designed the web interface in Figma and developed the mobile frontend using Microsoft Power Apps.', points: ['Interactive prototypes during discovery and pre-production', 'User-centered web and mobile interface design', 'Feature validation through User Acceptance Testing (UAT)'] },
   { label: 'Collaboration', heading: 'Built with the people who would use it.', text: 'Worked with the Guidance Counseling Office, Office of Student Discipline, and IT Support Office to gather requirements, plan workflows, demonstrate the system, and validate features for a platform designed to support over 15,000 FEU Manila students.', points: ['Requirements gathering & system demonstrations', 'Documentation, proofreading & approval routing', 'Task delegation, deliverables & capstone compliance'] },
 ];
@@ -83,7 +83,7 @@ export default function Projects() {
               }}>{item.label}</button>)}
             </div>
             <div key={activeDetail} className="project-detail" id={`project-panel-${activeDetail}`} role="tabpanel" aria-labelledby={`project-tab-${activeDetail}`} tabIndex={0}>
-              <h4>{detail.heading}</h4><p>{detail.text}</p><ul>{detail.points.map(point => <li key={point}>{point}</li>)}</ul>
+              {detail.heading && <h4>{detail.heading}</h4>}<p>{detail.text}</p><ul>{detail.points.map(point => <li key={point}>{point}</li>)}</ul>
             </div>
             <div className="project-footnote"><strong>15,000+</strong><span>FEU Manila students the platform<br />was designed to support</span></div>
           </div>
@@ -104,7 +104,7 @@ export default function Projects() {
               const touch = event.changedTouches[0];
               const dx = touch.clientX - start.x;
               if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(touch.clientY - start.y)) moveScreen(dx < 0 ? 1 : -1);
-            }} onTouchCancel={() => { swipeStartRef.current = null; }}><div className="phone-orbit" aria-hidden="true" /><button ref={expandRef} type="button" className="phone-preview" onClick={() => setExpanded(true)} aria-label={`Enlarge ${screen.title} design`}><div className="phone-image-transition" key={activeScreen}><ScreenPreview screen={screen} index={activeScreen} /></div><span className="phone-expand">Explore design ↗</span></button></div>
+            }} onTouchCancel={() => { swipeStartRef.current = null; }}><div className="phone-orbit" aria-hidden="true" /><button ref={expandRef} type="button" className="phone-preview" onClick={() => setExpanded(true)} aria-label={`Enlarge ${screen.title} design`}><div className="phone-float"><div className="phone-image-transition" key={activeScreen}><ScreenPreview screen={screen} index={activeScreen} /></div></div><span className="phone-expand">Explore design ↗</span></button></div>
             <div className="gallery-thumbnails" aria-label="Choose an interface">
               {screens.map((item, index) => <button type="button" key={item.title} aria-label={`Preview ${item.title}`} aria-pressed={activeScreen === index} onClick={() => selectScreen(index)}><img className={item.file === 'incident-report-cutout.png' ? 'incident-cutout' : undefined} src={`${process.env.PUBLIC_URL}/assets/projects/${item.file}`} alt="" width="468" height="949" loading="lazy" /><span>{item.label}</span></button>)}
             </div>
