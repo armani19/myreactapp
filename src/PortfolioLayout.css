@@ -1,7 +1,7 @@
 /* A single fixed seascape carries every section without artwork seams. */
 body { background: #071b35; }
 .site-shell { position: relative; isolation: isolate; }
-.site-ocean { position: fixed; z-index: -1; inset: 0; --ocean-shade: linear-gradient(180deg,#061a37a6,#071d3ace 65%,#06152ee6); }
+.site-ocean { position: fixed; z-index: -1; inset: 0; --ocean-shade: linear-gradient(180deg,#062b4855,#071d3a99 65%,#06152ecc); }
 .hero, .about-section, .projects-section, .leadership-section, .skills-section, .profile-section, .site-footer { background: transparent; color: #fff; }
 .hero::before, .hero::after, .leadership-section::before { display: none; }
 section[id], footer[id] { scroll-margin-top: calc(var(--header-height) + 22px); }
