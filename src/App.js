@@ -6,6 +6,7 @@ import OceanBackground from './OceanBackground';
 import SectionNavigation from './SectionNavigation';
 import Internships from './Internships';
 import HeroName from './HeroName';
+import CursorGlow from './CursorGlow';
 import './PortfolioLayout.css';
 
 const skillLogos = {
@@ -158,6 +159,7 @@ function App() {
   return (
     <div className={`site-shell${introComplete ? ' intro-complete' : ''}`}>
       <OceanBackground className="site-ocean" />
+      <CursorGlow />
       <IntroAnimation onComplete={() => setIntroComplete(true)} />
       <header
         ref={headerRef}
@@ -224,7 +226,7 @@ function App() {
             <h2>About <span>Me</span></h2>
           </div>
           <article className="about-story" data-about-reveal>
-            <div className="about-portrait"><img src={`${process.env.PUBLIC_URL}/assets/armani-portrait.jpg`} alt="Armani Magnifico" width="2214" height="2952" loading="lazy" /></div>
+            <div className="about-portrait"><img src={`${process.env.PUBLIC_URL}/assets/armani-about.jpg`} alt="Armani Magnifico" width="480" height="720" loading="lazy" /></div>
             <div className="about-story-copy">
               <p>I am a <strong>fourth-year Information Technology student</strong> at FEU Institute of Technology, specializing in <em>Web and Mobile Application Development</em>, with a strong interest in software engineering, frontend development, and quality assurance.</p>
               <p>Through academic projects, client collaboration, and student leadership, I have gained practical experience in <strong>system design, UI/UX development, software testing, and project coordination</strong> while continuously striving to grow as an IT professional.</p>
@@ -267,7 +269,7 @@ function App() {
             <h2 id="skills-title">Tech <span>Stack</span></h2>
             <div className="skills-groups">
               {[
-                ['Frontend development', 'HTML5', 'CSS3', 'JavaScript', 'React', 'Tailwind CSS'],
+                ['Frontend development', 'HTML5', 'CSS3', 'React', 'Tailwind CSS'],
                 ['Backend development', 'JavaScript', 'PHP', 'Python', 'CodeIgniter 4', 'C++'],
                 ['Development & collaboration', 'Git', 'GitHub', 'Visual Studio Code', 'Vite'],
                 ['Design & prototyping', 'Figma', 'Microsoft Power Apps', 'Canva'],
