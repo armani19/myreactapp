@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Projects from './Projects';
-import AboutDetails from './AboutDetails';
+import AboutDetails, { Education, Organization } from './AboutDetails';
 import OceanBackground from './OceanBackground';
+import SectionNavigation from './SectionNavigation';
+import './PortfolioLayout.css';
 
 const skillLogos = {
   JavaScript: 'javascript', PHP: 'php', Python: 'python',
@@ -17,13 +19,6 @@ const skillLogoUrl = (skill) => {
   const slug = skillLogos[skill];
   return `${process.env.PUBLIC_URL}/skill-icons/${slug}.svg`;
 };
-
-const navItems = [
-  ['About', '#about'],
-  ['Projects', '#projects'],
-  ['Experience', '#experience'],
-  ['Skills', '#skills'],
-];
 
 function IntroAnimation({ onComplete }) {
   return (
@@ -79,7 +74,6 @@ function SocialIcon({ type }) {
 function App() {
   const headerRef = useRef(null);
   const [introComplete, setIntroComplete] = useState(false);
-  const [headerOnDark, setHeaderOnDark] = useState(true);
   const [connectOpen, setConnectOpen] = useState(false);
   const connectMenuRef = useRef(null);
 
@@ -126,34 +120,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const darkSections = ['hero', 'ocean', 'projects-section', 'about-section', 'skills-section', 'site-footer'];
-
-    const updateHeaderTheme = () => {
-      const header = headerRef.current;
-      if (!header) return;
-
-      const headerCenter = header.getBoundingClientRect().height / 2;
-      const sectionUnderHeader = [...document.querySelectorAll('main section, footer')].find((section) => {
-        const bounds = section.getBoundingClientRect();
-        return bounds.top <= headerCenter && bounds.bottom > headerCenter;
-      });
-
-      setHeaderOnDark(sectionUnderHeader ? darkSections.some((name) => sectionUnderHeader.classList.contains(name)) : false);
-    };
-
-    updateHeaderTheme();
-    window.addEventListener('scroll', updateHeaderTheme, { passive: true });
-    window.addEventListener('resize', updateHeaderTheme);
-
-    return () => {
-      window.removeEventListener('scroll', updateHeaderTheme);
-      window.removeEventListener('resize', updateHeaderTheme);
-    };
-  }, []);
-
-  useEffect(() => {
     if (!introComplete) return undefined;
-    const revealItems = document.querySelectorAll('.hero-content > *, [data-about-reveal], .about-detail-card, [data-leadership-reveal], .skills-inner > h2, .skills-group, .footer-feature, .footer-column, .footer-legal');
+    const revealItems = document.querySelectorAll('.hero-content > *, [data-about-reveal], [data-scroll-reveal], .about-detail-card, [data-leadership-reveal], .skills-inner > h2, .skills-group, .footer-feature, .footer-column, .footer-legal');
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (!('IntersectionObserver' in window) || motionPreference.matches) return undefined;
 
@@ -187,21 +155,19 @@ function App() {
 
   return (
     <div className={`site-shell${introComplete ? ' intro-complete' : ''}`}>
+      <OceanBackground className="site-ocean" />
       <IntroAnimation onComplete={() => setIntroComplete(true)} />
       <header
         ref={headerRef}
-        className={`site-header${introComplete ? ' site-header-visible' : ''}${headerOnDark ? ' site-header-dark' : ''}`}
+        className={`site-header site-header-dark${introComplete ? ' site-header-visible' : ''}`}
       >
         <a className="brand" href="#top" aria-label="Back to top">A.M.</a>
-        <nav aria-label="Primary navigation">
-          {navItems.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
-        </nav>
+        <SectionNavigation />
       </header>
 
       <main id="top">
         <div className="hero-stage">
-          <section className="hero" aria-labelledby="hero-title">
-            <OceanBackground />
+          <section className="hero" id="home" aria-labelledby="hero-title">
             <div className="hero-content">
               <p className="eyebrow">HELLO, I'M</p>
               <h1 id="hero-title">ARMANI MAGNIFICO</h1>
@@ -252,30 +218,17 @@ function App() {
         </div>
 
         <section className="intro about-section" id="about" aria-label="About Armani">
-          <OceanBackground />
           <div className="about-heading" data-about-reveal>
             <h2>About <span>Me</span></h2>
           </div>
-          <div className="about-cards">
-            <article className="about-card" data-about-reveal>
-              <span className="about-card-index">A learner first and foremost.</span>
-              <h3>A determined student open for opportunities.</h3>
-              <p>Fourth-year IT student at FEU Institute of Technology, focused on web and mobile experiences.</p>
-              <div className="about-card-foot">FEU Tech - Web and Mobile Application</div>
-            </article>
-            <article className="about-card about-card-blue" data-about-reveal>
-              <span className="about-card-index">APPROACH</span>
-              <h3>An idea to a working project.</h3>
-              <p>I map the system, shape the experience, build the frontend, then test the details.</p>
-              <div className="about-card-foot">Front End - Exploring Full Stack Development</div>
-            </article>
-            <article className="about-card" data-about-reveal>
-              <span className="about-card-index">BEYOND CODE</span>
-              <h3>Collaboration on and off the projects.</h3>
-              <p>Student leadership and project coordination keep collaboration at the heart of my work.</p>
-              <div className="about-card-foot">Student Leader</div>
-            </article>
-          </div>
+          <article className="about-story" data-about-reveal>
+            <div className="about-story-aside"><span className="story-orbit" aria-hidden="true">AM<span>↗</span></span><p>Curious mind.<br /><strong>Always building.</strong></p><span className="story-note">FEU TECH / WMA</span></div>
+            <div className="about-story-copy">
+              <p>I am a <strong>fourth-year Information Technology student</strong> at FEU Institute of Technology, specializing in <em>Web and Mobile Application Development</em>, with a strong interest in software engineering, frontend development, and quality assurance.</p>
+              <p>Through academic projects, client collaboration, and student leadership, I have gained practical experience in <strong>system design, UI/UX development, software testing, and project coordination</strong> while continuously striving to grow as an IT professional.</p>
+              <div className="story-interests" aria-label="Areas of interest"><span>Design</span><span>Develop</span><span>Test</span><span>Grow ↗</span></div>
+            </div>
+          </article>
           <AboutDetails />
         </section>
 
@@ -310,7 +263,6 @@ function App() {
           </div>
         </section>
         <section className="skills-section" id="skills" aria-labelledby="skills-title">
-          <OceanBackground />
           <div className="skills-inner">
             <h2 id="skills-title">Tech <span>Stack</span></h2>
             <div className="skills-groups">
@@ -326,6 +278,8 @@ function App() {
             </div>
           </div>
         </section>
+        <Education />
+        <Organization />
       </main>
       <footer className="site-footer" id="contact" aria-label="Contact and site navigation">
         <div className="footer-inner">

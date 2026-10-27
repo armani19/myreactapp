@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import './Projects.css';
-import OceanBackground from './OceanBackground';
 
 const screens = [
   { title: 'Log Item Record', label: 'Item reporting', file: 'log-item-record-cutout.png', description: 'Students can register a lost or found item, add its details and location, and upload a photo.' },
@@ -63,7 +62,6 @@ export default function Projects() {
 
   return (
     <section className="projects-section" id="projects" ref={sectionRef} aria-labelledby="projects-title">
-      <OceanBackground className="projects-water" />
       <div className="projects-inner">
         <div className="projects-heading project-reveal"><h2 id="projects-title">My <span>Projects</span><span className="projects-period">.</span></h2></div>
         <article className="featured-project project-reveal">
