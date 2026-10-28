@@ -9,6 +9,7 @@ import SectionNavigation from './SectionNavigation';
 import Internships from './Internships';
 import HeroName from './HeroName';
 import CursorGlow from './CursorGlow';
+import SeaMonsterFooter from './SeaMonsterFooter';
 import './PortfolioLayout.css';
 
 const skillLogos = {
@@ -290,6 +291,7 @@ function App() {
         <Internships />
       </main>
       <footer className="site-footer" id="contact" aria-label="Contact and site navigation">
+        <SeaMonsterFooter />
         <div className="footer-inner">
           <div className="footer-columns">
             <div className="footer-column"><h3>Get in touch</h3><a href="https://mail.google.com/mail/?view=cm&fs=1&to=armanimagnifico4195@gmail.com" target="_blank" rel="noreferrer">armanimagnifico4195@gmail.com</a></div>
