@@ -14,7 +14,7 @@ import './PortfolioLayout.css';
 const skillLogos = {
   JavaScript: 'javascript', PHP: 'php', Python: 'python',
   'C++': 'cplusplus', 'Tailwind CSS': 'tailwindcss', HTML5: 'html5',
-  CSS3: 'css3', React: 'react', 'CodeIgniter 4': 'codeigniter',
+  CSS3: 'css3', React: 'react',
   Git: 'git', GitHub: 'github', 'Visual Studio Code': 'vscode',
   Vite: 'vite', Figma: 'figma', 'Microsoft Power Apps': 'powerapps',
   Canva: 'canva',
@@ -272,7 +272,7 @@ function App() {
             <div className="skills-groups">
               {[
                 ['Frontend development', 'HTML5', 'CSS3', 'React', 'Tailwind CSS'],
-                ['Backend development', 'JavaScript', 'PHP', 'Python', 'CodeIgniter 4', 'C++'],
+                ['Backend development', 'JavaScript', 'PHP', 'Python', 'C++'],
                 ['Development & collaboration', 'Git', 'GitHub', 'Visual Studio Code', 'Vite'],
                 ['Design & prototyping', 'Figma', 'Microsoft Power Apps', 'Canva'],
               ].map(([category, ...skills]) => <div className="skills-group" key={category}>

@@ -30,7 +30,7 @@ export default function ShowcaseSlider({ children, label, titles, variant = 'eve
   return (
     <div className={`showcase showcase-${variant}`} role="group" aria-roledescription="carousel" aria-label={label}>
       <div className="showcase-masthead">
-        <span className="showcase-edition"><span aria-hidden="true" />{variant === 'works' ? 'THE DESIGN ARCHIVE' : 'MOMENTS IN MOTION'}</span>
+        <span className="showcase-edition"><span aria-hidden="true" />{variant === 'works' ? "A COLLECTION OF THINGS I'VE MADE" : 'MOMENTS IN MOTION'}</span>
         <span className="showcase-hint">Scroll to explore <span aria-hidden="true">↗</span></span>
       </div>
       <div className="showcase-track" id={trackId} ref={trackRef} onScroll={updateActive} tabIndex={0} aria-label={`${label} slides`} onKeyDown={event => {
@@ -43,7 +43,7 @@ export default function ShowcaseSlider({ children, label, titles, variant = 'eve
       }}>
         {slides.map((slide, index) => (
           <div className="showcase-slide" key={slide.key} role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${slides.length}: ${titles[index]}`}>
-            <span className="showcase-frame-number" aria-hidden="true">{number(index + 1)} <span>/ {variant === 'works' ? 'DESIGN' : 'FIELD NOTES'}</span></span>
+            <span className="showcase-frame-number" aria-hidden="true">{number(index + 1)}</span>
             {slide}
           </div>
         ))}

@@ -1,7 +1,12 @@
-import { render, screen, waitFor, within } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import Internships from './Internships';
 
 const originalFetch = global.fetch;
+
+beforeAll(() => {
+  HTMLDialogElement.prototype.showModal = function () { this.setAttribute('open', ''); };
+  HTMLDialogElement.prototype.close = function () { this.removeAttribute('open'); };
+});
 
 beforeEach(() => {
   global.fetch = jest.fn().mockResolvedValue({
@@ -27,12 +32,26 @@ test('internship section presents the supplied availability, setup, and all six 
   expect(within(section).getByText('Academic OJT')).toBeVisible();
   expect(within(section).getByText('Onsite / Hybrid')).toBeVisible();
   expect(within(section).getAllByRole('listitem')).toHaveLength(6);
-  expect(within(section).getByRole('link', { name: 'View CV image in a new tab' })).toHaveAttribute('href', expect.stringContaining('/assets/cv/ArmaniMagnificoCV.jpg'));
-  expect(within(section).getByRole('link', { name: 'View CV image in a new tab' })).toHaveAttribute('target', '_blank');
+  expect(within(section).getByRole('button', { name: 'View CV' })).toHaveAttribute('aria-haspopup', 'dialog');
   expect(within(section).getByRole('link', { name: 'Download PDF' })).toHaveAttribute('href', expect.stringContaining('/assets/cv/ArmaniMagnificoCV.pdf'));
   expect(within(section).getByRole('link', { name: 'Download PDF' })).toHaveAttribute('download', 'ArmaniMagnificoCV.pdf');
   expect(within(section).getByRole('link', { name: 'Email Me' })).toHaveAttribute('href', expect.stringContaining('armanimagnifico4195@gmail.com'));
   await within(section).findByRole('img', { name: '3 public GitHub contributions in the past 12 months' });
+});
+
+test('CV opens in a popup and returns focus to its trigger when closed', async () => {
+  render(<Internships />);
+  const trigger = screen.getByRole('button', { name: 'View CV' });
+  trigger.focus();
+  fireEvent.click(trigger);
+  const dialog = screen.getByRole('dialog', { name: 'Armani Magnifico CV' });
+  expect(within(dialog).getByRole('img', { name: 'Armani Magnifico CV' })).toHaveAttribute('src', expect.stringContaining('/assets/cv/ArmaniMagnificoCV.jpg'));
+  expect(document.body.style.overflow).toBe('hidden');
+  fireEvent.click(within(dialog).getByRole('button', { name: 'Close CV viewer' }));
+  expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  expect(document.body.style.overflow).toBe('');
+  expect(trigger).toHaveFocus();
+  await screen.findByRole('img', { name: '3 public GitHub contributions in the past 12 months' });
 });
 
 test('GitHub activity appears below the internship card with real contribution data', async () => {

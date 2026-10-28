@@ -1,6 +1,25 @@
+import { useEffect, useRef, useState } from 'react';
 import GitHubActivity from './GitHubActivity';
 
 export default function Internships() {
+  const [cvOpen, setCvOpen] = useState(false);
+  const dialogRef = useRef(null);
+  const viewButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (!cvOpen) return undefined;
+    const dialog = dialogRef.current;
+    const viewButton = viewButtonRef.current;
+    const previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      viewButton?.focus();
+    };
+  }, [cvOpen]);
+
   return (
     <section className="profile-section internships-section" id="internships" aria-labelledby="internships-title">
       <div className="profile-inner">
@@ -21,10 +40,10 @@ export default function Internships() {
               <p>View my CV now, or save a PDF copy for later.</p>
             </div>
             <div className="cv-actions">
-              <a className="cv-button cv-button-view" href={`${process.env.PUBLIC_URL}/assets/cv/ArmaniMagnificoCV.jpg`} target="_blank" rel="noopener noreferrer" aria-label="View CV image in a new tab">
+              <button ref={viewButtonRef} type="button" className="cv-button cv-button-view" onClick={() => setCvOpen(true)} aria-haspopup="dialog" aria-controls="cv-dialog">
                 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
                 <span>View CV</span><span className="cv-button-arrow" aria-hidden="true">↗</span>
-              </a>
+              </button>
               <a className="cv-button cv-button-download" href={`${process.env.PUBLIC_URL}/assets/cv/ArmaniMagnificoCV.pdf`} download="ArmaniMagnificoCV.pdf">
                 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12m-4-4 4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
                 <span>Download PDF</span><span className="cv-button-arrow" aria-hidden="true">↓</span>
@@ -35,6 +54,10 @@ export default function Internships() {
         </article>
         <GitHubActivity />
       </div>
+      <dialog ref={dialogRef} id="cv-dialog" className="cv-lightbox" aria-labelledby="cv-dialog-title" onCancel={event => { event.preventDefault(); setCvOpen(false); }} onClose={() => setCvOpen(false)} onClick={event => { if (event.target === event.currentTarget) setCvOpen(false); }}>
+        <div className="cv-lightbox-top"><h3 id="cv-dialog-title">Armani Magnifico CV</h3><button type="button" onClick={() => setCvOpen(false)} aria-label="Close CV viewer" autoFocus>×</button></div>
+        <img src={`${process.env.PUBLIC_URL}/assets/cv/ArmaniMagnificoCV.jpg`} alt="Armani Magnifico CV" width="1448" height="2048" />
+      </dialog>
     </section>
   );
 }

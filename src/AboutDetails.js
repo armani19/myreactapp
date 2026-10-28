@@ -1,3 +1,5 @@
+import './Certifications.css';
+
 const credentialAsset = name => `${process.env.PUBLIC_URL}/assets/credentials/${name}`;
 
 export function AboutDetailCard({ title, children }) {
@@ -53,22 +55,23 @@ export function Certifications() {
     <section className="profile-section" id="certifications" aria-labelledby="certifications-title">
       <div className="profile-inner">
         <h2 className="profile-section-title" id="certifications-title" data-scroll-reveal><span>Certifications</span></h2>
-        <AboutDetailCard>
-          <ul className="certification-list">{certifications.map(certification => (
-            <li key={certification.name}>
-              {certification.badge && <img className="certification-badge" src={credentialAsset(certification.badge)} alt={certification.logo ? 'Alliance of Information Technology Students logo' : `${certification.name} badge`} width="76" height="76" loading="lazy" />}
-              <div className="credential-info">
-                <h4>{certification.name}</h4>
-                <p className="about-detail-institution">{certification.issuer}</p>
-                <p className="certification-description">{certification.description}</p>
-                <div className="certification-meta">
-                  {certification.date && <span className="credential-date">Issued {certification.date}</span>}
-                  {certification.credly && <a className="certification-link" href={certification.credly} target="_blank" rel="noopener noreferrer" aria-label={`View ${certification.name} badge on Credly`}>View badge on Credly <span aria-hidden="true">↗</span></a>}
-                </div>
-              </div>
-            </li>
-          ))}</ul>
-        </AboutDetailCard>
+        <ul className="credential-gallery">{certifications.map((certification, index) => (
+          <li className="credential-tile" key={certification.name}>
+            <div className="credential-tile-top">
+              <span className="credential-index">{String(index + 1).padStart(2, '0')} <span>/ CREDENTIAL</span></span>
+              <img className="credential-tile-badge" src={credentialAsset(certification.badge)} alt={certification.logo ? 'Alliance of Information Technology Students logo' : `${certification.name} badge`} width="112" height="112" loading="lazy" />
+            </div>
+            <div className="credential-tile-copy">
+              <p className="credential-issuer">{certification.issuer}</p>
+              <h3>{certification.name}</h3>
+              <p className="credential-summary">{certification.description}</p>
+            </div>
+            <div className="credential-tile-foot">
+              <span>{certification.date ? `Issued ${certification.date}` : 'Cisco Networking Academy'}</span>
+              {certification.credly && <a href={certification.credly} target="_blank" rel="noopener noreferrer" aria-label={`View ${certification.name} badge on Credly`}>View on Credly <span aria-hidden="true">↗</span></a>}
+            </div>
+          </li>
+        ))}</ul>
       </div>
     </section>
   );
