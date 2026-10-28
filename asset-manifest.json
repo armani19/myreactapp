@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/myreactapp/static/css/main.d5ad5baa.css",
-    "main.js": "/myreactapp/static/js/main.a43e98eb.js",
+    "main.js": "/myreactapp/static/js/main.1a3d8c30.js",
     "static/js/453.abd8887f.chunk.js": "/myreactapp/static/js/453.abd8887f.chunk.js",
     "static/media/underwater-minimal.png": "/myreactapp/static/media/underwater-minimal.4712f1386932fe41aef7.png",
     "static/media/water-texture.jpg": "/myreactapp/static/media/water-texture.f6a66915c2d6c4db4100.jpg",
     "index.html": "/myreactapp/index.html",
     "main.d5ad5baa.css.map": "/myreactapp/static/css/main.d5ad5baa.css.map",
-    "main.a43e98eb.js.map": "/myreactapp/static/js/main.a43e98eb.js.map",
+    "main.1a3d8c30.js.map": "/myreactapp/static/js/main.1a3d8c30.js.map",
     "453.abd8887f.chunk.js.map": "/myreactapp/static/js/453.abd8887f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d5ad5baa.css",
-    "static/js/main.a43e98eb.js"
+    "static/js/main.1a3d8c30.js"
   ]
 }
