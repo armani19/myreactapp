@@ -1,3 +1,5 @@
+import GitHubActivity from './GitHubActivity';
+
 export default function Internships() {
   return (
     <section className="profile-section internships-section" id="internships" aria-labelledby="internships-title">
@@ -31,6 +33,7 @@ export default function Internships() {
           </div>
           <div className="internship-actions"><a className="button button-yellow" href="https://mail.google.com/mail/?view=cm&fs=1&to=armanimagnifico4195@gmail.com" target="_blank" rel="noreferrer">Email Me</a><a href="https://www.linkedin.com/in/armanimagnifico" target="_blank" rel="noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
         </article>
+        <GitHubActivity />
       </div>
     </section>
   );
