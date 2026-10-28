@@ -31,7 +31,7 @@ test('nine tentacles begin at Events and rise gradually through the rest of the 
     fireEvent.scroll(window);
     await waitFor(() => expect(layer.style.getPropertyValue('--monster-progress')).toBe('1.000'));
     expect(layer.style.getPropertyValue('--monster-rise')).toBe('70px');
-    expect(layer.style.getPropertyValue('--monster-opacity')).toBe('0.370');
+    expect(layer.style.getPropertyValue('--monster-opacity')).toBe('0.450');
   } finally {
     view.unmount();
     HTMLElement.prototype.getBoundingClientRect = originalRect;

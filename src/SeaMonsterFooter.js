@@ -56,7 +56,7 @@ export default function SeaMonsterFooter() {
       const reveal = motionPreference?.matches ? Number(progress > 0) : progress;
       layer.style.setProperty('--monster-progress', progress.toFixed(3));
       layer.style.setProperty('--monster-rise', `${Math.round(70 + (1 - reveal) * 240)}px`);
-      layer.style.setProperty('--monster-opacity', (Math.sqrt(reveal) * .37).toFixed(3));
+      layer.style.setProperty('--monster-opacity', (Math.sqrt(reveal) * .45).toFixed(3));
       layer.dataset.active = progress > 0;
       frame = undefined;
     };
