@@ -222,6 +222,10 @@ function App() {
                 </div>
               </div>
             </div>
+            <a className="hero-dive-link" href="#about">
+              <span>Take a dive</span>
+              <span className="hero-dive-arrow" aria-hidden="true">↓</span>
+            </a>
           </section>
         </div>
 

@@ -80,6 +80,13 @@ section[id], footer[id] { scroll-margin-top: calc(var(--header-height) + 22px); 
 .hero { min-height: 100svh; height: auto; padding: calc(var(--header-height) + 32px) 24px 32px; }
 .profile-section.internships-section { padding-bottom: clamp(30px,4vw,52px); }
 .hero-content { transform: none; }
+.hero-dive-link { position: absolute; z-index: 2; left: 50%; bottom: clamp(22px,3.5svh,40px); display: inline-flex; align-items: center; gap: 13px; transform: translateX(-50%); color: #d6eaff; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-decoration: none; text-transform: uppercase; white-space: nowrap; transition: color .25s ease; }
+.hero-dive-arrow { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #b2d8fa99; border-radius: 50%; background: #9bcbf31c; color: #ffe084; font-size: 20px; line-height: 1; transition: transform .3s ease, background .3s ease, border-color .3s ease; }
+.hero-dive-link:hover { color: #fff; }
+.hero-dive-link:hover .hero-dive-arrow { transform: translateY(4px); border-color: #ffe084; background: #ffe08424; }
+.hero-dive-link:focus-visible { outline: 2px solid #ffe084; outline-offset: 6px; border-radius: 4px; }
+@media (max-width: 600px) { .hero { padding-bottom: 110px; } .hero-dive-link { bottom: 26px; font-size: 10px; } }
+@media (prefers-reduced-motion: reduce) { .hero-dive-link, .hero-dive-arrow { transition: none; } .hero-dive-link:hover .hero-dive-arrow { transform: none; } }
 .about-section, .projects-section, .leadership-section, .skills-section, .profile-section { padding: clamp(56px,6vw,82px) clamp(22px,6vw,88px); }
 .about-story, .projects-inner, .leadership-inner, .skills-inner, .profile-inner { max-width: 1100px; margin-inline: auto; }
 .about-heading h2, .projects-heading h2, .leadership-inner h2, .skills-section h2, .profile-section-title { margin: 0; font-size: clamp(32px,4.3vw,58px); line-height: 1.12; letter-spacing: -.055em; text-align: center; }
