@@ -11,8 +11,16 @@ const arms = [
     shape: 'M139 510 C185 459 232 437 218 378 C205 324 162 315 177 261 C190 213 242 184 244 127 C271 184 228 229 229 269 C230 309 287 349 277 402 C269 447 231 480 220 510 Z',
   },
   {
+    name: 'left-center',
+    shape: 'M274 510 C317 470 354 441 342 390 C331 341 293 308 313 256 C329 214 383 175 376 106 C412 168 373 216 367 263 C359 316 407 355 401 405 C397 453 361 482 348 510 Z',
+  },
+  {
     name: 'middle',
     shape: 'M430 510 C482 474 536 442 516 381 C500 329 462 293 490 239 C517 188 576 158 566 75 C612 143 559 205 551 249 C540 311 599 355 588 411 C581 454 543 485 528 510 Z',
+  },
+  {
+    name: 'right-center',
+    shape: 'M775 510 C730 474 686 441 703 387 C720 336 775 312 759 257 C746 214 713 180 730 117 C695 179 718 220 711 263 C702 315 649 354 647 405 C644 453 682 484 697 510 Z',
   },
   {
     name: 'right',
@@ -29,17 +37,18 @@ export default function SeaMonsterFooter() {
 
   useEffect(() => {
     const layer = layerRef.current;
-    const footer = layer.closest('footer');
+    const events = document.getElementById('events');
+    if (!events) return undefined;
     const motionPreference = window.matchMedia?.('(prefers-reduced-motion: reduce)');
     let frame;
     const update = () => {
-      const rect = footer.getBoundingClientRect();
-      const footerVisibility = (window.innerHeight - rect.top) / Math.max(rect.height, 1);
-      const progress = Math.max(0, Math.min(1, (footerVisibility - .25) / .75));
+      const startY = window.scrollY + events.getBoundingClientRect().top - window.innerHeight * .85;
+      const endY = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.max(0, Math.min(1, (window.scrollY - startY) / Math.max(endY - startY, 1)));
       const reveal = motionPreference?.matches ? Number(progress > 0) : progress;
       layer.style.setProperty('--monster-progress', progress.toFixed(3));
       layer.style.setProperty('--monster-rise', `${Math.round(70 + (1 - reveal) * 240)}px`);
-      layer.style.setProperty('--monster-opacity', (reveal * .34).toFixed(3));
+      layer.style.setProperty('--monster-opacity', (Math.sqrt(reveal) * .3).toFixed(3));
       layer.dataset.active = progress > 0;
       frame = undefined;
     };
@@ -49,7 +58,7 @@ export default function SeaMonsterFooter() {
     window.addEventListener('resize', schedule);
     motionPreference?.addEventListener?.('change', schedule);
     const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(schedule) : null;
-    observer?.observe(footer);
+    observer?.observe(document.documentElement);
     return () => {
       cancelAnimationFrame(frame);
       observer?.disconnect();

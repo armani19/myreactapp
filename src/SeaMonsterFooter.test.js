@@ -1,35 +1,42 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import SeaMonsterFooter from './SeaMonsterFooter';
 
-test('tentacles stay hidden until the footer is a quarter visible, then rise faintly', async () => {
+test('seven tentacles begin at Events and rise gradually through the rest of the page', async () => {
   const originalRect = HTMLElement.prototype.getBoundingClientRect;
+  const originalScroll = Object.getOwnPropertyDescriptor(window, 'scrollY');
+  const height = jest.spyOn(document.documentElement, 'scrollHeight', 'get').mockReturnValue(6000);
   const frame = jest.spyOn(window, 'requestAnimationFrame').mockImplementation(callback => setTimeout(callback, 0));
-  let footerTop = window.innerHeight + 100;
+  let scrollY = 0;
+  Object.defineProperty(window, 'scrollY', { configurable: true, get: () => scrollY });
   HTMLElement.prototype.getBoundingClientRect = function () {
-    if (this.tagName === 'FOOTER') return { top: footerTop, height: 400 };
+    if (this.id === 'events') return { top: 2000 - scrollY };
     return originalRect.call(this);
   };
-  const view = render(<footer><SeaMonsterFooter /></footer>);
+  const view = render(<><section id="events" /><SeaMonsterFooter /></>);
   const layer = view.container.querySelector('.sea-monster-footer');
+  const startY = 2000 - window.innerHeight * .85;
+  const endY = 6000 - window.innerHeight;
   try {
     expect(layer.style.getPropertyValue('--monster-progress')).toBe('0.000');
-    footerTop = window.innerHeight - 80;
+    expect(layer.querySelectorAll('.monster-rise')).toHaveLength(7);
+    scrollY = startY + (endY - startY) * .2;
     fireEvent.scroll(window);
-    await waitFor(() => expect(layer.style.getPropertyValue('--monster-rise')).toBe('310px'));
-    expect(layer.style.getPropertyValue('--monster-opacity')).toBe('0.000');
-    footerTop = window.innerHeight - 250;
+    await waitFor(() => expect(layer.style.getPropertyValue('--monster-progress')).toBe('0.200'));
+    expect(layer.style.getPropertyValue('--monster-rise')).toBe('262px');
+    scrollY = startY + (endY - startY) * .5;
     fireEvent.scroll(window);
     await waitFor(() => expect(layer.style.getPropertyValue('--monster-progress')).toBe('0.500'));
     expect(layer.style.getPropertyValue('--monster-rise')).toBe('190px');
-    expect(layer.style.getPropertyValue('--monster-opacity')).toBe('0.170');
-    footerTop = window.innerHeight - 400;
+    scrollY = endY;
     fireEvent.scroll(window);
     await waitFor(() => expect(layer.style.getPropertyValue('--monster-progress')).toBe('1.000'));
     expect(layer.style.getPropertyValue('--monster-rise')).toBe('70px');
-    expect(layer.style.getPropertyValue('--monster-opacity')).toBe('0.340');
+    expect(layer.style.getPropertyValue('--monster-opacity')).toBe('0.300');
   } finally {
     view.unmount();
     HTMLElement.prototype.getBoundingClientRect = originalRect;
+    Object.defineProperty(window, 'scrollY', originalScroll);
+    height.mockRestore();
     frame.mockRestore();
   }
 });
