@@ -57,7 +57,7 @@ test('CV opens in a popup and returns focus to its trigger when closed', async (
 test('GitHub activity appears below the internship card with real contribution data', async () => {
   render(<Internships />);
   const section = screen.getByRole('region', { name: 'Open for Internships' });
-  const activity = within(section).getByRole('article', { name: 'A year of building, in little squares.' });
+  const activity = within(section).getByRole('article', { name: 'Public contribution activity from my GitHub profile' });
   expect(activity.compareDocumentPosition(within(section).getByText('Seeking Opportunities').closest('article')) & Node.DOCUMENT_POSITION_PRECEDING).toBeTruthy();
   expect(within(activity).getByRole('link', { name: /View GitHub/ })).toHaveAttribute('href', 'https://github.com/armani19');
   await waitFor(() => expect(within(activity).getByRole('img', { name: '3 public GitHub contributions in the past 12 months' })).toBeInTheDocument());
