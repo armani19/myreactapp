@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/myreactapp/static/css/main.df83842f.css",
-    "main.js": "/myreactapp/static/js/main.147a2c79.js",
+    "main.css": "/myreactapp/static/css/main.4b51627a.css",
+    "main.js": "/myreactapp/static/js/main.63228383.js",
     "static/js/453.abd8887f.chunk.js": "/myreactapp/static/js/453.abd8887f.chunk.js",
     "static/media/underwater-minimal.png": "/myreactapp/static/media/underwater-minimal.4712f1386932fe41aef7.png",
     "static/media/water-texture.jpg": "/myreactapp/static/media/water-texture.f6a66915c2d6c4db4100.jpg",
     "index.html": "/myreactapp/index.html",
-    "main.df83842f.css.map": "/myreactapp/static/css/main.df83842f.css.map",
-    "main.147a2c79.js.map": "/myreactapp/static/js/main.147a2c79.js.map",
+    "main.4b51627a.css.map": "/myreactapp/static/css/main.4b51627a.css.map",
+    "main.63228383.js.map": "/myreactapp/static/js/main.63228383.js.map",
     "453.abd8887f.chunk.js.map": "/myreactapp/static/js/453.abd8887f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.df83842f.css",
-    "static/js/main.147a2c79.js"
+    "static/css/main.4b51627a.css",
+    "static/js/main.63228383.js"
   ]
 }
