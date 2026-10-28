@@ -1,3 +1,5 @@
+import ShowcaseSlider from './ShowcaseSlider';
+
 const engagements = [
   {
     title: 'TICaP21 Project Colloquium',
@@ -27,9 +29,9 @@ export default function Engagements() {
     <section className="profile-section engagements-section" id="events" aria-labelledby="engagements-title">
       <div className="profile-inner">
         <h2 className="profile-section-title" id="engagements-title" data-scroll-reveal>Engagements <span>&amp; Events</span></h2>
-        <div className="engagements-grid">
+        <ShowcaseSlider label="Engagements & Events" titles={engagements.map(event => event.title)}>
           {engagements.map(event => (
-            <article className="engagement-card" key={event.dateTime} data-scroll-reveal tabIndex={0}>
+            <article className="engagement-card" key={event.dateTime}>
               <div className="engagement-photo"><img src={`${process.env.PUBLIC_URL}/assets/${event.photo}`} alt={event.alt} loading="lazy" /></div>
               <div className="engagement-copy">
                 <time dateTime={event.dateTime}>{event.date}</time>
@@ -39,7 +41,7 @@ export default function Engagements() {
               </div>
             </article>
           ))}
-        </div>
+        </ShowcaseSlider>
       </div>
     </section>
   );

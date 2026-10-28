@@ -1,0 +1,50 @@
+.showcase { --reel-accent: #a9d9ef; min-width: 0; }
+.showcase-works { --reel-accent: #f5d668; }
+.showcase-masthead { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 0 18px; border-bottom: 1px solid #b2d6ff33; }
+.showcase-edition { display: flex; align-items: center; gap: 10px; color: var(--reel-accent); font-size: 10px; font-weight: 600; letter-spacing: .18em; }
+.showcase-edition > span { width: 7px; height: 7px; background: var(--reel-accent); border-radius: 50%; box-shadow: 0 0 18px color-mix(in srgb, var(--reel-accent) 40%, transparent); }
+.showcase-hint { color: #b8cee5; font-size: 11px; }
+.showcase-hint > span { margin-left: 10px; color: var(--reel-accent); }
+.showcase-track { display: flex; align-items: stretch; gap: 24px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #a9d9ef55 transparent; padding: 22px 0 16px; }
+.showcase-track::-webkit-scrollbar { height: 4px; }
+.showcase-track::-webkit-scrollbar-thumb { background: #a9d9ef55; border-radius: 4px; }
+.showcase-slide { position: relative; flex: 0 0 86%; min-width: 0; scroll-snap-align: start; display: flex; flex-direction: column; }
+.showcase-slide:last-child { margin-right: 14%; }
+.showcase-frame-number { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--reel-accent); font-size: 20px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.showcase-frame-number > span { color: #acc4df; font-size: 9px; font-weight: 400; letter-spacing: .18em; }
+.showcase .engagement-card { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); align-items: center; flex: 1; border-radius: 8px 24px 24px 24px; background: linear-gradient(125deg,#32669955,#081e36bb); }
+.showcase .engagement-photo { height: 340px; padding: 20px; background: #061b3640; }
+.showcase .engagement-photo img { border-radius: 9px; }
+.showcase .engagement-copy { padding: 28px; }
+.showcase .engagement-copy h3 { font-size: clamp(22px,2.6vw,34px); line-height: 1.15; }
+.showcase .engagement-copy time { display: inline-block; padding-bottom: 12px; border-bottom: 1px solid #b2d6ff33; }
+.showcase .engagement-category { color: var(--reel-accent); }
+.showcase-works .engagement-card { background: linear-gradient(125deg,#243e5355,#081e36bb); }
+.showcase-works .poster-photo { height: 440px; background: radial-gradient(ellipse at center,#f5d66812,transparent 75%),#061b3640; }
+.showcase-footer { display: flex; align-items: center; gap: 24px; padding-top: 16px; }
+.showcase-position { display: flex; align-items: baseline; gap: 9px; font-variant-numeric: tabular-nums; }
+.showcase-position strong { color: var(--reel-accent); font-size: 24px; font-weight: 500; }
+.showcase-position > span { color: #9fb9d4; font-size: 11px; }
+.showcase-markers { display: flex; flex: 1; gap: 8px; max-width: 300px; }
+.showcase-markers button { display: flex; align-items: center; flex: 1; min-width: 24px; height: 36px; padding: 0; border: 0; background: none; cursor: pointer; }
+.showcase-markers button > span { width: 100%; height: 3px; border-radius: 4px; background: #b2d6ff33; transition: background .2s, height .2s; }
+.showcase-markers button.is-active > span { height: 5px; background: var(--reel-accent); }
+.showcase-arrows { display: flex; gap: 8px; margin-left: auto; }
+.showcase-arrows button { width: 44px; height: 44px; border: 1px solid #b2d6ff66; border-radius: 50%; background: #0b2c4f88; color: var(--reel-accent); font: inherit; font-size: 22px; cursor: pointer; transition: background .2s; }
+.showcase-arrows button:hover:enabled { background: #32669988; }
+.showcase-arrows button:disabled { opacity: .3; cursor: default; }
+.showcase button:focus-visible, .showcase-track:focus-visible { outline: 2px solid var(--reel-accent); outline-offset: 3px; }
+@media (hover: hover) { .showcase .engagement-card:hover { transform: none; } }
+@media (max-width: 700px) {
+  .showcase-track { gap: 14px; }
+  .showcase-slide { flex-basis: 90%; }
+  .showcase-slide:last-child { margin-right: 10%; }
+  .showcase .engagement-card { display: flex; flex-direction: column; align-items: stretch; }
+  .showcase .engagement-photo { height: 250px; flex-shrink: 0; }
+  .showcase-works .poster-photo { height: 340px; }
+  .showcase .engagement-copy { padding: 22px; }
+  .showcase-hint { font-size: 10px; }
+  .showcase-edition { font-size: 8px; letter-spacing: .12em; }
+  .showcase-footer { gap: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .showcase * { transition: none; } }

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import ShowcaseSlider from './ShowcaseSlider';
 
 const posters = [
   {
@@ -45,11 +46,11 @@ export default function CapstonePosters() {
     <section className="profile-section posters-section" id="posters" aria-labelledby="posters-title">
       <div className="profile-inner">
         <h2 className="profile-section-title" id="posters-title" data-scroll-reveal>Creative <span>Works</span></h2>
-        <div className="engagements-grid posters-grid">
+        <ShowcaseSlider label="Creative Works" titles={posters.map(poster => poster.title)} variant="works">
           {posters.map(poster => {
             const source = `${process.env.PUBLIC_URL}/assets/posters/${poster.file}`;
             return (
-              <article className="engagement-card" key={poster.file} data-scroll-reveal>
+              <article className="engagement-card" key={poster.file}>
                 <button type="button" className="engagement-photo poster-photo" onClick={event => openPoster(poster, event)} aria-haspopup="dialog" aria-label={`View ${poster.title} in full size`}>
                   <img src={source} alt={poster.alt} width="1587" height="2245" loading="lazy" />
                 </button>
@@ -63,7 +64,7 @@ export default function CapstonePosters() {
               </article>
             );
           })}
-        </div>
+        </ShowcaseSlider>
       </div>
       <dialog ref={dialogRef} className="project-lightbox poster-lightbox" aria-labelledby="poster-dialog-title" onCancel={event => { event.preventDefault(); setSelectedPoster(null); }} onClose={() => setSelectedPoster(null)} onClick={event => { if (event.target === event.currentTarget) setSelectedPoster(null); }}>
         {selectedPoster && <>
