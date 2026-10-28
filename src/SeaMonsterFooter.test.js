@@ -1,7 +1,7 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import SeaMonsterFooter from './SeaMonsterFooter';
 
-test('seven tentacles begin at Events and rise gradually through the rest of the page', async () => {
+test('nine tentacles begin at Events and rise gradually through the rest of the page', async () => {
   const originalRect = HTMLElement.prototype.getBoundingClientRect;
   const originalScroll = Object.getOwnPropertyDescriptor(window, 'scrollY');
   const height = jest.spyOn(document.documentElement, 'scrollHeight', 'get').mockReturnValue(6000);
@@ -18,7 +18,7 @@ test('seven tentacles begin at Events and rise gradually through the rest of the
   const endY = 6000 - window.innerHeight;
   try {
     expect(layer.style.getPropertyValue('--monster-progress')).toBe('0.000');
-    expect(layer.querySelectorAll('.monster-rise')).toHaveLength(7);
+    expect(layer.querySelectorAll('.monster-rise')).toHaveLength(9);
     scrollY = startY + (endY - startY) * .2;
     fireEvent.scroll(window);
     await waitFor(() => expect(layer.style.getPropertyValue('--monster-progress')).toBe('0.200'));

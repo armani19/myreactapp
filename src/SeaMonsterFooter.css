@@ -4,11 +4,19 @@
 .monster-sway { transform-box: fill-box; transform-origin: 50% 100%; }
 .monster-shape { fill: url(#monster-body); }
 @media (prefers-reduced-motion: no-preference) {
-  .sea-monster-footer[data-active=true] .monster-sway { animation: monster-sway 17s ease-in-out infinite alternate; }
-  .sea-monster-footer[data-active=true] .monster-left .monster-sway, .sea-monster-footer[data-active=true] .monster-right .monster-sway { animation-duration: 20s; animation-delay: -4s; }
-  .sea-monster-footer[data-active=true] .monster-middle .monster-sway { animation-duration: 23s; animation-delay: -6s; }
+  .sea-monster-footer[data-active=true] .monster-sway { animation: monster-sway 18s ease-in-out infinite; }
+  .sea-monster-footer[data-active=true] .monster-far-left .monster-sway, .sea-monster-footer[data-active=true] .monster-right-center .monster-sway { animation-duration: 22s; animation-delay: -8s; }
+  .sea-monster-footer[data-active=true] .monster-left .monster-sway, .sea-monster-footer[data-active=true] .monster-inner-right .monster-sway { animation-duration: 16s; animation-delay: -5s; }
+  .sea-monster-footer[data-active=true] .monster-left-center .monster-sway, .sea-monster-footer[data-active=true] .monster-far-right .monster-sway { animation-duration: 20s; animation-delay: -11s; }
+  .sea-monster-footer[data-active=true] .monster-inner-left .monster-sway { animation-duration: 24s; animation-delay: -15s; }
+  .sea-monster-footer[data-active=true] .monster-middle .monster-sway, .sea-monster-footer[data-active=true] .monster-right .monster-sway { animation-duration: 26s; animation-delay: -6s; }
 }
-@keyframes monster-sway { from { transform: rotate(-1deg) translateX(-2px); } to { transform: rotate(1deg) translateX(2px); } }
+@keyframes monster-sway {
+  0%, 100% { transform: rotate(-3deg) translateX(-4px); }
+  25% { transform: rotate(1deg) translateX(2px); }
+  50% { transform: rotate(3deg) translateX(5px); }
+  75% { transform: rotate(-1deg) translateX(-2px); }
+}
 @media (max-width: 600px) {
   .sea-monster-footer svg { width: 980px; height: 300px; }
 }
