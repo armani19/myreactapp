@@ -77,6 +77,7 @@ section[id], footer[id] { scroll-margin-top: calc(var(--header-height) + 22px); 
 
 /* Compact desktop rhythm and a hero centered below the fixed navigation. */
 .hero { min-height: 100svh; height: auto; padding: calc(var(--header-height) + 32px) 24px 32px; }
+.profile-section.internships-section { padding-bottom: clamp(30px,4vw,52px); }
 .hero-content { transform: none; }
 .about-section, .projects-section, .leadership-section, .skills-section, .profile-section { padding: clamp(56px,6vw,82px) clamp(22px,6vw,88px); }
 .about-story, .projects-inner, .leadership-inner, .skills-inner, .profile-inner { max-width: 1100px; margin-inline: auto; }
