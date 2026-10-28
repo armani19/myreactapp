@@ -5,7 +5,7 @@ export const sections = [
   ['Experience', 'experience'], ['Tech Stack', 'skills'],
   ['Education', 'education'], ['Certifications', 'certifications'],
   ['Events', 'events'], ['Creative Works', 'posters'],
-  ['Organization', 'organization'], ['Internships', 'internships'], ['Contact', 'contact'],
+  ['Organizations', 'organization'], ['Internships', 'internships'], ['Contact', 'contact'],
 ];
 
 export default function SectionNavigation() {

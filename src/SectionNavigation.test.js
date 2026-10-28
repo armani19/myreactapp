@@ -26,7 +26,7 @@ test('dot navigation keeps accessible names and tracks the section reached by sc
   await waitFor(() => expect(screen.getByRole('link', { name: 'Certifications' })).toHaveAttribute('aria-current', 'location'));
   position = sections.findIndex(([, id]) => id === 'organization') * 1000;
   fireEvent.scroll(window);
-  await waitFor(() => expect(screen.getByRole('link', { name: 'Organization' })).toHaveAttribute('aria-current', 'location'));
+  await waitFor(() => expect(screen.getByRole('link', { name: 'Organizations' })).toHaveAttribute('aria-current', 'location'));
   position = sections.findIndex(([, id]) => id === 'internships') * 1000;
   fireEvent.scroll(window);
   await waitFor(() => expect(screen.getByRole('link', { name: 'Internships' })).toHaveAttribute('aria-current', 'location'));

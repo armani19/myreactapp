@@ -30,7 +30,7 @@ export default function ShowcaseSlider({ children, label, titles, variant = 'eve
   return (
     <div className={`showcase showcase-${variant}`} role="group" aria-roledescription="carousel" aria-label={label}>
       <div className="showcase-masthead">
-        <span className="showcase-edition"><span aria-hidden="true" />{variant === 'works' ? "A COLLECTION OF THINGS I'VE MADE" : 'MOMENTS IN MOTION'}</span>
+        <span className="showcase-edition"><span aria-hidden="true" />{variant === 'works' ? 'A COLLECTION OF MY ARTISTIC WORKS' : 'MOMENTS IN MOTION'}</span>
         <span className="showcase-hint">Scroll to explore <span aria-hidden="true">↗</span></span>
       </div>
       <div className="showcase-track" id={trackId} ref={trackRef} onScroll={updateActive} tabIndex={0} aria-label={`${label} slides`} onKeyDown={event => {

@@ -32,8 +32,9 @@ test('education and organization are independently addressable sections with vis
   expect(screen.getByText(/General Average: 94.04/)).toBeVisible();
   expect(screen.getByRole('img', { name: 'FEU Institute of Technology logo' })).toBeVisible();
   expect(screen.getByRole('img', { name: 'Saint Joseph School of Gagalangin logo' })).toBeVisible();
-  const organization = screen.getByRole('region', { name: 'Organization' });
+  const organization = screen.getByRole('region', { name: 'Organizations' });
   expect(organization).toHaveAttribute('id', 'organization');
   expect(organization).toHaveTextContent('Alliance of Information Technology Students');
+  expect(organization).toHaveTextContent('July 2024 – August 2026');
   expect(organization).not.toHaveTextContent('Director');
 });

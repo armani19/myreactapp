@@ -31,11 +31,11 @@ export function Organization() {
   return (
     <section className="profile-section" id="organization" aria-labelledby="organization-title">
       <div className="profile-inner">
-        <h2 className="profile-section-title" id="organization-title" data-scroll-reveal><span>Organization</span></h2>
+        <h2 className="profile-section-title" id="organization-title" data-scroll-reveal><span>Organizations</span></h2>
         <AboutDetailCard>
           <div className="organization-profile">
             <img className="organization-logo" src={credentialAsset('aits-cutout.png')} alt="Alliance of Information Technology Students logo" width="100" height="100" loading="lazy" />
-            <div><h4>Alliance of Information Technology Students</h4><p className="about-detail-institution">FEU Institute of Technology</p><p>Manila, National Capital Region, Philippines</p></div>
+            <div><h4>Alliance of Information Technology Students</h4><p className="about-detail-institution">FEU Institute of Technology</p><p className="organization-period">July 2024 – August 2026</p><p>Manila, National Capital Region, Philippines</p></div>
           </div>
         </AboutDetailCard>
       </div>
