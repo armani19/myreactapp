@@ -299,7 +299,10 @@ function App() {
               <div className="footer-column"><h3>What I do</h3><p>System Design<br />Frontend Development<br />Quality Assurance<br />Project Management</p></div>
               <div className="footer-column"><h3>Exploring</h3><p>Backend Development<br />Full Stack Development</p></div>
           </div>
+          <div className="footer-bottom">
             <div className="footer-legal">© {new Date().getFullYear()} Armani Magnifico</div>
+            <a className="footer-surface-link" href="#top"><span aria-hidden="true">↑</span> Back to the surface</a>
+          </div>
         </div>
       </footer>
     </div>

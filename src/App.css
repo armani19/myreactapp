@@ -266,11 +266,17 @@ html, body, #root { max-width: 100%; }
 .footer-column a,.footer-column p { display: block; margin: 0 0 8px; color: #f3f7fd; font-size: clamp(12px,1vw,15px); line-height: 1.6; text-decoration: none; overflow-wrap: anywhere; }
 .footer-column a:hover,.footer-column a:focus-visible { color: #f5d652; text-decoration: underline; text-underline-offset: 4px; }
 .footer-column svg { width: 17px; height: 17px; margin-right: 5px; vertical-align: -3px; }
-.footer-legal { padding: 0 clamp(15px,2.5vw,40px) 6px; color: #92a9c4; font-size: 11px; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 0 clamp(15px,2.5vw,40px) 6px; }
+.footer-legal { color: #92a9c4; font-size: 11px; }
+.footer-surface-link { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid #b5d8f466; border-radius: 999px; background: #a5d7f414; color: #d5edff; font-size: 12px; font-weight: 700; letter-spacing: .02em; text-decoration: none; transition: background .25s ease, border-color .25s ease, transform .25s ease; }
+.footer-surface-link span { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #b8e0f02e; font-size: 17px; line-height: 1; }
+.footer-surface-link:hover { transform: translateY(-3px); border-color: #cce9ff; background: #a5d7f42e; }
+.footer-surface-link:focus-visible { outline: 2px solid #f5d668; outline-offset: 3px; }
 @media (max-width: 900px) { .footer-columns { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @keyframes footer-photo-wash { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
 @media (max-width: 600px) { .footer-feature { min-height: 350px; border-radius: 22px; padding: 24px; } .footer-profile { min-height: 250px; margin: 4px auto -18px; } .footer-portrait { left: -1%; bottom: -16px; width: 65%; height: calc(100% + 70px); } .footer-profile h2 { left: 29%; top: 51%; width: 71%; font-size: clamp(34px,9vw,58px); } .footer-columns { gap: 32px 18px; padding-inline: 8px; } }
 @media (prefers-reduced-motion: reduce) { .footer-portrait::after { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .footer-surface-link { transition: none; } .footer-surface-link:hover { transform: none; } }
 
 /* Expandable background cards share the ocean palette of About Me. */
 .about-details { display: grid; grid-template-columns: minmax(0,1fr); align-items: start; gap: 20px; max-width: 1440px; margin: 32px auto 0; }
