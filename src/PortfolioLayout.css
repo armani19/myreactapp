@@ -182,8 +182,9 @@ section[id], footer[id] { scroll-margin-top: calc(var(--header-height) + 22px); 
 .cv-button:focus-visible { outline: 2px solid #f5d668; outline-offset: 4px; }
 .cv-lightbox { width: min(920px,96vw); max-height: 96svh; padding: 18px; border: 0; background: transparent; color: #fff; box-shadow: none; overflow: auto; }
 .cv-lightbox::backdrop { background: radial-gradient(ellipse at center,#174a7ab8 0%,#0c315a91 46%,#061b3600 100%); backdrop-filter: blur(4px); }
-.cv-lightbox-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; max-width: 760px; margin: 0 auto 14px; }
-.cv-lightbox-top h3 { margin: 0; font-size: 15px; font-weight: 600; text-shadow: 0 2px 12px #041126; }
+.cv-lightbox-top { display: grid; grid-template-columns: 42px minmax(0,1fr) 42px; align-items: center; gap: 8px; max-width: 600px; margin: 0 auto 14px; }
+.cv-lightbox-top h3 { grid-column: 2; margin: 0; font-size: 15px; font-weight: 600; text-align: center; text-shadow: 0 2px 12px #041126; }
+.cv-lightbox-top button { grid-column: 3; }
 .cv-lightbox-top button { flex: none; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #113b65a8; color: #fff; font-size: 22px; cursor: pointer; }
 .cv-lightbox-top button:focus-visible { outline: 2px solid #f5d668; outline-offset: 3px; }
 .cv-lightbox > img { display: block; width: auto; max-width: 100%; height: auto; max-height: calc(96svh - 100px); margin: auto; object-fit: contain; filter: drop-shadow(0 26px 50px #010b20a3); }
@@ -244,5 +245,6 @@ section[id], footer[id] { scroll-margin-top: calc(var(--header-height) + 22px); 
 @media (max-width: 900px) { .posters-grid { grid-template-columns: 1fr; } }
 @media (max-width: 500px) { .poster-photo { height: 360px; } }
 .poster-lightbox { width: min(850px,95vw); }
+.poster-lightbox .lightbox-top { max-width: 560px; }
 .poster-expanded-image { display: block; width: 100%; height: auto; max-height: calc(90svh - 100px); object-fit: contain; margin: 20px auto 0; filter: drop-shadow(0 26px 50px #010b20a3); animation: project-content-in .3s ease both; }
 @media (prefers-reduced-motion: reduce) { .poster-expanded-image { animation: none; } }

@@ -61,8 +61,10 @@
 @keyframes project-phone-in { from { opacity: 0; transform: translateX(calc(22px * var(--screen-direction, 1))) rotate(calc(5deg * var(--screen-direction, 1))) scale(.96); } to { opacity: 1; transform: translateX(0) rotate(0) scale(1); } }
 .project-lightbox { width: min(620px,95vw); max-height: 94svh; padding: 20px 26px; border: 0; border-radius: 0; background: transparent; color: #fff; box-shadow: none; overflow: auto; }
 .project-lightbox::backdrop { background: radial-gradient(ellipse at center,#174a7ab8 0%,#0c315a91 46%,#061b3600 100%); backdrop-filter: blur(4px); }
-.lightbox-top,.lightbox-controls { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.lightbox-top h3 { margin: 0; font: 600 16px 'Sora',sans-serif; }
+.lightbox-top { display: grid; grid-template-columns: 42px minmax(0,1fr) 42px; align-items: center; gap: 8px; max-width: 390px; margin: 0 auto; }
+.lightbox-top h3 { grid-column: 2; margin: 0; font: 600 16px 'Sora',sans-serif; text-align: center; }
+.lightbox-top button { grid-column: 3; }
+.lightbox-controls { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
 .project-lightbox button { width: 42px; height: 42px; background: #113b65a8; color: #fff; border: 0; border-radius: 50%; font-size: 18px; cursor: pointer; }
 .project-lightbox button:focus-visible { outline: 2px solid #facc16; outline-offset: 3px; }
 .lightbox-image { width: min(300px,64vw); margin: 16px auto; animation: project-content-in .3s ease both; }
