@@ -39,7 +39,6 @@ function IntroAnimation({ onComplete }) {
       <div className="intro-card intro-card-primary">
         <div className="intro-card-content">
           <p className="intro-name">ARMANI MAGNIFICO</p>
-          <p className="intro-role">Frontend Developer<br />Quality Assurance</p>
         </div>
       </div>
       <div className="intro-card intro-card-mark">
@@ -179,9 +178,9 @@ function App() {
             <div className="hero-content">
               <p className="eyebrow">HELLO, I'M</p>
               <HeroName name="ARMANI MAGNIFICO" />
-              <p className="hero-description">Frontend Developer | Project Management | Quality Assurance | System Design<span className="hero-student">4th year IT - WMA Student</span></p>
+              <p className="hero-description"><span className="hero-student">4th year IT - WMA Student</span></p>
               <div className="hero-stats" aria-label="Specialties">
-                <div><strong>Frontend Developer</strong><span>Primary</span></div>
+                <div><strong>Project Manager</strong><span>Primary</span></div>
                 <div><strong>Quality Assurance</strong><span>Primary</span></div>
                 <div><strong>Full Stack</strong><span>Exploring</span></div>
               </div>
