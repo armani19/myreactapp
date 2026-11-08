@@ -24,21 +24,20 @@ beforeEach(() => {
 
 afterEach(() => { global.fetch = originalFetch; });
 
-test('internship section presents the supplied availability, setup, and all six interests', async () => {
+test('internship section presents the confirmed Baytech placement and map', async () => {
   render(<Internships />);
-  const section = screen.getByRole('region', { name: 'Open for Internships' });
+  const section = screen.getByRole('region', { name: 'My Internship' });
   expect(section).toHaveAttribute('id', 'internships');
-  expect(within(section).getByText('Dec 2026 – Jul 2027')).toBeVisible();
-  expect(within(section).getByText('Academic OJT')).toBeVisible();
-  expect(within(section).getByText('Onsite / Hybrid')).toBeVisible();
-  expect(within(section).getAllByRole('listitem')).toHaveLength(6);
+  expect(within(section).getByRole('img', { name: 'Baytech Corp. logo' })).toHaveAttribute('src', expect.stringContaining('/assets/baytech-logo.svg'));
+  expect(within(section).getByText('Quality Assurance Intern', { selector: 'dd' })).toBeVisible();
+  expect(within(section).getByText('December 2026', { selector: 'dd' })).toBeVisible();
+  expect(within(section).getByText('520 hours')).toBeVisible();
+  expect(within(section).getByTitle('Google Map of Baytech Corp. on Meralco Avenue, Pasig')).toHaveAttribute('src', expect.stringContaining('output=embed'));
+  expect(within(section).getByRole('link', { name: /Open in Google Maps/ })).toHaveAttribute('href', expect.stringContaining('google.com/maps'));
   expect(within(section).getByRole('button', { name: 'View CV' })).toHaveAttribute('aria-haspopup', 'dialog');
-  expect(within(section).getByRole('link', { name: 'Download PDF' })).toHaveAttribute('href', expect.stringContaining('/assets/cv/ArmaniMagnificoCV.pdf'));
   expect(within(section).getByRole('link', { name: 'Download PDF' })).toHaveAttribute('download', 'ArmaniMagnificoCV.pdf');
-  expect(within(section).getByRole('link', { name: 'Email Me' })).toHaveAttribute('href', expect.stringContaining('armanimagnifico4195@gmail.com'));
   await within(section).findByRole('img', { name: '3 public GitHub contributions in the past 12 months' });
 });
-
 test('CV opens in a popup and returns focus to its trigger when closed', async () => {
   render(<Internships />);
   const trigger = screen.getByRole('button', { name: 'View CV' });
@@ -56,9 +55,9 @@ test('CV opens in a popup and returns focus to its trigger when closed', async (
 
 test('GitHub activity appears below the internship card with real contribution data', async () => {
   render(<Internships />);
-  const section = screen.getByRole('region', { name: 'Open for Internships' });
+  const section = screen.getByRole('region', { name: 'My Internship' });
   const activity = within(section).getByRole('article', { name: 'Public contribution activity from my GitHub profile' });
-  expect(activity.compareDocumentPosition(within(section).getByText('Seeking Opportunities').closest('article')) & Node.DOCUMENT_POSITION_PRECEDING).toBeTruthy();
+  expect(activity.compareDocumentPosition(within(section).getByText('Baytech Corp.').closest('article')) & Node.DOCUMENT_POSITION_PRECEDING).toBeTruthy();
   expect(within(activity).getByRole('link', { name: /View GitHub/ })).toHaveAttribute('href', 'https://github.com/armani19');
   await waitFor(() => expect(within(activity).getByRole('img', { name: '3 public GitHub contributions in the past 12 months' })).toBeInTheDocument());
   expect(within(activity).getByTitle('2026-10-25: 2 contributions')).toHaveClass('level-2');

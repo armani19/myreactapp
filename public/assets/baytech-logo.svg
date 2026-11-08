@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Baytech logo">
+  <rect width="200" height="200" fill="#fff"/>
+  <path d="M46 48v92l53 31 54-31V81l-53-32-20 12V29L67 37v78l33 20 31-19V94l-31-18-20 12V73l20-12 43 26v47l-44 26-43-26V41Z" fill="#0054a8"/>
+  <path d="m66 93 34-20 34 20v41l-34 20-34-20Zm13 8v25l21 13 22-13v-25l-22-13Z" fill="#55d1ed"/>
+  <path d="m88 106 12-7 12 7v14l-12 7-12-7Z" fill="#0054a8"/>
+</svg>

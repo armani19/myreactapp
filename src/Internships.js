@@ -23,16 +23,19 @@ export default function Internships() {
   return (
     <section className="profile-section internships-section" id="internships" aria-labelledby="internships-title">
       <div className="profile-inner">
-        <h2 className="profile-section-title" id="internships-title" data-scroll-reveal>Open for <span>Internships</span></h2>
+        <h2 className="profile-section-title" id="internships-title" data-scroll-reveal>My <span>Internship</span></h2>
         <article className="internship-card" data-scroll-reveal>
-          <div className="internship-card-heading"><span className="internship-status"><span aria-hidden="true" />Seeking Opportunities</span></div>
-          <p className="internship-intro">Fourth-year BSIT student specializing in Web and Mobile Application Development at FEU Institute of Technology, seeking opportunities to contribute to real-world IT projects and gain professional industry experience.</p>
+          <div className="internship-card-heading">
+            <div className="internship-company"><img src={`${process.env.PUBLIC_URL}/assets/baytech-logo.svg`} alt="Baytech Corp. logo" /><div><span className="internship-eyebrow">My upcoming placement</span><h3>Baytech Corp.</h3><p>Quality Assurance Intern · Ortigas, Pasig</p></div></div>
+            <span className="internship-status"><span aria-hidden="true" />Starting December 2026</span>
+          </div>
+          <p className="internship-intro">I’ll be joining Baytech Corp. as a Quality Assurance Intern this December, completing 520 required internship hours in Ortigas, Pasig.</p>
           <dl className="internship-facts">
-            <div><dt>Internship Period</dt><dd>Dec 2026 – Jul 2027</dd></div>
-            <div><dt>Internship Type</dt><dd>Academic OJT</dd></div>
-            <div><dt>Work Setup</dt><dd>Onsite / Hybrid</dd></div>
+            <div><dt>Role</dt><dd>Quality Assurance Intern</dd></div>
+            <div><dt>Starts</dt><dd>December 2026</dd></div>
+            <div><dt>Required hours</dt><dd>520 hours</dd></div>
           </dl>
-          <div className="internship-interests"><h4>Positions of Interest</h4><ul>{['Frontend Developer', 'Project Management', 'Software Quality Assurance', 'IT Support', 'UI/UX Design', 'Systems Analyst'].map(position => <li key={position}>{position}</li>)}</ul></div>
+          <div className="internship-location"><div className="internship-location-copy"><span className="internship-eyebrow">Office location</span><h4>Find Baytech in Ortigas</h4><p>Meralco Avenue, San Antonio, Pasig, 1605 Metro Manila, Philippines</p><a href="https://www.google.com/maps/search/?api=1&query=Baytech%20BPO%2C%20Meralco%20Avenue%2C%20San%20Antonio%2C%20Pasig%2C%20Metro%20Manila" target="_blank" rel="noreferrer">Open in Google Maps <span aria-hidden="true">↗</span></a></div><iframe title="Google Map of Baytech Corp. on Meralco Avenue, Pasig" src="https://www.google.com/maps?q=Baytech%20BPO%2C%20Meralco%20Avenue%2C%20San%20Antonio%2C%20Pasig%2C%20Metro%20Manila&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div>
           <div className="cv-callout">
             <div className="cv-callout-copy">
               <span className="cv-kicker">MY CV · AT A GLANCE</span>
@@ -50,7 +53,6 @@ export default function Internships() {
               </a>
             </div>
           </div>
-          <div className="internship-actions"><a className="button button-yellow" href="https://mail.google.com/mail/?view=cm&fs=1&to=armanimagnifico4195@gmail.com" target="_blank" rel="noreferrer">Email Me</a><a href="https://www.linkedin.com/in/armanimagnifico" target="_blank" rel="noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div>
         </article>
         <GitHubActivity />
       </div>
@@ -61,3 +63,4 @@ export default function Internships() {
     </section>
   );
 }
+
