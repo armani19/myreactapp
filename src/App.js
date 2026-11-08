@@ -178,7 +178,6 @@ function App() {
             <div className="hero-content">
               <p className="eyebrow">HELLO, I'M</p>
               <HeroName name="ARMANI MAGNIFICO" />
-              <p className="hero-description"><span className="hero-student">4th year IT - WMA Student</span></p>
               <div className="hero-stats" aria-label="Specialties">
                 <div><strong>Project Manager</strong><span>Primary</span></div>
                 <div><strong>Quality Assurance</strong><span>Primary</span></div>
